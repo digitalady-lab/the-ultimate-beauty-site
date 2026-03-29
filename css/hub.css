@@ -5760,8 +5760,8 @@
 }
 .email-gate-form {
   display: flex;
+  flex-direction: column;
   gap: 10px;
-  flex-wrap: wrap;
 }
 .email-gate-input {
   flex: 1;
@@ -5788,10 +5788,8 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   cursor: pointer;
-  white-space: nowrap;
   transition: background 0.3s;
-  min-width: fit-content;
-  flex-shrink: 0;
+  width: 100%;
 }
 .email-gate-submit:hover { background: var(--gold-light); }
 .email-gate-close {
