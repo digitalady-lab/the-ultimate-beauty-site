@@ -126,6 +126,13 @@
 </head>
 
 <body>
+  <script>
+    // Prevent auto-scroll to hash on page load
+    if (window.location.hash) {
+      window.history.replaceState(null, '', window.location.pathname);
+    }
+    window.scrollTo(0, 0);
+  </script>
   <div class="site-wrap">
   <a class="sr-only" href="#main">Ugrás a tartalomra</a>
 
@@ -3287,7 +3294,10 @@
         });
       }, { threshold: 0.1 });
 
-      document.querySelectorAll('section').forEach(function(s) {
+      // Only animate sections in the ACTIVE tab (not hidden tabs)
+      var activePage = document.querySelector('.page-content.active');
+      var sections = activePage ? activePage.querySelectorAll('section') : document.querySelectorAll('section');
+      sections.forEach(function(s) {
         s.style.opacity = '0';
         s.style.transform = 'translateY(24px)';
         s.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
@@ -3299,6 +3309,9 @@
         h.style.opacity = '1';
         h.style.transform = 'none';
       });
+
+      // Force scroll to top on page load
+      window.scrollTo(0, 0);
     }
   </script>
 
