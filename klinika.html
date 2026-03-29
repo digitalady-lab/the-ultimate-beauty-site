@@ -386,27 +386,56 @@
   <script src="js/tub-map.js"></script>
 
   <!-- Gallery Lightbox -->
-  <div id="gallery-lightbox" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.92); backdrop-filter:blur(8px); cursor:pointer;" onclick="closeGalleryLightbox()">
-    <button onclick="closeGalleryLightbox()" style="position:absolute; top:20px; right:24px; z-index:10; background:none; border:none; color:white; font-size:2rem; cursor:pointer; padding:8px;">&times;</button>
-    <div id="gallery-lightbox-content" style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; padding:40px;"></div>
+  <!-- Gallery Lightbox -->
+  <div id="gallery-lightbox" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.92); backdrop-filter:blur(8px);" onclick="closeGalleryLightbox()">
+    <button onclick="closeGalleryLightbox()" style="position:absolute; top:20px; right:24px; z-index:10; background:none; border:none; color:white; font-size:2rem; cursor:pointer; padding:8px; line-height:1;">&times;</button>
+    <!-- Bal nyíl -->
+    <button id="gl-prev" onclick="event.stopPropagation(); glNav(-1);" style="position:absolute; left:16px; top:50%; transform:translateY(-50%); z-index:10; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); color:white; font-size:1.5rem; width:48px; height:48px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; backdrop-filter:blur(4px); transition:background 0.2s;">&#8249;</button>
+    <!-- Jobb nyíl -->
+    <button id="gl-next" onclick="event.stopPropagation(); glNav(1);" style="position:absolute; right:16px; top:50%; transform:translateY(-50%); z-index:10; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); color:white; font-size:1.5rem; width:48px; height:48px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; backdrop-filter:blur(4px); transition:background 0.2s;">&#8250;</button>
+    <!-- Számláló -->
+    <div id="gl-counter" style="position:absolute; bottom:20px; left:50%; transform:translateX(-50%); color:rgba(255,255,255,0.5); font-size:0.75rem; letter-spacing:0.15em; font-family:Montserrat,sans-serif;"></div>
+    <!-- Tartalom -->
+    <div id="gallery-lightbox-content" style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; padding:40px;" onclick="closeGalleryLightbox()"></div>
   </div>
 
   <script>
+  var glItems = [];
+  var glIndex = 0;
+
+  // Collect all gallery items on load
+  document.addEventListener('DOMContentLoaded', function() {
+    glItems = Array.from(document.querySelectorAll('.klinika-gallery__item[onclick]'));
+  });
+
   function openGalleryLightbox(item) {
-    var lb = document.getElementById('gallery-lightbox');
+    glIndex = glItems.indexOf(item);
+    if (glIndex < 0) glIndex = 0;
+    glShowCurrent();
+    document.getElementById('gallery-lightbox').style.display = 'block';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function glShowCurrent() {
+    var item = glItems[glIndex];
     var content = document.getElementById('gallery-lightbox-content');
     var video = item.querySelector('video');
     var img = item.querySelector('img');
+    var mediaStyle = 'max-width:90vw; max-height:85vh; border-radius:8px; box-shadow:0 0 60px rgba(0,0,0,0.5);';
 
     if (video) {
       var src = video.querySelector('source').src;
-      content.innerHTML = '<video autoplay controls loop playsinline style="max-width:90vw; max-height:85vh; border-radius:8px; box-shadow:0 0 60px rgba(0,0,0,0.5);" onclick="event.stopPropagation()"><source src="' + src + '" type="video/mp4"></video>';
+      content.innerHTML = '<video autoplay controls loop playsinline style="' + mediaStyle + '" onclick="event.stopPropagation()"><source src="' + src + '" type="video/mp4"></video>';
     } else if (img) {
-      content.innerHTML = '<img src="' + img.src + '" alt="' + (img.alt || '') + '" style="max-width:90vw; max-height:85vh; object-fit:contain; border-radius:8px; box-shadow:0 0 60px rgba(0,0,0,0.5);" onclick="event.stopPropagation()" />';
+      content.innerHTML = '<img src="' + img.src + '" alt="' + (img.alt || '') + '" style="' + mediaStyle + ' object-fit:contain;" onclick="event.stopPropagation()" />';
     }
 
-    lb.style.display = 'block';
-    document.body.style.overflow = 'hidden';
+    document.getElementById('gl-counter').textContent = (glIndex + 1) + ' / ' + glItems.length;
+  }
+
+  function glNav(dir) {
+    glIndex = (glIndex + dir + glItems.length) % glItems.length;
+    glShowCurrent();
   }
 
   function closeGalleryLightbox() {
@@ -418,8 +447,25 @@
   }
 
   document.addEventListener('keydown', function(e) {
+    var lb = document.getElementById('gallery-lightbox');
+    if (lb.style.display !== 'block') return;
     if (e.key === 'Escape') closeGalleryLightbox();
+    if (e.key === 'ArrowLeft') glNav(-1);
+    if (e.key === 'ArrowRight') glNav(1);
   });
+
+  // Touch swipe support
+  (function() {
+    var startX = 0;
+    var lb = document.getElementById('gallery-lightbox');
+    lb.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; }, { passive: true });
+    lb.addEventListener('touchend', function(e) {
+      var diff = e.changedTouches[0].clientX - startX;
+      if (Math.abs(diff) > 50) {
+        glNav(diff > 0 ? -1 : 1);
+      }
+    }, { passive: true });
+  })();
   </script>
 </body>
 </html>
