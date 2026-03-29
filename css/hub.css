@@ -1708,8 +1708,9 @@
       .hero {
         flex-direction: column;
         align-items: stretch;
-        overflow: visible;
-        min-height: auto;
+        overflow: visible !important;
+        min-height: auto !important;
+        height: auto !important;
       }
       .hero-visual {
         position: relative !important;
@@ -1717,8 +1718,10 @@
         transform: none !important;
         width: 100% !important;
         height: auto !important;
+        min-height: 100px;
         margin-top: 32px;
         pointer-events: auto;
+        display: flex !important;
       }
       .hero-content { max-width: 100%; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
@@ -1782,26 +1785,50 @@
       .page-content { margin-top: 42px; }
       .drawer { top: 42px; }
 
-      /* ── Fix horizontal overflow ── */
+      /* ── Fix horizontal overflow + iPhone Safari fix ── */
       .hero {
         padding-left: 20px;
         padding-right: 20px;
-        min-height: auto;
+        min-height: auto !important;
         flex-direction: column;
         align-items: stretch;
-        overflow: visible;
+        overflow: visible !important;
+        -webkit-overflow-scrolling: touch;
+        height: auto !important;
       }
       .hero-content { max-width: 100%; }
       .hero-visual {
         position: relative !important;
         top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
         transform: none !important;
         width: 100% !important;
         height: auto !important;
+        min-height: 200px;
         margin-top: 32px;
         pointer-events: auto;
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        overflow: visible !important;
+        clip: auto !important;
+        -webkit-clip-path: none !important;
+        clip-path: none !important;
       }
-      .hero-visual-inner { max-width: 100% !important; margin-left: 0 !important; }
+      .hero-visual-inner {
+        max-width: 100% !important;
+        margin-left: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 16px;
+        width: 100% !important;
+      }
+      /* iPhone mask video fallback — ha a video nem tölt be */
+      .hero-visual-inner > a[style*="aspect-ratio"] {
+        min-height: 160px;
+      }
       .hero-title { word-break: break-word; }
       .hero-cta-row { flex-direction: column; }
       .hero-cta-row .btn { text-align: center; }
