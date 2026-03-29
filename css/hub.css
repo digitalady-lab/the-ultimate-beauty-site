@@ -4728,9 +4728,9 @@
 }
 .protocol-hub-card {
   position: relative;
-  background: var(--cream);
+  background: var(--charcoal);
   padding: 2.75rem 2rem 2.5rem;
-  color: var(--charcoal);
+  color: var(--ivory);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -4750,8 +4750,8 @@
   transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
 }
 .protocol-hub-card:hover {
-  background: #FDFAF6;
-  box-shadow: 0 12px 40px rgba(26,24,22,0.06);
+  background: #2a2622;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3);
 }
 .protocol-hub-card:hover::before { transform: scaleX(1); }
 .protocol-hub-card__num {
@@ -4791,7 +4791,7 @@
   font-size: 0.78rem;
   font-weight: 300;
   line-height: 1.7;
-  color: rgba(26,24,22,0.6);
+  color: rgba(253,250,246,0.6);
   flex: 1;
 }
 .protocol-hub-card__arrow {
@@ -4809,14 +4809,14 @@
 }
 .protocol-hub-card--featured {
   grid-column: span 2;
-  background: #FEFCF9;
-  border: 1px solid rgba(26,24,22,0.08);
+  background: #1e1c1a;
+  border: 1px solid rgba(184,150,90,0.15);
 }
 .protocol-hub-card--featured .protocol-hub-card__title {
   font-size: 1.6rem;
 }
 .protocol-hub-card--featured:hover {
-  background: #FDFAF6;
+  background: #2a2622;
   border-color: var(--gold);
 }
 
