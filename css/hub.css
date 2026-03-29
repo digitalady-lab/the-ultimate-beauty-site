@@ -1705,12 +1705,18 @@
       .product-info-grid,
       .analysis-display,
       .fps-section { grid-template-columns: 1fr; }
+      .hero {
+        flex-direction: column;
+        align-items: stretch;
+        overflow: visible;
+        min-height: auto;
+      }
       .hero-visual {
-        position: relative;
-        top: auto;
-        transform: none;
-        width: 100%;
-        height: auto;
+        position: relative !important;
+        top: auto !important;
+        transform: none !important;
+        width: 100% !important;
+        height: auto !important;
         margin-top: 32px;
         pointer-events: auto;
       }
@@ -1777,8 +1783,24 @@
       .drawer { top: 42px; }
 
       /* ── Fix horizontal overflow ── */
-      .hero { padding-left: 20px; padding-right: 20px; min-height: auto; }
+      .hero {
+        padding-left: 20px;
+        padding-right: 20px;
+        min-height: auto;
+        flex-direction: column;
+        align-items: stretch;
+        overflow: visible;
+      }
       .hero-content { max-width: 100%; }
+      .hero-visual {
+        position: relative !important;
+        top: auto !important;
+        transform: none !important;
+        width: 100% !important;
+        height: auto !important;
+        margin-top: 32px;
+        pointer-events: auto;
+      }
       .hero-visual-inner { max-width: 100% !important; margin-left: 0 !important; }
       .hero-title { word-break: break-word; }
       .hero-cta-row { flex-direction: column; }
