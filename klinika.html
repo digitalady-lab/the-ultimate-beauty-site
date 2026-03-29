@@ -168,19 +168,26 @@
       </div>
 
       <div class="klinika-gallery__grid reveal reveal-delay-1">
-        <div class="klinika-gallery__item klinika-gallery__item--hero">
-          <img src="assets/images/clinic/waiting-room-1.webp" alt="The Ultimate Beauty Clinic — elegáns váróterem" style="width:100%; height:100%; object-fit:cover;" loading="lazy" />
+        <div class="klinika-gallery__item klinika-gallery__item--hero" onclick="openGalleryLightbox(this)" style="cursor:pointer;">
+          <video autoplay muted loop playsinline poster="assets/images/clinic/rendelo-frame-12s.jpg" style="width:100%; height:100%; object-fit:cover;">
+            <source src="assets/videos/clinic-tour.mp4" type="video/mp4">
+          </video>
+          <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; pointer-events:none;">
+            <div style="width:56px; height:56px; border-radius:50%; background:rgba(0,0,0,0.4); display:flex; align-items:center; justify-content:center; backdrop-filter:blur(4px);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="8,5 19,12 8,19"/></svg>
+            </div>
+          </div>
         </div>
-        <div class="klinika-gallery__item">
+        <div class="klinika-gallery__item" onclick="openGalleryLightbox(this)" style="cursor:pointer;">
           <img src="assets/images/clinic/waiting-room-2.webp" alt="The Ultimate Beauty Clinic — recepció" style="width:100%; height:100%; object-fit:cover;" loading="lazy" />
         </div>
-        <div class="klinika-gallery__item">
+        <div class="klinika-gallery__item" onclick="openGalleryLightbox(this)" style="cursor:pointer;">
           <img src="assets/images/team/heni-portrait.webp" alt="Horváthné Heni — alapító, The Ultimate Beauty" style="width:100%; height:100%; object-fit:cover; object-position: center 15%;" loading="lazy" />
         </div>
-        <div class="klinika-gallery__item">
+        <div class="klinika-gallery__item" onclick="openGalleryLightbox(this)" style="cursor:pointer;">
           <img src="assets/images/team/colleague-portrait.webp" alt="Kozmetikus kollégánk a klinikán" style="width:100%; height:100%; object-fit:cover; object-position: center 20%;" loading="lazy" />
         </div>
-        <div class="klinika-gallery__item">
+        <div class="klinika-gallery__item" onclick="openGalleryLightbox(this)" style="cursor:pointer;">
           <img src="assets/images/team/team-together.webp" alt="A The Ultimate Beauty csapata" style="width:100%; height:100%; object-fit:cover; object-position: center 20%;" loading="lazy" />
         </div>
       </div>
@@ -377,5 +384,42 @@
   <!-- Mapbox GL JS + TUB Map -->
   <script src="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.js"></script>
   <script src="js/tub-map.js"></script>
+
+  <!-- Gallery Lightbox -->
+  <div id="gallery-lightbox" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.92); backdrop-filter:blur(8px); cursor:pointer;" onclick="closeGalleryLightbox()">
+    <button onclick="closeGalleryLightbox()" style="position:absolute; top:20px; right:24px; z-index:10; background:none; border:none; color:white; font-size:2rem; cursor:pointer; padding:8px;">&times;</button>
+    <div id="gallery-lightbox-content" style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; padding:40px;"></div>
+  </div>
+
+  <script>
+  function openGalleryLightbox(item) {
+    var lb = document.getElementById('gallery-lightbox');
+    var content = document.getElementById('gallery-lightbox-content');
+    var video = item.querySelector('video');
+    var img = item.querySelector('img');
+
+    if (video) {
+      var src = video.querySelector('source').src;
+      content.innerHTML = '<video autoplay controls loop playsinline style="max-width:90vw; max-height:85vh; border-radius:8px; box-shadow:0 0 60px rgba(0,0,0,0.5);" onclick="event.stopPropagation()"><source src="' + src + '" type="video/mp4"></video>';
+    } else if (img) {
+      content.innerHTML = '<img src="' + img.src + '" alt="' + (img.alt || '') + '" style="max-width:90vw; max-height:85vh; object-fit:contain; border-radius:8px; box-shadow:0 0 60px rgba(0,0,0,0.5);" onclick="event.stopPropagation()" />';
+    }
+
+    lb.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeGalleryLightbox() {
+    var lb = document.getElementById('gallery-lightbox');
+    var content = document.getElementById('gallery-lightbox-content');
+    lb.style.display = 'none';
+    content.innerHTML = '';
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeGalleryLightbox();
+  });
+  </script>
 </body>
 </html>
