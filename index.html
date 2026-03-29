@@ -127,6 +127,10 @@
 
 <body>
   <script>
+    // Prevent browser scroll restoration (remembers last position)
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
     // Prevent auto-scroll to hash on page load
     if (window.location.hash) {
       window.history.replaceState(null, '', window.location.pathname);
@@ -3167,8 +3171,11 @@
         h.style.transform = 'none';
       });
 
-      // Force scroll to top on page load
+      // Force scroll to top on page load (multiple attempts to beat browser restore)
       window.scrollTo(0, 0);
+      setTimeout(function() { window.scrollTo(0, 0); }, 0);
+      setTimeout(function() { window.scrollTo(0, 0); }, 100);
+      window.addEventListener('load', function() { window.scrollTo(0, 0); });
     }
   </script>
 
