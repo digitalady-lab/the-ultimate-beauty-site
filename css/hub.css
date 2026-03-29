@@ -756,7 +756,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      pointer-events: none;
+      pointer-events: auto;
     }
 
     .mask-placeholder {
@@ -1705,7 +1705,15 @@
       .product-info-grid,
       .analysis-display,
       .fps-section { grid-template-columns: 1fr; }
-      .hero-visual { display: none; }
+      .hero-visual {
+        position: relative;
+        top: auto;
+        transform: none;
+        width: 100%;
+        height: auto;
+        margin-top: 32px;
+        pointer-events: auto;
+      }
       .hero-content { max-width: 100%; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
       .contact-shell { padding: 40px; }
@@ -1769,8 +1777,9 @@
       .drawer { top: 42px; }
 
       /* ── Fix horizontal overflow ── */
-      .hero { padding-left: 20px; padding-right: 20px; }
+      .hero { padding-left: 20px; padding-right: 20px; min-height: auto; }
       .hero-content { max-width: 100%; }
+      .hero-visual-inner { max-width: 100% !important; margin-left: 0 !important; }
       .hero-title { word-break: break-word; }
       .hero-cta-row { flex-direction: column; }
       .hero-cta-row .btn { text-align: center; }
