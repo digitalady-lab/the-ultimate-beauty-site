@@ -4093,12 +4093,8 @@
         <span class="pdf-lb__title-label">The Ultimate Beauty</span>
         <span class="pdf-lb__title-name">Protocol</span>
       </div>
-      <div class="pdf-lb__canvas-wrap" id="pdfCanvasWrap">
-        <canvas id="pdfCanvas"></canvas>
-        <div class="pdf-lb__loading" id="pdfLoading">
-          <div class="pdf-lb__spinner"></div>
-          <span>Betöltés...</span>
-        </div>
+      <div class="pdf-lb__canvas-wrap" id="pdfCanvasWrap" style="display:flex; align-items:center; justify-content:center; overflow:hidden;">
+        <img id="pdfSlideImg" src="assets/images/protocol-pdf/protocol-slide-01.webp" alt="Protocol könyv" style="max-width:100%; max-height:100%; object-fit:contain; border-radius:4px;" />
       </div>
       <div class="pdf-lb__nav">
         <button class="pdf-lb__arrow pdf-lb__arrow--prev" id="pdfPrev" onclick="pdfGoPage(-1)" aria-label="Előző oldal">‹</button>
@@ -4109,18 +4105,16 @@
   </div>
 
   <script>
-  /* ─── PDF LIGHTBOX ─── */
-  var pdfDoc = null, pdfPageNum = 1, pdfRendering = false, pdfPendingPage = null;
+  /* ─── PDF LIGHTBOX (képes carousel) ─── */
+  var pdfPageNum = 1;
+  var pdfTotalPages = 15;
 
   function openPdfLightbox() {
     var overlay = document.getElementById('pdfLbOverlay');
     overlay.classList.add('active');
     document.body.style.overflow = 'hidden';
-    if (!pdfDoc) {
-      loadPdf();
-    } else {
-      renderPdfPage(pdfPageNum);
-    }
+    pdfPageNum = 1;
+    updatePdfSlide();
   }
 
   function closePdfLightbox() {
@@ -4128,65 +4122,19 @@
     document.body.style.overflow = '';
   }
 
-  async function loadPdf() {
-    document.getElementById('pdfLoading').style.display = 'flex';
-    try {
-      pdfDoc = await pdfjsLib.getDocument('The_Ultimate_Beauty_Protocol (2).pdf').promise;
-      document.getElementById('pdfIndicator').textContent = '1 / ' + pdfDoc.numPages;
-      pdfPageNum = 1;
-      renderPdfPage(1);
-    } catch(e) {
-      document.getElementById('pdfLoading').innerHTML = '<span style="color:#8a847e">A dokumentum nem tölthető be.</span>';
-    }
-  }
-
-  async function renderPdfPage(num) {
-    if (pdfRendering) { pdfPendingPage = num; return; }
-    pdfRendering = true;
-    document.getElementById('pdfLoading').style.display = 'flex';
-    var page = await pdfDoc.getPage(num);
-    var wrap = document.getElementById('pdfCanvasWrap');
-    var canvas = document.getElementById('pdfCanvas');
-    var ctx = canvas.getContext('2d');
-
-    /* Calculate scale to fit container width */
-    var wrapW = wrap.clientWidth - 40; /* padding */
-    var wrapH = wrap.clientHeight - 20;
-    var vp = page.getViewport({ scale: 1 });
-    var scaleW = wrapW / vp.width;
-    var scaleH = wrapH / vp.height;
-    var scale = Math.min(scaleW, scaleH);
-    /* High DPI */
-    var dpr = window.devicePixelRatio || 1;
-    var viewport = page.getViewport({ scale: scale * dpr });
-
-    canvas.width = viewport.width;
-    canvas.height = viewport.height;
-    canvas.style.width = (viewport.width / dpr) + 'px';
-    canvas.style.height = (viewport.height / dpr) + 'px';
-
-    await page.render({ canvasContext: ctx, viewport: viewport }).promise;
-
-    document.getElementById('pdfLoading').style.display = 'none';
-    document.getElementById('pdfIndicator').textContent = num + ' / ' + pdfDoc.numPages;
-
-    /* Update buttons */
-    document.getElementById('pdfPrev').disabled = (num <= 1);
-    document.getElementById('pdfNext').disabled = (num >= pdfDoc.numPages);
-
-    pdfRendering = false;
-    if (pdfPendingPage !== null) {
-      var p = pdfPendingPage;
-      pdfPendingPage = null;
-      renderPdfPage(p);
-    }
+  function updatePdfSlide() {
+    var num = pdfPageNum < 10 ? '0' + pdfPageNum : '' + pdfPageNum;
+    document.getElementById('pdfSlideImg').src = 'assets/images/protocol-pdf/protocol-slide-' + num + '.webp';
+    document.getElementById('pdfIndicator').textContent = pdfPageNum + ' / ' + pdfTotalPages;
+    document.getElementById('pdfPrev').disabled = (pdfPageNum <= 1);
+    document.getElementById('pdfNext').disabled = (pdfPageNum >= pdfTotalPages);
   }
 
   function pdfGoPage(delta) {
     var newPage = pdfPageNum + delta;
-    if (newPage < 1 || newPage > pdfDoc.numPages) return;
+    if (newPage < 1 || newPage > pdfTotalPages) return;
     pdfPageNum = newPage;
-    renderPdfPage(pdfPageNum);
+    updatePdfSlide();
   }
 
   /* Keyboard navigation for PDF lightbox */
