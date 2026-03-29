@@ -2484,105 +2484,103 @@
           <p>A természetesebb, tartósabb eredményhez nem egyetlen lépésen, hanem egymásra épülő kezelési szinteken keresztül jutunk el.</p>
         </div>
 
-        <!-- Timeline bar -->
-        <div class="protocol-timeline">
-          <div class="protocol-tl-step">
-            <div class="protocol-tl-label">Szakasz I</div>
-            <div class="protocol-tl-phase">Prepare</div>
-            <div class="protocol-tl-detail">4–6 ULTIMA alkalom</div>
+        <!-- 3 Pillér kártyák -->
+        <div class="protocol-pillars__grid">
+          <!-- I. Prepare -->
+          <div class="protocol-pillar">
+            <div class="protocol-pillar__roman">I</div>
+            <div class="protocol-pillar__phase">I. Fázis · Prepare</div>
+            <h3 class="protocol-pillar__title">ULTIMA<br>Activation</h3>
+            <p class="protocol-pillar__desc">Observ 520x diagnosztikával indul: objektív bőrelemzés 8 klinikai módban. Ezt követi a neuromuszkuláris stimuláció és mélyszöveti fotobiomoduláció — aktiválja a mikrokeringést, fokozza az izomtónust és kedvezőbb biológiai alapállapotot teremt a korrekció számára.</p>
+            <div class="protocol-pillar__tags">
+              <span class="protocol-pillar__tag">Observ 520x</span>
+              <span class="protocol-pillar__tag">730 nm + 940 nm</span>
+              <span class="protocol-pillar__tag">EMS stimuláció</span>
+              <span class="protocol-pillar__tag">Mikrokeringés</span>
+            </div>
           </div>
-          <div class="protocol-tl-arrow">→</div>
-          <div class="protocol-tl-step">
-            <div class="protocol-tl-label">Szakasz II</div>
-            <div class="protocol-tl-phase">Treat</div>
-            <div class="protocol-tl-detail">Orvosi beavatkozás</div>
+
+          <!-- II. Treat -->
+          <div class="protocol-pillar">
+            <div class="protocol-pillar__roman">II</div>
+            <span class="protocol-pillar__badge">Előjegyzés nyitva</span>
+            <div class="protocol-pillar__phase">II. Fázis · Treat</div>
+            <h3 class="protocol-pillar__title">Medical<br>Precision</h3>
+            <p class="protocol-pillar__desc">A megfelelően előkészített szöveti alapra érkezik a célzott orvosesztétikai korrekció — botox, hialuronsav, biostimulátorok — anatómiai logika mentén, személyre szabva.</p>
+            <div class="protocol-pillar__tags">
+              <span class="protocol-pillar__tag">Botox</span>
+              <span class="protocol-pillar__tag">Hialuronsav</span>
+              <span class="protocol-pillar__tag">Biostimulátor</span>
+              <span class="protocol-pillar__tag">Skinbooster</span>
+            </div>
           </div>
-          <div class="protocol-tl-arrow">→</div>
-          <div class="protocol-tl-step">
-            <div class="protocol-tl-label">Szakasz III</div>
-            <div class="protocol-tl-phase">Recover</div>
-            <div class="protocol-tl-detail">LED Mask + utókövetés</div>
+
+          <!-- III. Recover -->
+          <div class="protocol-pillar">
+            <div class="protocol-pillar__roman">III</div>
+            <div class="protocol-pillar__phase">III. Fázis · Recover</div>
+            <h3 class="protocol-pillar__title">Regenerative<br>Support</h3>
+            <p class="protocol-pillar__desc">A kezelés nem ér véget a klinikán. Az ULTIMA LED Beauty Mask — 93 gramm, 4 terápiás hullámhossz (415nm, 590nm, 630nm, 850nm) — a rendszer záróeleme. Otthoni fotobiomodulációval támogatja a regenerációt, meghosszabbítja a klinikai kezelések hatását.</p>
+            <div class="protocol-pillar__tags">
+              <span class="protocol-pillar__tag">415nm Kék</span>
+              <span class="protocol-pillar__tag">590nm Sárga</span>
+              <span class="protocol-pillar__tag">630nm Vörös</span>
+              <span class="protocol-pillar__tag">850nm NIR</span>
+            </div>
           </div>
         </div>
 
-        <!-- ── 3 PILLÉR VIZUÁLIS DIAGRAM ── -->
-        <div class="protocol-cycle-diagram reveal">
-          <div class="cycle-visual">
-            <svg viewBox="0 0 400 380" class="cycle-svg" aria-label="A Protocol három fázisa — ciklikus diagram">
-              <!-- Háromszög vonalak -->
-              <defs>
-                <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" style="stop-color:#B8965A;stop-opacity:0.8"/>
-                  <stop offset="100%" style="stop-color:#D4B077;stop-opacity:0.4"/>
-                </linearGradient>
-                <filter id="glowFilter">
-                  <feGaussianBlur stdDeviation="3" result="glow"/>
-                  <feMerge><feMergeNode in="glow"/><feMergeNode in="SourceGraphic"/></feMerge>
-                </filter>
-              </defs>
+        <!-- ── Animált háromszög diagram (csak vizuál, legend nélkül) ── -->
+        <div class="protocol-cycle-diagram reveal" style="max-width:420px; margin:3rem auto 0;">
+          <svg viewBox="0 0 400 380" class="cycle-svg" aria-label="A Protocol három fázisa — ciklikus diagram">
+            <defs>
+              <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#B8965A;stop-opacity:0.8"/>
+                <stop offset="100%" style="stop-color:#D4B077;stop-opacity:0.4"/>
+              </linearGradient>
+              <filter id="glowFilter">
+                <feGaussianBlur stdDeviation="3" result="glow"/>
+                <feMerge><feMergeNode in="glow"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
 
-              <!-- Háttér háromszög -->
-              <polygon points="200,40 60,320 340,320" fill="none" stroke="url(#goldGrad)" stroke-width="1.5" opacity="0.3"/>
+            <!-- Háttér háromszög -->
+            <polygon points="200,40 60,320 340,320" fill="none" stroke="url(#goldGrad)" stroke-width="1.5" opacity="0.3"/>
 
-              <!-- Animált körök az éleken -->
-              <circle r="3" fill="#B8965A" opacity="0.7">
-                <animateMotion dur="6s" repeatCount="indefinite" path="M200,40 L340,320 L60,320 Z"/>
-              </circle>
-              <circle r="2" fill="#D4B077" opacity="0.5">
-                <animateMotion dur="6s" repeatCount="indefinite" begin="2s" path="M200,40 L340,320 L60,320 Z"/>
-              </circle>
+            <!-- Animált körök az éleken -->
+            <circle r="3" fill="#B8965A" opacity="0.7">
+              <animateMotion dur="6s" repeatCount="indefinite" path="M200,40 L340,320 L60,320 Z"/>
+            </circle>
+            <circle r="2" fill="#D4B077" opacity="0.5">
+              <animateMotion dur="6s" repeatCount="indefinite" begin="2s" path="M200,40 L340,320 L60,320 Z"/>
+            </circle>
 
-              <!-- Középső kör + szöveg -->
-              <circle cx="200" cy="227" r="52" fill="rgba(184,150,90,0.08)" stroke="#B8965A" stroke-width="1" opacity="0.6"/>
-              <text x="200" y="220" text-anchor="middle" fill="#B8965A" font-family="Cormorant Garamond, serif" font-size="13" font-weight="600" letter-spacing="0.05em">PROTOCOL</text>
-              <text x="200" y="240" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-family="Montserrat, sans-serif" font-size="8" letter-spacing="0.15em" text-transform="uppercase">RENDSZER</text>
+            <!-- Középső kör -->
+            <circle cx="200" cy="227" r="52" fill="rgba(184,150,90,0.08)" stroke="#B8965A" stroke-width="1" opacity="0.6"/>
+            <text x="200" y="220" text-anchor="middle" fill="#B8965A" font-family="Cormorant Garamond, serif" font-size="13" font-weight="600" letter-spacing="0.05em">PROTOCOL</text>
+            <text x="200" y="240" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-family="Montserrat, sans-serif" font-size="8" letter-spacing="0.15em">RENDSZER</text>
 
-              <!-- Csomópontok: I. Prepare (felső) -->
-              <circle cx="200" cy="40" r="28" fill="rgba(26,24,22,0.9)" stroke="#B8965A" stroke-width="1.5" filter="url(#glowFilter)"/>
-              <text x="200" y="36" text-anchor="middle" fill="#B8965A" font-family="Cormorant Garamond, serif" font-size="11" font-weight="700">I</text>
-              <text x="200" y="50" text-anchor="middle" fill="#fff" font-family="Montserrat, sans-serif" font-size="7" letter-spacing="0.1em">PREPARE</text>
+            <!-- I. Prepare -->
+            <circle cx="200" cy="40" r="28" fill="rgba(26,24,22,0.9)" stroke="#B8965A" stroke-width="1.5" filter="url(#glowFilter)"/>
+            <text x="200" y="36" text-anchor="middle" fill="#B8965A" font-family="Cormorant Garamond, serif" font-size="11" font-weight="700">I</text>
+            <text x="200" y="50" text-anchor="middle" fill="#fff" font-family="Montserrat, sans-serif" font-size="7" letter-spacing="0.1em">PREPARE</text>
 
-              <!-- II. Treat (jobb alsó) -->
-              <circle cx="340" cy="320" r="28" fill="rgba(26,24,22,0.9)" stroke="#B8965A" stroke-width="1.5" filter="url(#glowFilter)"/>
-              <text x="340" y="316" text-anchor="middle" fill="#B8965A" font-family="Cormorant Garamond, serif" font-size="11" font-weight="700">II</text>
-              <text x="340" y="330" text-anchor="middle" fill="#fff" font-family="Montserrat, sans-serif" font-size="7" letter-spacing="0.1em">TREAT</text>
+            <!-- II. Treat -->
+            <circle cx="340" cy="320" r="28" fill="rgba(26,24,22,0.9)" stroke="#B8965A" stroke-width="1.5" filter="url(#glowFilter)"/>
+            <text x="340" y="316" text-anchor="middle" fill="#B8965A" font-family="Cormorant Garamond, serif" font-size="11" font-weight="700">II</text>
+            <text x="340" y="330" text-anchor="middle" fill="#fff" font-family="Montserrat, sans-serif" font-size="7" letter-spacing="0.1em">TREAT</text>
 
-              <!-- III. Recover (bal alsó) -->
-              <circle cx="60" cy="320" r="28" fill="rgba(26,24,22,0.9)" stroke="#B8965A" stroke-width="1.5" filter="url(#glowFilter)"/>
-              <text x="60" y="316" text-anchor="middle" fill="#B8965A" font-family="Cormorant Garamond, serif" font-size="11" font-weight="700">III</text>
-              <text x="60" y="330" text-anchor="middle" fill="#fff" font-family="Montserrat, sans-serif" font-size="7" letter-spacing="0.1em">RECOVER</text>
+            <!-- III. Recover -->
+            <circle cx="60" cy="320" r="28" fill="rgba(26,24,22,0.9)" stroke="#B8965A" stroke-width="1.5" filter="url(#glowFilter)"/>
+            <text x="60" y="316" text-anchor="middle" fill="#B8965A" font-family="Cormorant Garamond, serif" font-size="11" font-weight="700">III</text>
+            <text x="60" y="330" text-anchor="middle" fill="#fff" font-family="Montserrat, sans-serif" font-size="7" letter-spacing="0.1em">RECOVER</text>
 
-              <!-- Él-feliratok -->
-              <text x="280" y="170" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-family="Montserrat, sans-serif" font-size="7.5" letter-spacing="0.08em" transform="rotate(60, 280, 170)">szövet-előkészítés →</text>
-              <text x="200" y="340" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-family="Montserrat, sans-serif" font-size="7.5" letter-spacing="0.08em">← otthoni regeneráció →</text>
-              <text x="120" y="170" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-family="Montserrat, sans-serif" font-size="7.5" letter-spacing="0.08em" transform="rotate(-60, 120, 170)">← diagnosztika</text>
-            </svg>
-          </div>
-
-          <div class="cycle-legend">
-            <div class="cycle-legend-item">
-              <span class="cycle-legend-num">I</span>
-              <div>
-                <strong>Prepare — ULTIMA Activation</strong>
-                <p>Observ diagnosztika + neuromuszkuláris stimuláció. A szövetek előkészítése a beavatkozásra.</p>
-              </div>
-            </div>
-            <div class="cycle-legend-item">
-              <span class="cycle-legend-num">II</span>
-              <div>
-                <strong>Treat — Medical Precision</strong>
-                <p>Célzott orvosesztétikai korrekció az előkészített szöveti alapra. Botox, hialuronsav, biostimulátorok.</p>
-              </div>
-            </div>
-            <div class="cycle-legend-item">
-              <span class="cycle-legend-num">III</span>
-              <div>
-                <strong>Recover — LED Mask Regeneration</strong>
-                <p>Otthoni fotobiomoduláció 4 hullámhosszon. A kezelés nem ér véget a klinikán.</p>
-              </div>
-            </div>
-            <p class="cycle-legend-footer">A ciklus ismétlődik — minden kör javítja az eredményt.</p>
-          </div>
+            <!-- Él-feliratok -->
+            <text x="280" y="170" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-family="Montserrat, sans-serif" font-size="7.5" letter-spacing="0.08em" transform="rotate(60, 280, 170)">szövet-előkészítés →</text>
+            <text x="200" y="340" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-family="Montserrat, sans-serif" font-size="7.5" letter-spacing="0.08em">← otthoni regeneráció →</text>
+            <text x="120" y="170" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-family="Montserrat, sans-serif" font-size="7.5" letter-spacing="0.08em" transform="rotate(-60, 120, 170)">← diagnosztika</text>
+          </svg>
+          <p style="text-align:center; color:rgba(253,250,246,0.4); font-size:0.7rem; margin-top:1rem; letter-spacing:0.1em;">A ciklus ismétlődik — minden kör javítja az eredményt.</p>
         </div>
       </section>
 
