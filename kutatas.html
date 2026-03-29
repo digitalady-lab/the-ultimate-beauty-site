@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Klinikai Kutatás és Pilot Programok — The Ultimate Beauty</title>
+  <meta name="description" content="Az ULTIMA technológia, az orvosesztétikai beavatkozások és a plasztikai sebészet szinergiáját vizsgáló klinikai kutatásaink és pilot programjaink.">
+  <meta property="og:title" content="Klinikai Kutatás és Pilot Programok — The Ultimate Beauty">
+  <meta property="og:description" content="Az ULTIMA technológia, az orvosesztétikai beavatkozások és a plasztikai sebészet szinergiáját vizsgáló klinikai kutatásaink és pilot programjaink.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://theultimatebeauty.net/kutatas.html">
+  <meta property="og:image" content="https://theultimatebeauty.net/assets/images/og-cover.jpg">
+  <link rel="canonical" href="https://theultimatebeauty.net/kutatas.html">
+  <!-- Structured Data: ResearchProject -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ResearchProject",
+    "name": "The Ultimate Beauty — Klinikai Kutatás",
+    "description": "Az ULTIMA technológia, az orvosesztétikai beavatkozások és a plasztikai sebészet szinergiáját vizsgáló klinikai kutatások és pilot programok.",
+    "url": "https://theultimatebeauty.net/kutatas.html",
+    "parentOrganization": {
+      "@type": "LocalBusiness",
+      "name": "The Ultimate Beauty Clinic",
+      "url": "https://theultimatebeauty.net",
+      "telephone": "+36 1 790 3017",
+      "email": "info@theultimatebeauty.net",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Németvölgyi út 68.",
+        "addressLocality": "Budapest",
+        "postalCode": "1124",
+        "addressCountry": "HU"
+      }
+    }
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ─── TOKENS ──────────────────────────────────────────── */
+    :root {
+      --cream:        #F8F4EE;
+      --ivory:        #FDFAF6;
+      --charcoal:     #1A1816;
+      --charcoal-60:  rgba(26,24,22,0.6);
+      --charcoal-30:  rgba(26,24,22,0.3);
+      --charcoal-10:  rgba(26,24,22,0.08);
+      --gold:         #B8965A;
+      --gold-light:   #D4B077;
+      --gold-pale:    rgba(184,150,90,0.12);
+      --warm-white:   #FEFCF9;
+
+      --font-display: 'Cormorant Garamond', serif;
+      --font-sans:    'Montserrat', sans-serif;
+
+      --space-xs:   0.5rem;
+      --space-sm:   1rem;
+      --space-md:   2rem;
+      --space-lg:   4rem;
+      --space-xl:   7rem;
+      --space-2xl:  11rem;
+
+      --radius-sm:  4px;
+      --radius-md:  12px;
+
+      --transition: 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    /* ─── RESET ───────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body {
+      background: var(--ivory);
+      color: var(--charcoal);
+      font-family: var(--font-sans);
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    button { border: none; background: none; cursor: pointer; font-family: inherit; }
+    ul { list-style: none; }
+
+    /* ─── TYPOGRAPHY ──────────────────────────────────────── */
+    .display-xl {
+      font-family: var(--font-display);
+      font-size: clamp(3.2rem, 7vw, 6.5rem);
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+    }
+    .display-lg {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 5vw, 4.2rem);
+      font-weight: 400;
+      line-height: 1.1;
+    }
+    .display-md {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 400;
+      line-height: 1.15;
+    }
+    .display-sm {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+      font-weight: 400;
+      line-height: 1.2;
+    }
+    .label {
+      font-family: var(--font-sans);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .body-text {
+      font-size: 0.875rem;
+      line-height: 1.75;
+      color: var(--charcoal-60);
+      max-width: 52ch;
+    }
+    em { font-style: italic; font-family: var(--font-display); font-size: 1.08em; }
+
+    /* ─── LAYOUT ──────────────────────────────────────────── */
+    .container {
+      max-width: 1260px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    .section {
+      padding: var(--space-xl) 0;
+    }
+
+    /* ─── DIVIDER ─────────────────────────────────────────── */
+    .divider {
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      margin: 1.25rem 0;
+    }
+    .divider--center { margin: 1.25rem auto; }
+
+    /* ─── NAV ─────────────────────────────────────────────── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background var(--transition), backdrop-filter var(--transition), padding var(--transition);
+    }
+    .nav.scrolled {
+      background: rgba(253,250,246,0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 1rem 2rem;
+      box-shadow: 0 1px 0 var(--charcoal-10);
+    }
+    .nav__logo {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--charcoal);
+    }
+    .nav__logo span { color: var(--gold); }
+    .nav__links {
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+    }
+    .nav__link {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--charcoal-60);
+      transition: color 0.2s;
+    }
+    .nav__link:hover { color: var(--charcoal); }
+    .nav__link.active { color: var(--charcoal); }
+    .nav__cta {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.75rem 1.75rem;
+      border: 1px solid var(--charcoal);
+      color: var(--charcoal);
+      transition: all 0.2s;
+    }
+    .nav__cta:hover {
+      background: var(--charcoal);
+      color: var(--ivory);
+    }
+
+    /* ─── BUTTONS ─────────────────────────────────────────── */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 2.25rem;
+      background: var(--charcoal);
+      color: var(--ivory);
+      font-family: var(--font-sans);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      transition: background var(--transition);
+    }
+    .btn-primary:hover { background: #2e2a26; }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--charcoal-60);
+      padding-bottom: 2px;
+      border-bottom: 1px solid var(--charcoal-30);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .btn-ghost:hover { color: var(--charcoal); border-color: var(--charcoal); }
+    .btn-gold {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 2.25rem;
+      background: var(--gold);
+      color: var(--ivory);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      transition: background var(--transition);
+    }
+    .btn-gold:hover { background: #a0803d; }
+    .btn-outline-light {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 2.25rem;
+      border: 1px solid rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.6);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      transition: all 0.2s;
+    }
+    .btn-outline-light:hover {
+      border-color: rgba(255,255,255,0.5);
+      color: var(--ivory);
+    }
+
+    /* ═══ LUXURY BUTTON SYSTEM ═══ */
+    .btn-s { padding: 9px 22px; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.08em; border-radius: 100px; }
+    .btn-m { padding: 13px 30px; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; border-radius: 2px; }
+    .btn-l { padding: 16px 38px; font-size: 0.74rem; font-weight: 600; letter-spacing: 0.16em; border-radius: 2px; }
+    .btn-frame { display: inline-flex; align-items: center; gap: 0.75rem; text-transform: uppercase; background: rgba(184,150,90,0.04); border: 1.5px solid rgba(184,150,90,0.40); color: #6B5D3F; border-radius: 100px !important; transition: all 0.3s; }
+    .btn-frame:hover { background: var(--gold); color: #fff; border-color: var(--gold); transform: translateY(-2px); box-shadow: 0 4px 16px rgba(184,150,90,0.22); }
+    .btn-soft { display: inline-flex; align-items: center; gap: 0.75rem; text-transform: uppercase; background: rgba(245,240,232,0.8); border: 1px solid rgba(26,24,22,0.08); color: var(--charcoal); border-radius: 100px !important; transition: all 0.3s; }
+    .btn-soft:hover { background: rgba(245,240,232,1); border-color: rgba(184,150,90,0.3); color: #4A4540; transform: translateY(-1px); box-shadow: 0 3px 12px rgba(26,24,22,0.06); }
+    .btn-premium { display: inline-flex; align-items: center; gap: 0.75rem; text-transform: uppercase; background: var(--charcoal); color: var(--gold-light); border: 1px solid rgba(255,255,255,0.06); border-radius: 2px; letter-spacing: 0.18em; position: relative; overflow: hidden; transition: all 0.3s; }
+    .btn-premium:hover { background: #2A2622; color: var(--gold); transform: translateY(-1px); box-shadow: 0 6px 24px rgba(26,24,22,0.25); }
+
+    /* ─── BREADCRUMB ──────────────────────────────────────── */
+    .breadcrumb {
+      padding: 6.5rem 0 0;
+      background: var(--charcoal);
+    }
+    .breadcrumb__inner {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .breadcrumb__link {
+      color: rgba(255,255,255,0.35);
+      transition: color 0.2s;
+    }
+    .breadcrumb__link:hover {
+      color: rgba(255,255,255,0.6);
+    }
+    .breadcrumb__sep {
+      color: rgba(255,255,255,0.15);
+    }
+    .breadcrumb__current {
+      color: var(--gold-light);
+    }
+
+    /* ─── COMPACT HERO ───────────────────────────────────── */
+    .compact-hero {
+      background: var(--charcoal);
+      color: var(--ivory);
+      padding: 5rem 0 var(--space-xl);
+      position: relative;
+      overflow: hidden;
+    }
+    .compact-hero::before {
+      content: 'RESEARCH';
+      position: absolute;
+      right: -2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: var(--font-display);
+      font-size: 18vw;
+      font-weight: 300;
+      color: rgba(255,255,255,0.02);
+      pointer-events: none;
+      white-space: nowrap;
+      letter-spacing: -0.02em;
+    }
+    .compact-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 70% at 20% 70%, rgba(184,150,90,0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .compact-hero__inner {
+      position: relative;
+      z-index: 2;
+      max-width: 680px;
+    }
+    .compact-hero__label {
+      color: var(--gold-light);
+    }
+    .compact-hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(2.6rem, 5vw, 4.5rem);
+      font-weight: 300;
+      line-height: 1.05;
+      margin: 1.25rem 0 1.5rem;
+    }
+    .compact-hero__subtitle {
+      font-size: 0.875rem;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.45);
+      max-width: 58ch;
+    }
+
+    /* ─── PILOT PROGRAMS ─────────────────────────────────── */
+    .pilots {
+      padding: var(--space-xl) 0;
+      background: var(--ivory);
+    }
+    .pilots__header {
+      max-width: 600px;
+      margin-bottom: var(--space-lg);
+    }
+    .pilots__table {
+      display: flex;
+      flex-direction: column;
+    }
+    .pilot-row {
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr;
+      gap: 2.5rem;
+      padding: 2.5rem 0;
+      border-bottom: 1px solid var(--charcoal-10);
+      transition: background 0.3s;
+    }
+    .pilot-row:first-child {
+      border-top: 1px solid var(--charcoal-10);
+    }
+    .pilot-row:hover {
+      background: var(--gold-pale);
+    }
+    .pilot-row__name {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 500;
+      line-height: 1.25;
+      margin-bottom: 0.75rem;
+    }
+    .pilot-row__tag {
+      display: inline-block;
+      font-size: 0.58rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.28rem 0.65rem;
+      border: 1px solid var(--charcoal-10);
+      color: var(--charcoal-60);
+    }
+    .pilot-row__method {
+      font-size: 0.825rem;
+      color: var(--charcoal-60);
+      line-height: 1.75;
+      margin-bottom: 1.25rem;
+    }
+    .pilot-row__steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .pilot-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.78rem;
+      line-height: 1.6;
+      color: var(--charcoal);
+    }
+    .pilot-step__num {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--gold);
+      min-width: 1.25rem;
+      line-height: 1.3;
+    }
+    .pilot-row__status {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      padding: 0.4rem 0.85rem;
+      border: 1px solid var(--gold);
+      align-self: flex-start;
+    }
+    .status-badge__dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+    .pilot-row__status-text {
+      font-size: 0.78rem;
+      line-height: 1.7;
+      color: var(--charcoal-60);
+    }
+
+    /* ─── TECHNOLOGY ECOSYSTEM ───────────────────────────── */
+    .tech-eco {
+      padding: var(--space-xl) 0;
+      background: var(--cream);
+    }
+    .tech-eco__header {
+      max-width: 600px;
+      margin-bottom: var(--space-lg);
+    }
+    .tech-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+    }
+    a.tech-card { text-decoration: none; color: inherit; }
+    .tech-card {
+      position: relative;
+      background: var(--ivory);
+      padding: 2.75rem 2rem 2.5rem;
+      color: var(--charcoal);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 280px;
+      transition: background var(--transition), box-shadow var(--transition);
+    }
+    .tech-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .tech-card:hover {
+      background: var(--warm-white);
+      box-shadow: 0 12px 40px rgba(26,24,22,0.06);
+    }
+    .tech-card:hover::before { transform: scaleX(1); }
+    .tech-card__title {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 500;
+      line-height: 1.25;
+      margin-bottom: 1rem;
+      transition: color 0.3s;
+    }
+    .tech-card:hover .tech-card__title { color: var(--gold); }
+    .tech-card__desc {
+      font-size: 0.78rem;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--charcoal-60);
+      flex: 1;
+    }
+    .tech-card__tag {
+      margin-top: 1.5rem;
+      display: inline-block;
+      font-size: 0.58rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.28rem 0.65rem;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      align-self: flex-start;
+    }
+
+    /* ─── CLINICAL EVIDENCE ──────────────────────────────── */
+    .evidence {
+      padding: var(--space-xl) 0;
+      background: var(--charcoal);
+      color: var(--ivory);
+    }
+    .evidence__header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto var(--space-lg);
+    }
+    .evidence__header .label {
+      color: var(--gold-light);
+    }
+    .evidence__header p {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.45);
+      margin-top: 1rem;
+      line-height: 1.75;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.5px;
+      background: rgba(255,255,255,0.06);
+    }
+    .stat-card {
+      background: var(--charcoal);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      transition: background 0.3s;
+    }
+    .stat-card:hover {
+      background: #1f1c19;
+    }
+    .stat-card__number {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 4vw, 4rem);
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 0.75rem;
+    }
+    .stat-card__unit {
+      font-size: 0.58rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 0.5rem;
+    }
+    .stat-card__desc {
+      font-size: 0.72rem;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.35);
+    }
+    .stat-card__source {
+      font-size: 0.62rem;
+      color: rgba(255,255,255,0.2);
+      margin-top: 0.5rem;
+      font-style: italic;
+      font-family: var(--font-display);
+    }
+
+    /* ─── CELL BIOLOGY ───────────────────────────────────── */
+    .cell-bio {
+      padding: var(--space-xl) 0;
+      background: var(--ivory);
+    }
+    .cell-bio__header {
+      max-width: 600px;
+      margin-bottom: var(--space-lg);
+    }
+    .cell-bio__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .cell-bio__col {
+      padding: 2.5rem;
+      background: var(--cream);
+      border-top: 3px solid var(--gold);
+    }
+    .cell-bio__col-title {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 500;
+      line-height: 1.25;
+      margin-bottom: 0.5rem;
+    }
+    .cell-bio__col-quote {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--charcoal-60);
+      margin-bottom: 1.75rem;
+      line-height: 1.6;
+    }
+    .cell-bio__steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .cell-bio__step {
+      display: grid;
+      grid-template-columns: 2.5rem 1fr;
+      gap: 1rem;
+      align-items: start;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid var(--charcoal-10);
+    }
+    .cell-bio__step:first-child {
+      border-top: 1px solid var(--charcoal-10);
+    }
+    .cell-bio__step-num {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .cell-bio__step-text {
+      font-size: 0.825rem;
+      color: var(--charcoal-60);
+      line-height: 1.7;
+      padding-top: 0.2rem;
+    }
+
+    /* ─── SOURCES ─────────────────────────────────────────── */
+    .sources {
+      padding: var(--space-xl) 0;
+      background: var(--charcoal);
+      color: var(--ivory);
+    }
+    .sources__header {
+      max-width: 600px;
+      margin-bottom: var(--space-md);
+    }
+    .sources__header .label {
+      color: var(--gold-light);
+    }
+    .sources__list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .source-item {
+      display: grid;
+      grid-template-columns: 2.5rem 1fr;
+      gap: 1rem;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .source-item:first-child {
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .source-item__num {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      color: var(--gold);
+      font-weight: 400;
+    }
+    .source-item__text {
+      font-size: 0.78rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.45);
+    }
+    .source-item__journal {
+      font-style: italic;
+      font-family: var(--font-display);
+      font-size: 0.88em;
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* ─── CTA BANNER ──────────────────────────────────────── */
+    .cta-banner {
+      padding: var(--space-xl) 0;
+      background: var(--charcoal);
+      text-align: center;
+      color: var(--ivory);
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(184,150,90,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-banner .label { color: var(--gold-light); }
+    .cta-banner__title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 300;
+      line-height: 1.08;
+      margin: 1.25rem 0 1rem;
+    }
+    .cta-banner__subtitle {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.45);
+      max-width: 45ch;
+      margin: 0 auto 2.5rem;
+    }
+    .cta-banner__actions {
+      display: flex;
+      gap: 1.25rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ─── FOOTER ──────────────────────────────────────────── */
+    .footer {
+      background: var(--charcoal);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: var(--space-lg) 0 var(--space-md);
+      color: rgba(255,255,255,0.4);
+    }
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: var(--space-md);
+      padding-bottom: var(--space-lg);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer__logo {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      color: var(--ivory);
+      margin-bottom: 0.75rem;
+    }
+    .footer__tagline { font-size: 0.78rem; line-height: 1.7; max-width: 28ch; margin-bottom: 1.25rem; }
+    .footer__contact { margin-top: 0.5rem; }
+    .footer__contact-item { font-size: 0.72rem; line-height: 2; color: rgba(255,255,255,0.5); }
+    .footer__col-title {
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 1.25rem;
+    }
+    .footer__link {
+      display: block;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 0.6rem;
+      transition: color 0.2s;
+    }
+    .footer__link:hover { color: rgba(255,255,255,0.8); }
+    .footer__link--inline { margin: 0; }
+    .footer__bottom {
+      padding-top: var(--space-md);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.68rem;
+    }
+    .footer__legal {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    /* ─── SCROLL ANIMATIONS ───────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s cubic-bezier(0.25,0.46,0.45,0.94),
+                  transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+
+    /* ─── UTILITIES ──────────────────────────────────────── */
+    .color-white { color: #fff; }
+
+    /* ─── RESPONSIVE ──────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .pilot-row {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      .tech-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .cell-bio__grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .footer__grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 680px) {
+      .nav__links { display: none; }
+      .compact-hero { padding: 4rem 0 var(--space-lg); }
+      .tech-cards-grid {
+        grid-template-columns: 1fr;
+      }
+      .stats-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .cta-banner__actions { flex-direction: column; align-items: center; }
+      .footer__grid { grid-template-columns: 1fr; }
+      .footer__bottom { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════
+       NAV
+  ═══════════════════════════════════ -->
+  <nav class="nav" id="mainNav">
+    <a href="index.html" class="nav__logo">The Ultimate <span>Beauty</span></a>
+    <ul class="nav__links">
+      <li><a href="klinika.html" class="nav__link">Klinika</a></li>
+      <li><a href="protocol-hub.html" class="nav__link">Protocol</a></li>
+      <li><a href="technologia-hileft.html" class="nav__link">Technol&oacute;gia</a></li>
+      <li><a href="clinical-program.html" class="nav__link">Program</a></li>
+      <li><a href="akademia.html" class="nav__link">Akad&eacute;mia</a></li>
+    </ul>
+    <button class="nav__cta" data-jf-form="clinical" data-jf-source="kutatas-nav">Klinikai program &rarr;</button>
+  </nav>
+
+
+  <!-- ═══════════════════════════════════
+       BREADCRUMB
+  ═══════════════════════════════════ -->
+  <div class="breadcrumb">
+    <div class="container">
+      <div class="breadcrumb__inner">
+        <a href="protocol-hub.html" class="breadcrumb__link">Protocol Hub</a>
+        <span class="breadcrumb__sep">&rsaquo;</span>
+        <span class="breadcrumb__current">Klinikai Kutatás</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════
+       COMPACT HERO
+  ═══════════════════════════════════ -->
+  <section class="compact-hero">
+    <div class="container">
+      <div class="compact-hero__inner">
+        <span class="label compact-hero__label">Tudományos Megközelítés</span>
+        <h1 class="compact-hero__title">
+          Klinikai Kutatás<br>és <em>Pilot Programok</em>
+        </h1>
+        <p class="compact-hero__subtitle">
+          Az alábbi áttekintés bemutatja azokat a hivatalos protokolljainkat és futó klinikai kutatásainkat, amelyek az ULTIMA technológia, az orvosesztétikai beavatkozások és a plasztikai sebészet szinergiáját vizsgálják.
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════
+       PILOT PROGRAMS
+  ═══════════════════════════════════ -->
+  <section class="pilots" id="programok">
+    <div class="container">
+      <div class="pilots__header reveal">
+        <span class="label">Aktív Klinikai Programok</span>
+        <div class="divider"></div>
+        <h2 class="display-lg">Négy kutatási irány.<br><em>Egy rendszer.</em></h2>
+      </div>
+
+      <div class="pilots__table">
+
+        <!-- Program 1 -->
+        <div class="pilot-row reveal">
+          <div>
+            <div class="pilot-row__name">Sebészeti Támogatás &amp; Mini Face Lift</div>
+            <span class="pilot-row__tag">ULTIMA + Sebészet + LED</span>
+          </div>
+          <div>
+            <p class="pilot-row__method">A plasztikai sebészeti beavatkozások (pl. Mini Face Lift) előkészítése és a műtét utáni regeneráció felgyorsítása. A Protocol itt nem helyettesíti, hanem optimalizálja a szikét.</p>
+            <div class="pilot-row__steps">
+              <div class="pilot-step">
+                <span class="pilot-step__num">1.</span>
+                <span>Pre-operatív: 4x ULTIMA mikrokeringés-fokozás</span>
+              </div>
+              <div class="pilot-step">
+                <span class="pilot-step__num">2.</span>
+                <span>Treat: Mini Face Lift (Sebészeti beavatkozás)</span>
+              </div>
+              <div class="pilot-step">
+                <span class="pilot-step__num">3.</span>
+                <span>Post-operatív: LED Mask terápia a sebgyógyulásért</span>
+              </div>
+            </div>
+          </div>
+          <div class="pilot-row__status">
+            <div class="status-badge">
+              <span class="status-badge__dot"></span>
+              Klinikai Kooperáció
+            </div>
+            <p class="pilot-row__status-text">Fókusz: A műtéti trauma minimalizálása, a felépülési idő (downtime) radikális lerövidítése és a hegesedés esztétikai javítása.</p>
+          </div>
+        </div>
+
+        <!-- Program 2 -->
+        <div class="pilot-row reveal reveal-delay-1">
+          <div>
+            <div class="pilot-row__name">Szülés Utáni Hasfali Rehabilitáció</div>
+            <span class="pilot-row__tag">ULTIMA Shape Core + Torna</span>
+          </div>
+          <div>
+            <p class="pilot-row__method">A megnyúlt fascia-rendszer és a neuromuszkuláris kapcsolatok újraépítése, a diastasis recti (hasizom-szétnyílás) célzott kezelése paraméterezett HILEFT protokollal.</p>
+            <div class="pilot-row__steps">
+              <div class="pilot-step">
+                <span class="pilot-step__num">1.</span>
+                <span>Állapotfelmérés és orvosi konzultáció</span>
+              </div>
+              <div class="pilot-step">
+                <span class="pilot-step__num">2.</span>
+                <span>6-8x ULTIMA Shape (EMS + LED terápia)</span>
+              </div>
+              <div class="pilot-step">
+                <span class="pilot-step__num">3.</span>
+                <span>Aktív gyógytorna protokoll integrálása</span>
+              </div>
+            </div>
+          </div>
+          <div class="pilot-row__status">
+            <div class="status-badge">
+              <span class="status-badge__dot"></span>
+              Aktív Adatgyűjtés
+            </div>
+            <p class="pilot-row__status-text">Fókusz: A mechanotranszdukció és a fizioterápia együttes eredményeinek rögzítése a "core" stabilitásának visszaszerzésében a János Kórházzal közösen.</p>
+          </div>
+        </div>
+
+        <!-- Program 3 -->
+        <div class="pilot-row reveal reveal-delay-2">
+          <div>
+            <div class="pilot-row__name">Integrált Arcfiatalítás</div>
+            <span class="pilot-row__tag">ULTIMA + Botox/Filler</span>
+          </div>
+          <div>
+            <p class="pilot-row__method">A neuromuszkuláris stimulációval előkészített szövetek reagálása az injekciós kezelésekre.</p>
+            <div class="pilot-row__steps">
+              <div class="pilot-step">
+                <span class="pilot-step__num">1.</span>
+                <span>4x ULTIMA Face HILEFT (Aktiváció)</span>
+              </div>
+              <div class="pilot-step">
+                <span class="pilot-step__num">2.</span>
+                <span>Célzott Botulinum toxin / Hialuronsav korrekció</span>
+              </div>
+              <div class="pilot-step">
+                <span class="pilot-step__num">3.</span>
+                <span>Fenntartó LED Mask otthoni terápia</span>
+              </div>
+            </div>
+          </div>
+          <div class="pilot-row__status">
+            <div class="status-badge">
+              <span class="status-badge__dot"></span>
+              Folyamatban lévő Pilot
+            </div>
+            <p class="pilot-row__status-text">A vizsgálat a mimikai ráncok csökkenését és a szöveti feszesség hosszútávú megőrzését dokumentálja.</p>
+          </div>
+        </div>
+
+        <!-- Program 4 -->
+        <div class="pilot-row reveal reveal-delay-3">
+          <div>
+            <div class="pilot-row__name">Periorbitális Regeneráció</div>
+            <span class="pilot-row__tag">ULTIMA + Vitaran</span>
+          </div>
+          <div>
+            <p class="pilot-row__method">A szemkörnyéki vékony bőr és az orbicularis oculi izom együttes kezelése polinukleotid alapú biostimulációval.</p>
+            <div class="pilot-row__steps">
+              <div class="pilot-step">
+                <span class="pilot-step__num">1.</span>
+                <span>ULTIMA mikrokeringés-fokozás</span>
+              </div>
+              <div class="pilot-step">
+                <span class="pilot-step__num">2.</span>
+                <span>Vitaran PN injekció</span>
+              </div>
+              <div class="pilot-step">
+                <span class="pilot-step__num">3.</span>
+                <span>Fotobiomodulációs lezárás</span>
+              </div>
+            </div>
+          </div>
+          <div class="pilot-row__status">
+            <div class="status-badge">
+              <span class="status-badge__dot"></span>
+              Tervezett Study
+            </div>
+            <p class="pilot-row__status-text">Fókusz: A sötét karikák, a finom ráncok és a szöveti elvékonyodás visszafordításának szinergikus mérése.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════
+       TECHNOLOGY ECOSYSTEM
+  ═══════════════════════════════════ -->
+  <section class="tech-eco" id="technologia">
+    <div class="container">
+      <div class="tech-eco__header reveal">
+        <span class="label">Eszközpark</span>
+        <div class="divider"></div>
+        <h2 class="display-lg">A rendszer mögötti<br><em>technológia</em></h2>
+      </div>
+
+      <div class="tech-cards-grid">
+
+        <a href="technologia-hileft.html" class="tech-card reveal">
+          <h3 class="tech-card__title">ULTIMA HILEFT</h3>
+          <p class="tech-card__desc">Neuromuszkuláris stimuláció + fotobiomoduláció (730nm + 940nm). A Prepare pillér alapja.</p>
+          <span class="tech-card__tag">Prepare</span>
+        </a>
+
+        <a href="technologia-led-mask.html" class="tech-card reveal reveal-delay-1">
+          <h3 class="tech-card__title">ULTIMA LED Beauty Mask</h3>
+          <p class="tech-card__desc">4 terápiás hullámhossz (415nm, 590nm, 630nm, 850nm). 93g, IP67, food-grade szilikon. A Recover pillér otthoni eszköze.</p>
+          <span class="tech-card__tag">Recover</span>
+        </a>
+
+        <a href="technologia-observ.html" class="tech-card reveal reveal-delay-2">
+          <h3 class="tech-card__title">Observ 520x</h3>
+          <p class="tech-card__desc">6 tudományos megvilágítási mód az objektív bőrdiagnosztikához. Minden protokoll kiindulópontja és záró mérése.</p>
+          <span class="tech-card__tag">Diagnosztika</span>
+        </a>
+
+        <a href="technologia-venus-legacy.html" class="tech-card reveal reveal-delay-3">
+          <h3 class="tech-card__title">Venus Legacy</h3>
+          <p class="tech-card__desc">Rádiófrekvencia + mágneses pulzus technológia testkezelésekhez. Body tightening és hasfali protokollok kiegészítő eszköze.</p>
+          <span class="tech-card__tag">Treat</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════
+       CLINICAL EVIDENCE
+  ═══════════════════════════════════ -->
+  <section class="evidence" id="bizonyitekok">
+    <div class="container">
+      <div class="evidence__header reveal">
+        <span class="label">Klinikai Bizonyítékok</span>
+        <div class="divider divider--center"></div>
+        <h2 class="display-lg color-white">A számok mögött:<br><em>tudományos alap</em></h2>
+      </div>
+
+      <div class="stats-grid">
+
+        <div class="stat-card reveal">
+          <div class="stat-card__number">36%</div>
+          <div class="stat-card__unit">Ráncmélység csökkenés</div>
+          <div class="stat-card__desc">633nm + 830nm LED, 7 hét</div>
+          <div class="stat-card__source">Lee et al.</div>
+        </div>
+
+        <div class="stat-card reveal reveal-delay-1">
+          <div class="stat-card__number">19%</div>
+          <div class="stat-card__unit">Bőrrugalmasság növekedés</div>
+          <div class="stat-card__desc">Ugyanazon PBM protokoll</div>
+          <div class="stat-card__source">Lee et al.</div>
+        </div>
+
+        <div class="stat-card reveal reveal-delay-2">
+          <div class="stat-card__number">30%</div>
+          <div class="stat-card__unit">Kollagénsűrűség növekedés</div>
+          <div class="stat-card__desc">RF + EMS kombináció</div>
+        </div>
+
+        <div class="stat-card reveal reveal-delay-3">
+          <div class="stat-card__number">45%</div>
+          <div class="stat-card__unit">Bőrtónus javulás</div>
+          <div class="stat-card__desc">RF + EMS protokoll</div>
+        </div>
+
+        <div class="stat-card reveal reveal-delay-4">
+          <div class="stat-card__number">4</div>
+          <div class="stat-card__unit">Terápiás hullámhossz</div>
+          <div class="stat-card__desc">Az ULTIMA LED Mask-ban</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════
+       CELL BIOLOGY
+  ═══════════════════════════════════ -->
+  <section class="cell-bio" id="sejtbiologia">
+    <div class="container">
+      <div class="cell-bio__header reveal">
+        <span class="label">Sejtbiológiai Mechanizmusok</span>
+        <div class="divider"></div>
+        <h2 class="display-lg">Hogyan hat<br><em>a sejtre?</em></h2>
+      </div>
+
+      <div class="cell-bio__grid">
+
+        <!-- Left: PBM -->
+        <div class="cell-bio__col reveal">
+          <h3 class="cell-bio__col-title">Fotobiomoduláció (PBM)</h3>
+          <p class="cell-bio__col-quote">A fotonok a mitokondriumok citokróm-c-oxidáz (CCO) enzimét aktiválják</p>
+          <div class="cell-bio__steps">
+            <div class="cell-bio__step">
+              <span class="cell-bio__step-num">1</span>
+              <span class="cell-bio__step-text">Fotonok elnyelése a CCO enzimben &rarr; NO disszociáció</span>
+            </div>
+            <div class="cell-bio__step">
+              <span class="cell-bio__step-num">2</span>
+              <span class="cell-bio__step-text">Oxigén szabad kötődése &rarr; elektrontranszport lánc hatékonyság</span>
+            </div>
+            <div class="cell-bio__step">
+              <span class="cell-bio__step-num">3</span>
+              <span class="cell-bio__step-text">ATP szintézis drasztikus növekedése</span>
+            </div>
+            <div class="cell-bio__step">
+              <span class="cell-bio__step-num">4</span>
+              <span class="cell-bio__step-text">ROS aktiválja kollagéntermelést</span>
+            </div>
+            <div class="cell-bio__step">
+              <span class="cell-bio__step-num">5</span>
+              <span class="cell-bio__step-text">NO vazodilatációt okoz &rarr; jobb mikrokeringés</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: EMS -->
+        <div class="cell-bio__col reveal reveal-delay-2">
+          <h3 class="cell-bio__col-title">Elektromos Izomstimuláció (EMS)</h3>
+          <p class="cell-bio__col-quote">Az arc 40+ izma közvetlenül a bőrhöz tapad</p>
+          <div class="cell-bio__steps">
+            <div class="cell-bio__step">
+              <span class="cell-bio__step-num">1</span>
+              <span class="cell-bio__step-text">Célzott elektromos impulzusok &rarr; kontrollált izomösszehúzódás</span>
+            </div>
+            <div class="cell-bio__step">
+              <span class="cell-bio__step-num">2</span>
+              <span class="cell-bio__step-text">Izomtónus helyreállítása</span>
+            </div>
+            <div class="cell-bio__step">
+              <span class="cell-bio__step-num">3</span>
+              <span class="cell-bio__step-text">Fibroblasztok több kollagént és elasztint termelnek</span>
+            </div>
+            <div class="cell-bio__step">
+              <span class="cell-bio__step-num">4</span>
+              <span class="cell-bio__step-text">Nyirokkeringés javítása, ödéma csökkentése</span>
+            </div>
+            <div class="cell-bio__step">
+              <span class="cell-bio__step-num">5</span>
+              <span class="cell-bio__step-text">PBM + EMS szinergia: intenzívebb izomreakció</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════
+       SOURCES
+  ═══════════════════════════════════ -->
+  <section class="sources" id="forrasok">
+    <div class="container">
+      <div class="sources__header reveal">
+        <span class="label">Forráshivatkozások &amp; Szakirodalom</span>
+        <div class="divider"></div>
+      </div>
+
+      <div class="sources__list">
+        <div class="source-item reveal">
+          <span class="source-item__num">[1]</span>
+          <p class="source-item__text">Klinikai Bőrgyógyászat és Esztétika: A fotobiomoduláció hatása a fibroblasztok aktivitására és a kollagénszintézisre... <span class="source-item__journal">(Journal of Clinical Aesthetic Dermatology)</span></p>
+        </div>
+        <div class="source-item reveal reveal-delay-1">
+          <span class="source-item__num">[2]</span>
+          <p class="source-item__text">Neuromuszkuláris Kutatások: Az EMS szerepe a diastasis recti rehabilitációjában szülés után... <span class="source-item__journal">(Physical Therapy Reviews)</span></p>
+        </div>
+        <div class="source-item reveal reveal-delay-2">
+          <span class="source-item__num">[3]</span>
+          <p class="source-item__text">The Ultimate Beauty Belső Protokoll: HILEFT technológiai paraméterek és kezelési útvonalak szinergiája... <span class="source-item__journal">(Klinikai Kézikönyv)</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════
+       CROSSLINK — CLINICAL PROGRAMS
+  ═══════════════════════════════════ -->
+  <section class="section" style="padding: var(--space-lg) 0;">
+    <div class="container" style="text-align: center;">
+      <p class="body-text reveal" style="margin: 0 auto 1rem; text-align: center; max-width: 50ch;">Strukturált kezelési útvonalaink és a jelentkezés részletei:</p>
+      <a href="clinical-program.html" class="btn-frame btn-s reveal reveal-delay-1">Klinikai programok →</a>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════
+       CTA BANNER
+  ═══════════════════════════════════ -->
+  <section class="cta-banner">
+    <div class="container">
+      <span class="label">Csatlakozzon</span>
+      <h2 class="cta-banner__title reveal">Megmutatjuk,<br>melyik <em>út az Öné.</em></h2>
+      <p class="cta-banner__subtitle reveal reveal-delay-1">
+        Jelentkezzen klinikai programjainkba, vagy foglaljon személyes konzultációt — és összerakjuk a személyre szabott Protocol útvonalat.
+      </p>
+      <div class="cta-banner__actions reveal reveal-delay-2">
+        <button class="btn-premium btn-m" data-jf-form="clinical" data-jf-source="kutatas-cta">
+          Jelentkezés a klinikai programba
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <button class="btn-soft btn-m" data-jf-form="konzultacio" data-jf-source="kutatas-cta">Személyes konzultáció &rarr;</button>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__logo">The Ultimate Beauty.</div>
+          <p class="footer__tagline">Boutique esztétikai klinika Budán. Személyre szabott orvosesztétika és ULTIMA technológia, egyetlen összehangolt rendszerben.</p>
+          <div class="footer__contact">
+            <p class="footer__contact-item">1124 Budapest, Németvölgyi út 68.</p>
+            <p class="footer__contact-item">+36 1 790 3017</p>
+            <p class="footer__contact-item">info@theultimatebeauty.net</p>
+            <p class="footer__contact-item">H–P: 9:00–18:00 · Szombat: előjegyzés alapján</p>
+          </div>
+        </div>
+        <div>
+          <div class="footer__col-title">Protocol</div>
+          <a href="protocol-hub.html" class="footer__link">Protocol Hub</a>
+          <a href="protocol-hub.html" class="footer__link">A filozófia</a>
+          <a href="protocol-hub.html" class="footer__link">Protocol Treatments</a>
+          <a href="clinical-program.html" class="footer__link">Clinical Programs</a>
+          <a href="kutatas.html" class="footer__link">Kutatás</a>
+        </div>
+        <div>
+          <div class="footer__col-title">Kezelések</div>
+          <a href="protocol-hub.html" class="footer__link">Összes kezelés</a>
+          <a href="technologia-hileft.html" class="footer__link">Technológia</a>
+          <a href="index.html#home-contact" class="footer__link">Konzultáció</a>
+          <a href="#" class="footer__link" data-jf-form="clinical" data-jf-source="kutatas-footer">Klinikai program</a>
+        </div>
+        <div>
+          <div class="footer__col-title">Klinika</div>
+          <a href="klinika.html" class="footer__link">A klinika</a>
+          <a href="akademia.html" class="footer__link">Akadémia</a>
+          <a href="adatvedelem.html" class="footer__link">Adatvédelem</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; 2026 The Ultimate Beauty. Minden jog fenntartva. &middot; Budapest &middot; Buda</span>
+        <div class="footer__legal">
+          <a href="adatvedelem.html" class="footer__link footer__link--inline">Adatvédelem</a>
+          <a href="aszf.html" class="footer__link footer__link--inline">ÁSZF</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ═══════════════════════════════════
+       SCRIPTS
+  ═══════════════════════════════════ -->
+  <script>
+    // Nav scroll behaviour
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // Reveal on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    reveals.forEach(el => observer.observe(el));
+  </script>
+
+  <!-- JotForm Lightbox -->
+  <link rel="stylesheet" href="css/jotform-lightbox.css">
+  <script src="js/jotform-lightbox.js"></script>
+</body>
+</html>

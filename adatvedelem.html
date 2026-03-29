@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adatvédelmi Tájékoztató — The Ultimate Beauty Clinic</title>
+    <meta name="description" content="The Ultimate Beauty Clinic adatvédelmi tájékoztató és cookie szabályzat.">
+  <meta property="og:title" content="Adatvédelmi Tájékoztató — The Ultimate Beauty Clinic">
+  <meta property="og:description" content="The Ultimate Beauty Clinic adatvédelmi tájékoztató és cookie szabályzat.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://theultimatebeauty.net/adatvedelem.html">
+  <meta property="og:image" content="https://theultimatebeauty.net/assets/images/og-cover.jpg">
+  <link rel="canonical" href="https://theultimatebeauty.net/adatvedelem.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #1A1816;
+            background-color: #FDFAF6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { color: #B8965A; text-decoration: none; transition: opacity 0.3s; }
+        a:hover { opacity: 0.7; }
+
+        /* ---- Header ---- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(253, 250, 246, 0.97);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid #F5F0E8;
+            padding: 0 40px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: #B8965A;
+            letter-spacing: 0.04em;
+        }
+
+        .header-back {
+            font-size: 13px;
+            font-weight: 500;
+            color: #1A1816;
+            background: transparent;
+            border: 1px solid #B8965A;
+            padding: 8px 20px;
+            border-radius: 4px;
+            letter-spacing: 0.03em;
+            transition: all 0.3s;
+        }
+
+        .header-back:hover { background: #B8965A; color: #FDFAF6; opacity: 1; }
+
+        /* ---- Main ---- */
+        main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 120px 40px 80px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            font-weight: 400;
+            color: #B8965A;
+            margin-bottom: 24px;
+        }
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(28px, 5vw, 40px);
+            font-weight: 600;
+            color: #1A1816;
+            margin-bottom: 8px;
+            letter-spacing: -0.01em;
+            line-height: 1.2;
+        }
+
+        .updated {
+            font-size: 13px;
+            font-weight: 400;
+            color: #999;
+            margin-bottom: 40px;
+        }
+
+        .notice {
+            background-color: #F5F0E8;
+            border-left: 3px solid #B8965A;
+            padding: 20px 24px;
+            margin-bottom: 48px;
+            font-size: 14px;
+            line-height: 1.75;
+            color: #3a3835;
+        }
+
+        h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: #1A1816;
+            margin-top: 44px;
+            margin-bottom: 14px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #F5F0E8;
+        }
+
+        p { margin-bottom: 14px; font-size: 15px; color: #3a3835; }
+
+        ul { margin: 10px 0 18px 22px; }
+        li { font-size: 15px; color: #3a3835; margin-bottom: 6px; }
+
+        .closing-note {
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 1px solid #F5F0E8;
+            font-size: 13px;
+            color: #999;
+        }
+
+        /* ---- Footer ---- */
+        footer {
+            border-top: 1px solid #F5F0E8;
+            padding: 32px 40px;
+            text-align: center;
+        }
+
+        .footer-copy { font-size: 13px; color: #999; margin-bottom: 8px; }
+
+        .footer-links { display: flex; justify-content: center; gap: 24px; }
+        .footer-links a { font-size: 13px; color: #B8965A; }
+
+        /* ---- Responsive ---- */
+        @media (max-width: 680px) {
+            header { padding: 0 20px; }
+            main { padding: 100px 20px 60px; }
+            footer { padding: 24px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="index.html" class="header-logo">The Ultimate Beauty Clinic</a>
+    <a href="index.html" class="header-back">Vissza a főoldalra</a>
+</header>
+
+<main>
+    <a href="index.html" class="back-link">&larr; Vissza a főoldalra</a>
+    <h1>Adatvédelmi Tájékoztató</h1>
+    <p class="updated">Utolsó frissítés: 2026. március</p>
+
+    <div class="notice">
+        Ez az oldal jelenleg helyőrző tartalommal működik. A teljes körű adatvédelmi tájékoztató a weboldal hivatalos indulása előtt kerül véglegesítésre és publikálásra, a hatályos jogszabályoknak — különösen az Európai Parlament és a Tanács (EU) 2016/679 rendeletének (GDPR) — megfelelően.
+    </div>
+
+    <h2>1. Adatkezelő</h2>
+    <p>The Ultimate Beauty Clinic<br>
+    Székhely: 1124 Budapest, Németvölgyi út 68.<br>
+    E-mail: <a href="mailto:info@theultimatebeauty.net">info@theultimatebeauty.net</a></p>
+    <p>Az adatkezelő részletes elérhetőségei, valamint az adatvédelmi tisztviselő kontaktadatai a végleges tájékoztatóban kerülnek feltüntetésre.</p>
+
+    <h2>2. Kezelt adatok köre</h2>
+    <p>A weboldal működése és szolgáltatásaink nyújtása során az alábbi személyes adatok kezelésére kerülhet sor:</p>
+    <ul>
+        <li>Név, e-mail cím, telefonszám (kapcsolatfelvétel, időpontfoglalás)</li>
+        <li>A weboldal használata során keletkező technikai adatok (IP-cím, böngésző típusa, operációs rendszer)</li>
+        <li>Konzultációval kapcsolatos egészségügyi adatok (kizárólag a klinika belső rendszerében)</li>
+        <li>Az űrlapokon megadott egyéb információk</li>
+    </ul>
+    <p>A pontos adatkörök és az egyes adatkezelési tevékenységek részletezése a végleges dokumentumban lesz olvasható.</p>
+
+    <h2>3. Adatkezelés célja</h2>
+    <p>A személyes adatok kezelésének célja a klinikai szolgáltatások nyújtása, időpontfoglalás kezelése, ügyfélkapcsolat fenntartása, valamint a weboldal biztonságos és hatékony működésének biztosítása. Az egyes célokhoz rendelt részletes leírások a végleges tájékoztatóban kerülnek meghatározásra.</p>
+
+    <h2>4. Jogalap</h2>
+    <p>Az adatkezelés jogalapja az érintett hozzájárulása (GDPR 6. cikk (1) bek. a) pont), szerződés teljesítése, jogi kötelezettség teljesítése, vagy az adatkezelő jogos érdeke lehet. Az egyes adatkezelési tevékenységekhez tartozó pontos jogalapok a végleges dokumentumban kerülnek rögzítésre.</p>
+
+    <h2>5. Adatkezelés időtartama</h2>
+    <p>A személyes adatok tárolásának időtartama az adatkezelés céljától és a vonatkozó jogszabályi előírásoktól függ. A konkrét megőrzési időszakok a végleges tájékoztatóban kerülnek meghatározásra.</p>
+
+    <h2>6. Érintett jogai</h2>
+    <p>Az érintett jogosult:</p>
+    <ul>
+        <li>Személyes adataihoz való hozzáférésre</li>
+        <li>Adatai helyesbítésére vagy törlésére</li>
+        <li>Az adatkezelés korlátozásának kérésére</li>
+        <li>Adathordozhatósághoz való jog gyakorlására</li>
+        <li>Tiltakozásra az adatkezelés ellen</li>
+        <li>Hozzájárulásának bármikori visszavonására</li>
+    </ul>
+    <p>Jogai gyakorlásához kérjük, írjon az <a href="mailto:info@theultimatebeauty.net">info@theultimatebeauty.net</a> címre. Az adatvédelmi hatósághoz (NAIH) való fordulás lehetőségét a végleges tájékoztató részletezi.</p>
+
+    <h2>7. Cookie-k (sütik)</h2>
+    <p>A weboldal cookie-kat használhat a felhasználói élmény javítása és a forgalom elemzése céljából. A cookie-k típusai, célja, megőrzési ideje és a hozzájárulás kezelésének módja a végleges tájékoztatóban kerül ismertetésre.</p>
+    <p>Jelenleg a weboldal kizárólag a működéshez szükséges technikai cookie-kat alkalmaz.</p>
+
+    <p class="closing-note">Ez a dokumentum tájékoztató jellegű helyőrző. A részletes adatvédelmi szabályzat a teljes szolgáltatási portfólió elindításakor kerül véglegesítésre és közzétételre.</p>
+</main>
+
+<footer>
+    <p class="footer-copy">&copy; 2026 The Ultimate Beauty Clinic. Minden jog fenntartva.</p>
+    <div class="footer-links">
+        <a href="adatvedelem.html">Adatvédelem</a>
+        <a href="aszf.html">ÁSZF</a>
+    </div>
+</footer>
+
+</body>
+</html>

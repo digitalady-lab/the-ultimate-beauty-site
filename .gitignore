@@ -1,0 +1,53 @@
+# The Ultimate Beauty — .gitignore
+
+# Archive / backupok
+_archive/
+*.backup-*
+
+# Régi teszt verzió
+v2-luxury-test/
+
+# Nyers médiák (nagy fájlok)
+assets/drive-download-*/
+
+# Nagy videók (GitHub 100MB limit)
+assets/videos/testimonial-*.mp4
+assets/videos/UB*.mp4
+assets/images/ultima-fenyterpia-video.mp4
+assets/Ultima_Maszk_Bemutató_Videó_Készítése.mp4
+
+# Nagy PNG slide másolatok
+assets/images/*másolata.png
+
+# Nagy PDF-ek (>5MB)
+assets/docs/observ-520x-leiras.pdf
+assets/docs/facial-synergy.pdf
+assets/docs/light-muscle-regeneration-synergy.pdf
+assets/docs/ultima-hileft-tudomany.pdf
+assets/docs/hileft-tudomany.pdf
+assets/docs/ultima-led-beauty-mask.pdf
+assets/docs/led-mask-distributors.pdf
+
+# Belső docs
+GELLERT-FELADATLISTA.*
+SZABALYKONYV.*
+serve.py
+
+# OS fájlok
+.DS_Store
+Thumbs.db
+
+# Szerkesztő fájlok
+*.swp
+*.swo
+*~
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Node
+node_modules/
+
+# Oktatási anyagok (nem publikus)
+TUB.*/
