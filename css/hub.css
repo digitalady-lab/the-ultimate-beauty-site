@@ -4707,7 +4707,7 @@
 /* ── Protocol Asymmetric Hub Cards ── */
 .protocol-cards-section {
   padding: 72px 0;
-  background: linear-gradient(rgba(26,24,22,0.82), rgba(26,24,22,0.88)), url('../assets/images/clinic/waiting-room-1.webp') center/cover no-repeat fixed;
+  background: linear-gradient(rgba(26,24,22,0.78), rgba(26,24,22,0.85)), url('../assets/images/clinic/rendelo-frame-12s.jpg') center/cover no-repeat fixed;
 }
 .protocol-cards-section .section-label { color: var(--gold); }
 .protocol-cards-section .section-title { color: var(--ivory); }
