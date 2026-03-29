@@ -5742,6 +5742,7 @@
   text-align: center;
   position: relative;
   box-shadow: 0 24px 80px rgba(0,0,0,0.2);
+  overflow: hidden;
 }
 .email-gate-box .section-label { margin-bottom: 8px; }
 .email-gate-box h3 {
@@ -5760,6 +5761,7 @@
 .email-gate-form {
   display: flex;
   gap: 10px;
+  flex-wrap: wrap;
 }
 .email-gate-input {
   flex: 1;
@@ -5779,7 +5781,7 @@
   background: var(--gold);
   color: var(--white);
   border: none;
-  border-radius: 8px;
+  border-radius: 100px;
   font-family: 'Montserrat', sans-serif;
   font-size: 0.72rem;
   font-weight: 600;
@@ -5788,6 +5790,8 @@
   cursor: pointer;
   white-space: nowrap;
   transition: background 0.3s;
+  min-width: fit-content;
+  flex-shrink: 0;
 }
 .email-gate-submit:hover { background: var(--gold-light); }
 .email-gate-close {
