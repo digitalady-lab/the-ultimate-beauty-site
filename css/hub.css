@@ -2375,6 +2375,24 @@
       transform: translateY(0);
       box-shadow: 0 2px 8px rgba(184,150,90,0.18);
     }
+    /* Shimmer csillogás */
+    .treatment-chip::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(184,150,90,0.25), transparent);
+      animation: chip-shimmer 3s ease-in-out infinite;
+    }
+    @keyframes chip-shimmer {
+      0%, 100% { left: -100%; }
+      50% { left: 150%; }
+    }
+    .treatment-chip:hover::after {
+      display: none;
+    }
 
     .protocol-footer-text {
       font-size: 0.95rem;
