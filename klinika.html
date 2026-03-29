@@ -61,6 +61,23 @@
   <link rel="stylesheet" href="css/tub-map.css">
 </head>
 <body>
+  <script>
+    // Prevent browser scroll restoration
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    if (window.location.hash) {
+      window.history.replaceState(null, '', window.location.pathname);
+    }
+    window.scrollTo(0, 0);
+    window.addEventListener('pageshow', function() { window.scrollTo(0, 0); });
+    window.addEventListener('load', function() {
+      window.scrollTo(0, 0);
+      setTimeout(function() { window.scrollTo(0, 0); }, 100);
+      setTimeout(function() { window.scrollTo(0, 0); }, 300);
+      setTimeout(function() { window.scrollTo(0, 0); }, 600);
+    });
+  </script>
 
   <!-- ═══════════════════════════════════
        NAV

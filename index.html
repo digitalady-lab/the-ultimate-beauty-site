@@ -136,6 +136,10 @@
       window.history.replaceState(null, '', window.location.pathname);
     }
     window.scrollTo(0, 0);
+    // iOS Safari: pageshow fires after BFCache restore — scroll can be restored AFTER load
+    window.addEventListener('pageshow', function() {
+      window.scrollTo(0, 0);
+    });
   </script>
   <div class="site-wrap">
   <a class="sr-only" href="#main">Ugrás a tartalomra</a>
@@ -3157,8 +3161,16 @@
       // Force scroll to top on page load (multiple attempts to beat browser restore)
       window.scrollTo(0, 0);
       setTimeout(function() { window.scrollTo(0, 0); }, 0);
-      setTimeout(function() { window.scrollTo(0, 0); }, 100);
-      window.addEventListener('load', function() { window.scrollTo(0, 0); });
+      setTimeout(function() { window.scrollTo(0, 0); }, 50);
+      setTimeout(function() { window.scrollTo(0, 0); }, 150);
+      setTimeout(function() { window.scrollTo(0, 0); }, 300);
+      setTimeout(function() { window.scrollTo(0, 0); }, 600);
+      setTimeout(function() { window.scrollTo(0, 0); }, 1000);
+      window.addEventListener('load', function() {
+        window.scrollTo(0, 0);
+        setTimeout(function() { window.scrollTo(0, 0); }, 100);
+        setTimeout(function() { window.scrollTo(0, 0); }, 300);
+      });
     }
   </script>
 
