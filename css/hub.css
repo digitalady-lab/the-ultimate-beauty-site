@@ -4707,8 +4707,11 @@
 /* ── Protocol Asymmetric Hub Cards ── */
 .protocol-cards-section {
   padding: 72px 0;
-  background: var(--cream);
+  background: linear-gradient(rgba(26,24,22,0.82), rgba(26,24,22,0.88)), url('../assets/images/clinic/waiting-room-1.webp') center/cover no-repeat fixed;
 }
+.protocol-cards-section .section-label { color: var(--gold); }
+.protocol-cards-section .section-title { color: var(--ivory); }
+.protocol-cards-section .section-title em { color: var(--gold); }
 .protocol-cards-section .section-label {
   text-align: center;
   display: block;
@@ -4818,43 +4821,6 @@
 .protocol-hub-card--featured:hover {
   background: #FDFAF6;
   border-color: var(--gold);
-}
-
-/* Képes kártyák */
-.protocol-hub-card--img {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  color: var(--ivory);
-  border: none;
-}
-.protocol-hub-card--img::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(26,24,22,0.3) 0%, rgba(26,24,22,0.85) 60%);
-  transition: background 0.45s;
-  z-index: 0;
-}
-.protocol-hub-card--img:hover::after {
-  background: linear-gradient(180deg, rgba(26,24,22,0.2) 0%, rgba(26,24,22,0.75) 55%);
-}
-.protocol-hub-card--img > * {
-  position: relative;
-  z-index: 1;
-}
-.protocol-hub-card--img .protocol-hub-card__num { color: rgba(253,250,246,0.5); }
-.protocol-hub-card--img .protocol-hub-card__title { color: var(--ivory); }
-.protocol-hub-card--img:hover .protocol-hub-card__title { color: var(--gold); }
-.protocol-hub-card--img .protocol-hub-card__desc { color: rgba(253,250,246,0.7); }
-.protocol-hub-card--img .protocol-hub-card__arrow { color: var(--gold); }
-.protocol-hub-card--img.protocol-hub-card--featured {
-  background-color: transparent;
-  border: none;
-}
-.protocol-hub-card--img.protocol-hub-card--featured:hover {
-  background-color: transparent;
-  border: none;
 }
 
 /* ── Eredmények & Bizonyítékok ── */
