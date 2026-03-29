@@ -4728,9 +4728,9 @@
 }
 .protocol-hub-card {
   position: relative;
-  background: var(--charcoal);
+  background: var(--cream);
   padding: 2.75rem 2rem 2.5rem;
-  color: var(--ivory);
+  color: var(--charcoal);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -4750,8 +4750,8 @@
   transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
 }
 .protocol-hub-card:hover {
-  background: #2a2622;
-  box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+  background: #FDFAF6;
+  box-shadow: 0 12px 40px rgba(26,24,22,0.06);
 }
 .protocol-hub-card:hover::before { transform: scaleX(1); }
 .protocol-hub-card__num {
@@ -4791,7 +4791,7 @@
   font-size: 0.78rem;
   font-weight: 300;
   line-height: 1.7;
-  color: rgba(253,250,246,0.6);
+  color: rgba(26,24,22,0.6);
   flex: 1;
 }
 .protocol-hub-card__arrow {
@@ -4809,15 +4809,52 @@
 }
 .protocol-hub-card--featured {
   grid-column: span 2;
-  background: #1e1c1a;
-  border: 1px solid rgba(184,150,90,0.15);
+  background: #FEFCF9;
+  border: 1px solid rgba(26,24,22,0.08);
 }
 .protocol-hub-card--featured .protocol-hub-card__title {
   font-size: 1.6rem;
 }
 .protocol-hub-card--featured:hover {
-  background: #2a2622;
+  background: #FDFAF6;
   border-color: var(--gold);
+}
+
+/* Képes kártyák */
+.protocol-hub-card--img {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: var(--ivory);
+  border: none;
+}
+.protocol-hub-card--img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(26,24,22,0.3) 0%, rgba(26,24,22,0.85) 60%);
+  transition: background 0.45s;
+  z-index: 0;
+}
+.protocol-hub-card--img:hover::after {
+  background: linear-gradient(180deg, rgba(26,24,22,0.2) 0%, rgba(26,24,22,0.75) 55%);
+}
+.protocol-hub-card--img > * {
+  position: relative;
+  z-index: 1;
+}
+.protocol-hub-card--img .protocol-hub-card__num { color: rgba(253,250,246,0.5); }
+.protocol-hub-card--img .protocol-hub-card__title { color: var(--ivory); }
+.protocol-hub-card--img:hover .protocol-hub-card__title { color: var(--gold); }
+.protocol-hub-card--img .protocol-hub-card__desc { color: rgba(253,250,246,0.7); }
+.protocol-hub-card--img .protocol-hub-card__arrow { color: var(--gold); }
+.protocol-hub-card--img.protocol-hub-card--featured {
+  background-color: transparent;
+  border: none;
+}
+.protocol-hub-card--img.protocol-hub-card--featured:hover {
+  background-color: transparent;
+  border: none;
 }
 
 /* ── Eredmények & Bizonyítékok ── */
