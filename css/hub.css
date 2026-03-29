@@ -4707,11 +4707,31 @@
 /* ── Protocol Asymmetric Hub Cards ── */
 .protocol-cards-section {
   padding: 72px 0;
-  background: linear-gradient(rgba(26,24,22,0.78), rgba(26,24,22,0.85)), url('../assets/images/clinic/rendelo-frame-12s.jpg') center/cover no-repeat fixed;
+  position: relative;
+  overflow: hidden;
+  background: var(--cream);
 }
-.protocol-cards-section .section-label { color: var(--gold); }
-.protocol-cards-section .section-title { color: var(--ivory); }
-.protocol-cards-section .section-title em { color: var(--gold); }
+.protocol-cards-bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  filter: blur(2px);
+}
+.protocol-cards-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(253,250,246,0.72);
+  z-index: 1;
+}
+.protocol-cards-section .section-label,
+.protocol-cards-section .section-title,
+.protocol-cards-section .protocol-cards-grid {
+  position: relative;
+  z-index: 2;
+}
 .protocol-cards-section .section-label {
   text-align: center;
   display: block;
