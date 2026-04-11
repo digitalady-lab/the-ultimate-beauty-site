@@ -59,6 +59,8 @@
   <!-- Mapbox -->
   <link href="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css" rel="stylesheet">
   <link rel="stylesheet" href="css/tub-map.css">
+  <link rel="stylesheet" href="css/jotform-lightbox.css">
+  <script src="js/jotform-lightbox.js" defer></script>
 </head>
 <body>
   <script>
@@ -91,7 +93,7 @@
       <li><a href="clinical-program.html" class="nav__link">Program</a></li>
       <li><a href="akademia.html" class="nav__link">Akad&eacute;mia</a></li>
     </ul>
-    <a href="index.html#home-contact" class="nav__cta">Konzult&aacute;ci&oacute; &rarr;</a>
+    <button class="nav__cta jf-trigger-btn" data-jf-form="konzultacio" data-jf-source="klinika-nav" style="cursor:pointer;">Konzult&aacute;ci&oacute; &rarr;</button>
   </nav>
 
 
@@ -316,13 +318,13 @@
       <span class="label">Szem&eacute;lyes konzult&aacute;ci&oacute;</span>
       <h2 class="cta-banner__title reveal">L&aacute;togasson el<br><em>szem&eacute;lyesen.</em></h2>
       <p class="cta-banner__subtitle reveal reveal-delay-1">
-        Az els&#337; l&eacute;p&eacute;s egy 60 perces Observ b&#337;rdiagnosztika &mdash; amelyet a nyit&aacute;si id&#337;szakban aj&aacute;nd&eacute;kba kap.
+        Az els&#337; l&eacute;p&eacute;s egy 60 perces Observ b&#337;rdiagnosztika &mdash; amelyet a nyit&aacute;si id&#337;szakban ingyenesen biztos&iacute;tunk.
       </p>
       <div class="cta-banner__actions reveal reveal-delay-2">
-        <a href="index.html#home-contact" class="btn-premium btn-m">
+        <button class="btn-premium btn-m jf-trigger-btn" data-jf-form="konzultacio" data-jf-source="klinika-hero" style="cursor:pointer;">
           Konzult&aacute;ci&oacute; foglal&aacute;sa
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
+        </button>
         <a href="protocol-hub.html" class="btn-soft btn-m">A Protocol megismer&eacute;se &rarr;</a>
       </div>
     </div>
