@@ -7,13 +7,24 @@
   'use strict';
 
   // ─── FORM REGISTRY ───────────────────────────────────────────
+  // 2026.04.12: Form összevonás — observ/founding/akademia beolvadt
+  // A gombok data-jf-form attribútumai NEM változnak (marketing hook megmarad),
+  // de a háttérben ugyanazt a Jotform-ot nyitják, prepopulate paraméterrel.
+  //
+  // prepopulate: Jotform URL-be fűzött paraméter, ami előre kitölti
+  //   az "Érdeklődés típusa" mezőt a form-ban.
+  //   Jotform mező neve: interestType (a Jotform felületen beállítandó)
+
   var FORMS = {
     'konzultacio':  { id: '260812972566061', title: 'Személyes Konzultáció Foglalás' },
-    'observ':       { id: '260811666568062', title: 'Ingyenes Observ 520x Bőrelemzés' },
+    'observ':       { id: '260812972566061', title: 'Ingyenes Observ 520x Bőrelemzés',
+                      prepopulate: { interestType: 'Ingyenes Observ 520x bőrelemzés' } },
     'led-mask':     { id: '260812571961055', title: 'ULTIMA LED Mask Érdeklődés' },
     'clinical':     { id: '260812813146049', title: 'Clinical Program Jelentkezés' },
-    'founding':     { id: '260812808596062', title: 'Founding Access Regisztráció' },
-    'akademia':     { id: '260812371139050', title: 'Akadémia Jelentkezés' },
+    'founding':     { id: '260812813146049', title: 'Klinikai Vizsgálat Jelentkezés',
+                      prepopulate: { interestType: 'Founding Access' } },
+    'akademia':     { id: '260812972566061', title: 'Akadémia Jelentkezés',
+                      prepopulate: { interestType: 'Akadémia érdeklődés' } },
     'newsletter':   { id: '260812738145054', title: 'Feliratkozás' }
   };
 
@@ -60,9 +71,16 @@
     // Set title
     titleEl.textContent = config.title;
 
-    // Build iframe URL with source tracking
+    // Build iframe URL with source tracking + prepopulate
     var url = 'https://form.jotform.com/' + config.id;
-    if (source) url += '?source=' + encodeURIComponent(source);
+    var params = [];
+    if (source) params.push('source=' + encodeURIComponent(source));
+    if (config.prepopulate) {
+      Object.keys(config.prepopulate).forEach(function(key) {
+        params.push(encodeURIComponent(key) + '=' + encodeURIComponent(config.prepopulate[key]));
+      });
+    }
+    if (params.length) url += '?' + params.join('&');
 
     // Check if we have a preloaded iframe for this form
     if (preloadedForm === formKey && preloadIframe) {
@@ -174,7 +192,14 @@
 
     // Create hidden iframe to preload
     preloadIframe = document.createElement('iframe');
-    preloadIframe.src = 'https://form.jotform.com/' + config.id + (source ? '?source=' + source : '');
+    var preloadParams = [];
+    if (source) preloadParams.push('source=' + encodeURIComponent(source));
+    if (config.prepopulate) {
+      Object.keys(config.prepopulate).forEach(function(key) {
+        preloadParams.push(encodeURIComponent(key) + '=' + encodeURIComponent(config.prepopulate[key]));
+      });
+    }
+    preloadIframe.src = 'https://form.jotform.com/' + config.id + (preloadParams.length ? '?' + preloadParams.join('&') : '');
     preloadIframe.style.cssText = 'position:absolute; width:1px; height:1px; opacity:0; pointer-events:none; top:-9999px;';
     preloadIframe.tabIndex = -1;
     preloadIframe.setAttribute('aria-hidden', 'true');
