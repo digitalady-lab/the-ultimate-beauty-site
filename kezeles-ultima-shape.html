@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ULTIMA Shape Testkezelés — Fenék, Comb, Hasfal, Felkar | The Ultimate Beauty</title>
+  <meta name="description" content="ULTIMA Shape testkezelés: neuromuszkuláris stimuláció és fotobiomoduláció a fenék, comb, hasfal és felkar célzott formázására. Non-invazív, 0 downtime.">
+  <meta property="og:title" content="ULTIMA Shape Testkezelés — The Ultimate Beauty">
+  <meta property="og:description" content="Célzott testformázás ULTIMA HILEFT technológiával. Fenék emelés, combfeszesítés, hasfal erősítés, felkar tónusjavítás.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://theultimatebeauty.net/kezeles-ultima-shape.html">
+  <meta property="og:image" content="https://theultimatebeauty.net/assets/images/og-cover.jpg">
+  <link rel="canonical" href="https://theultimatebeauty.net/kezeles-ultima-shape.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ivory:#FDFAF6;--cream:#F5F0E8;--charcoal:#1A1816;--dark:#12100E;
+      --c60:rgba(26,24,22,.6);--c30:rgba(26,24,22,.3);--c10:rgba(26,24,22,.08);
+      --gold:#B8965A;--gold-l:#D4B077;--gold-p:rgba(184,150,90,.12);
+      --w20:rgba(255,255,255,.2);--w10:rgba(255,255,255,.1);--w45:rgba(255,255,255,.45);--w70:rgba(255,255,255,.7);
+      --font-d:'Cormorant Garamond',serif;--font-s:'Montserrat',sans-serif;
+      --ease:cubic-bezier(.25,.46,.45,.94);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+    body{background:var(--ivory);color:var(--charcoal);font-family:var(--font-s);font-weight:300;font-size:15px;line-height:1.7;overflow-x:hidden}
+    img{display:block;max-width:100%;height:auto}a{text-decoration:none;color:inherit}button{border:none;background:none;cursor:pointer;font-family:inherit}
+
+    .wrap{max-width:1260px;margin:0 auto;padding:0 2rem}
+    em{font-style:italic;font-family:var(--font-d);font-size:1.06em}
+
+    /* NAV */
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.5rem 2rem;display:flex;align-items:center;justify-content:space-between;transition:all .4s var(--ease)}
+    .nav.on{background:rgba(253,250,246,.95);backdrop-filter:blur(12px);padding:1rem 2rem;box-shadow:0 1px 0 var(--c10)}
+    .nav__logo{font-family:var(--font-d);font-size:1.2rem;font-weight:500;letter-spacing:.04em}
+    .nav__logo span{color:var(--gold)}
+    .nav__links{display:flex;gap:2.5rem;align-items:center}
+    .nav__link{font-size:.68rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--c60);transition:color .2s}
+    .nav__link:hover,.nav__link.active{color:var(--charcoal)}
+    .nav__cta{font-size:.68rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:.7rem 1.6rem;border:1px solid var(--charcoal);transition:all .2s}
+    .nav__cta:hover{background:var(--charcoal);color:var(--ivory)}
+
+    /* BREADCRUMB */
+    .bc{padding:6rem 2rem .8rem;font-size:.6rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--c30)}
+    .bc a{color:var(--c60)}.bc a:hover{color:var(--charcoal)}
+
+    /* ── COMPACT HERO ─────────────────────────────────── */
+    .shape-hero{background:var(--dark);color:#fff;padding:3rem 0 2.5rem}
+    .shape-hero__inner{display:flex;align-items:flex-end;justify-content:space-between;gap:3rem;flex-wrap:wrap}
+    .shape-hero__text{max-width:600px}
+    .shape-hero__badge{display:inline-flex;gap:.5rem;padding:.35rem .8rem;border:1px solid rgba(184,150,90,.25);font-size:.55rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-l);margin-bottom:1rem}
+    .shape-hero__title{font-family:var(--font-d);font-size:clamp(2.4rem,5vw,3.8rem);font-weight:300;line-height:1.05;margin-bottom:.75rem}
+    .shape-hero__sub{font-size:.82rem;color:var(--w45);line-height:1.75;max-width:48ch}
+    .shape-hero__stats{display:flex;gap:2.5rem;flex-wrap:wrap}
+    .shape-hero__stat{text-align:center}
+    .shape-hero__stat-num{font-family:var(--font-d);font-size:1.6rem;font-weight:300;color:var(--gold-l);line-height:1}
+    .shape-hero__stat-label{font-size:.55rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--w45);margin-top:.2rem}
+
+    /* ═══════════════════════════════════════════════════ */
+    /* TREATMENT TILES — 4 nagy vizuális csempe           */
+    /* ═══════════════════════════════════════════════════ */
+    .tile{display:grid;grid-template-columns:1fr 1fr;min-height:520px}
+    .tile--reverse .tile__image{order:2}
+    .tile--reverse .tile__body{order:1}
+
+    .tile__image{
+      background:var(--cream);position:relative;overflow:hidden;
+      display:flex;align-items:center;justify-content:center;
+      min-height:420px;
+    }
+    .tile__image img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+    .tile__image-placeholder{
+      font-size:.65rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;
+      color:var(--c30);text-align:center;padding:2rem;
+    }
+
+    .tile__body{
+      padding:3.5rem 3rem;display:flex;flex-direction:column;justify-content:center;
+    }
+    .tile--dark{background:var(--dark);color:#fff}
+    .tile--dark .tile__body{background:var(--dark)}
+    .tile--cream .tile__body{background:var(--cream)}
+    .tile--ivory .tile__body{background:var(--ivory)}
+    .tile--charcoal .tile__body{background:var(--charcoal);color:#fff}
+
+    .tile__label{font-size:.58rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem}
+    .tile--dark .tile__label,.tile--charcoal .tile__label{color:var(--gold-l)}
+
+    .tile__title{font-family:var(--font-d);font-size:clamp(1.8rem,3vw,2.6rem);font-weight:300;line-height:1.1;margin-bottom:.5rem}
+
+    .tile__highlight{
+      font-family:var(--font-d);font-size:1rem;font-style:italic;
+      line-height:1.5;padding:.8rem 1.2rem;margin:.8rem 0 1.2rem;
+      border-left:2px solid var(--gold);
+    }
+    .tile--dark .tile__highlight,.tile--charcoal .tile__highlight{color:var(--w70);border-color:var(--gold-l)}
+    .tile--cream .tile__highlight,.tile--ivory .tile__highlight{color:var(--charcoal);background:var(--gold-p)}
+
+    .tile__desc{font-size:.82rem;color:var(--c60);line-height:1.75;margin-bottom:1.5rem;max-width:44ch}
+    .tile--dark .tile__desc,.tile--charcoal .tile__desc{color:var(--w45)}
+
+    .tile__points{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1.5rem}
+    .tile__point{font-size:.78rem;line-height:1.5;padding-left:1rem;position:relative;color:var(--c60)}
+    .tile__point::before{content:'';position:absolute;left:0;top:.5rem;width:4px;height:4px;border-radius:50%;background:var(--gold)}
+    .tile__point strong{font-weight:500;color:var(--charcoal)}
+    .tile--dark .tile__point,.tile--charcoal .tile__point{color:var(--w45)}
+    .tile--dark .tile__point strong,.tile--charcoal .tile__point strong{color:#fff}
+
+    .tile__programs{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.5rem}
+    .tile__prog{font-size:.58rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:.4rem .8rem;border:1px solid var(--c10);color:var(--c60)}
+    .tile--dark .tile__prog,.tile--charcoal .tile__prog{border-color:var(--w10);color:var(--w45)}
+
+    .tile__cta{display:inline-flex;align-items:center;gap:.5rem;font-size:.62rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);transition:gap .2s}
+    .tile__cta:hover{gap:.8rem}
+    .tile--dark .tile__cta,.tile--charcoal .tile__cta{color:var(--gold-l)}
+
+    /* ── ÁR STRIP ─────────────────────────────────────── */
+    .price-strip{background:var(--charcoal);color:#fff;padding:2.5rem 0}
+    .price-strip__inner{display:flex;align-items:center;justify-content:center;gap:4rem;flex-wrap:wrap}
+    .price-strip__item{text-align:center}
+    .price-strip__amount{font-family:var(--font-d);font-size:2rem;font-weight:300;color:var(--gold-l)}
+    .price-strip__label{font-size:.6rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--w45);margin-top:.15rem}
+    .price-strip__note{font-size:.65rem;color:var(--w45);font-style:italic;font-family:var(--font-d)}
+    .price-strip__sep{width:1px;height:40px;background:var(--w10)}
+
+    /* ── CTA ──────────────────────────────────────────── */
+    .cta{background:var(--cream);text-align:center;padding:3.5rem 0}
+    .cta__title{font-family:var(--font-d);font-size:clamp(1.4rem,2.5vw,2rem);font-weight:300;margin-bottom:.5rem}
+    .cta__sub{font-size:.78rem;color:var(--c60);margin-bottom:1.5rem}
+    .cta__btns{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap}
+    .btn-gold{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 2rem;background:var(--gold);color:#fff;font-size:.62rem;font-weight:500;letter-spacing:.17em;text-transform:uppercase;transition:background .3s}
+    .btn-gold:hover{background:#9e7e3d}
+    .btn-ghost{font-size:.62rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--c60);border-bottom:1px solid var(--c30);padding-bottom:2px;transition:color .2s}
+    .btn-ghost:hover{color:var(--charcoal);border-color:var(--charcoal)}
+
+    /* ── FOOTER ────────────────────────────────────────── */
+    .footer{background:var(--ivory);border-top:1px solid var(--c10);padding:3rem 0 1.5rem}
+    .footer__inner{display:flex;justify-content:space-between;align-items:center;font-size:.65rem;color:var(--c30);flex-wrap:wrap;gap:1rem}
+    .footer__links{display:flex;gap:1.5rem}
+    .footer__links a{color:var(--c30);transition:color .2s}
+    .footer__links a:hover{color:var(--charcoal)}
+
+    /* RESPONSIVE */
+    @media(max-width:768px){
+      .shape-hero__inner{flex-direction:column;align-items:flex-start}
+      .tile{grid-template-columns:1fr}
+      .tile--reverse .tile__image{order:1}
+      .tile--reverse .tile__body{order:2}
+      .tile__image{min-height:280px}
+      .tile__body{padding:2.5rem 2rem}
+      .price-strip__inner{gap:2rem}
+      .price-strip__sep{display:none}
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav__logo">The Ultimate <span>Beauty</span></a>
+  <div class="nav__links">
+    <a href="klinika.html" class="nav__link">Klinika</a>
+    <a href="protocol-hub.html" class="nav__link">Protocol</a>
+    <a href="technologia-hileft.html" class="nav__link active">Technol&oacute;gia</a>
+    <a href="clinical-program.html" class="nav__link">Program</a>
+    <a href="akademia.html" class="nav__link">Akad&eacute;mia</a>
+  </div>
+  <button class="nav__cta" data-jf-form="konzultacio" data-jf-source="kezeles-ultima-shape">Konzult&aacute;ci&oacute; &rarr;</button>
+</nav>
+
+<div class="bc"><div class="wrap"><a href="index.html">Kezd&odblac;lap</a> / <a href="technologia-hileft.html">ULTIMA HILEFT</a> / ULTIMA Shape</div></div>
+
+<!-- ── HERO ─────────────────────────────────────────── -->
+<section class="shape-hero">
+  <div class="wrap">
+    <div class="shape-hero__inner">
+      <div class="shape-hero__text">
+        <div class="shape-hero__badge">ULTIMA HILEFT&trade; &middot; Testkezel&eacute;s</div>
+        <h1 class="shape-hero__title">ULTIMA <em>Shape</em></h1>
+        <p class="shape-hero__sub">Célzott neuromuszkuláris stimuláció és fotobiomoduláció négy testterületre. Az EMS aktiválja az izomrostokat, a 730/940 nm infravörös fény a mélyszöveti regenerációt támogatja.</p>
+      </div>
+      <div class="shape-hero__stats">
+        <div class="shape-hero__stat"><div class="shape-hero__stat-num">25'</div><div class="shape-hero__stat-label">/ program</div></div>
+        <div class="shape-hero__stat"><div class="shape-hero__stat-num">4</div><div class="shape-hero__stat-label">terület</div></div>
+        <div class="shape-hero__stat"><div class="shape-hero__stat-num">0</div><div class="shape-hero__stat-label">downtime</div></div>
+        <div class="shape-hero__stat"><div class="shape-hero__stat-num">45k</div><div class="shape-hero__stat-label">Ft / terület</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- 1. FENÉK — sötét csempe, kép bal                  -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="tile tile--dark" id="fenek">
+  <div class="tile__image">
+    <div class="tile__image-placeholder">Fenék kezelés<br>fotó helye</div>
+  </div>
+  <div class="tile__body">
+    <div class="tile__label">Testkezelés</div>
+    <h2 class="tile__title">Fenékforma emelés és <em>kontúrformálás</em></h2>
+    <div class="tile__highlight">Különösen veleszületetten laposabb, illetve az idő múlásával ellaposodott vagy megereszkedett fenékforma esetén.</div>
+    <p class="tile__desc">Non-invazív gluteális kezelés, amely célzott izomstimulációval formálja és emeli a feneket: a felső részen volumenépítéssel kerekebb, teltebb formát ad, míg az alsó területen csökkenti a megereszkedést és a fenék alatti redőket.</p>
+    <div class="tile__points">
+      <div class="tile__point"><strong>Volumenépítés felül</strong> — gluteus maximus felső rostjainak aktiválása, kerekebb forma</div>
+      <div class="tile__point"><strong>Emelés és feszesítés</strong> — alsó gluteális régió stimulációja, emelt fenékvonal</div>
+      <div class="tile__point"><strong>Fenék alatti redők</strong> — a „banana roll" terület célzott feszesítése</div>
+      <div class="tile__point"><strong>Cellulit és bőrtextúra</strong> — nyirokaktiválás, fotobiomoduláció</div>
+    </div>
+    <div class="tile__programs">
+      <span class="tile__prog">Glute Lift 25 · 92 Hz</span>
+      <span class="tile__prog">Firm & Shape 25 · 36 Hz</span>
+      <span class="tile__prog">Shape Duo 25 · 84 Hz</span>
+    </div>
+    <a href="index.html#home-contact" class="tile__cta">Konzultáció kérése →</a>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- 2. COMB — ivory csempe, kép jobb                  -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="tile tile--reverse tile--ivory" id="comb">
+  <div class="tile__image">
+    <div class="tile__image-placeholder">Comb kezelés<br>fotó helye</div>
+  </div>
+  <div class="tile__body">
+    <div class="tile__label">Testkezelés</div>
+    <h2 class="tile__title">Combfeszesítés és <em>kontúrformázás</em></h2>
+    <div class="tile__highlight">A belső és hátsó comb az első terület, ahol a bőr lazulása és a cellulit láthatóvá válik — célzott kezelést igényel.</div>
+    <p class="tile__desc">A quadriceps, hamstringek és adduktorok komplex izomcsoportjait célzottan stimuláljuk. A kezelés az izomtónus emelésével és a bőr alatti szövetek keringésfokozásával egyidejűleg dolgozik — feszesebb, simább kontúrt eredményez.</p>
+    <div class="tile__points">
+      <div class="tile__point"><strong>Belső comb feszesítés</strong> — az adduktorok tónusjavítása, vonal formázás</div>
+      <div class="tile__point"><strong>Hátsó comb és cellulit</strong> — narancsbőr csökkentése nyirokfokozással</div>
+      <div class="tile__point"><strong>Comb-fenék átmenet</strong> — harmonikus kontúr a gluteális-femorális régióban</div>
+      <div class="tile__point"><strong>Sport-kiegészítés</strong> — célzott rostaktiváció edzésprogram mellé</div>
+    </div>
+    <div class="tile__programs">
+      <span class="tile__prog">Power Sculpt 25 · 92 Hz</span>
+      <span class="tile__prog">Firm & Shape 25 · 36 Hz</span>
+      <span class="tile__prog">Shape Duo 25 · 84 Hz</span>
+    </div>
+    <a href="index.html#home-contact" class="tile__cta">Konzultáció kérése →</a>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- 3. HASFAL — charcoal csempe, kép bal              -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="tile tile--charcoal" id="hasfal">
+  <div class="tile__image">
+    <div class="tile__image-placeholder">Hasfal kezelés<br>fotó helye</div>
+  </div>
+  <div class="tile__body">
+    <div class="tile__label">Testkezelés</div>
+    <h2 class="tile__title">Hasfal erősítés és <em>core stabilizáció</em></h2>
+    <div class="tile__highlight">A core gyengesége nem pusztán esztétikai kérdés — hátfájdalom, rossz testtartás és kompenzatórikus mozgásminták forrása.</div>
+    <p class="tile__desc">A Flat Core program kifejezetten a hasfali izomzat erősítésére fejlesztett: a rectus abdominis és a transversus abdominis célzott stimulációjával laposabb hasat, stabilabb törzset és jobb testtartást eredményez.</p>
+    <div class="tile__points">
+      <div class="tile__point"><strong>Hasfal feszesítés</strong> — mély és felületes hasizmok egyidejű stimulációja</div>
+      <div class="tile__point"><strong>Core stabilizáció</strong> — mély törzsizmok aktiválása, testtartás javítás</div>
+      <div class="tile__point"><strong>Szülés utáni visszaépítés</strong> — neuromuszkuláris reaktiváció (<a href="protocol-szules-utani-regeneracio.html" style="color:var(--gold-l);border-bottom:1px solid rgba(184,150,90,.3)">részletes program →</a>)</div>
+      <div class="tile__point"><strong>Derékfájdalom csökkentés</strong> — erősebb core = tehermentesített gerinc</div>
+    </div>
+    <div class="tile__programs">
+      <span class="tile__prog">Flat Core 25 · 92 Hz</span>
+      <span class="tile__prog">Power Sculpt 25 · 92 Hz</span>
+      <span class="tile__prog">Shape Duo 25 · 84 Hz</span>
+    </div>
+    <a href="index.html#home-contact" class="tile__cta">Konzultáció kérése →</a>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- 4. FELKAR — cream csempe, kép jobb                -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="tile tile--reverse tile--cream" id="felkar">
+  <div class="tile__image">
+    <div class="tile__image-placeholder">Felkar kezelés<br>fotó helye</div>
+  </div>
+  <div class="tile__body">
+    <div class="tile__label">Testkezelés</div>
+    <h2 class="tile__title">Felkar feszesítés és <em>tónusjavítás</em></h2>
+    <div class="tile__highlight">A felkar belső oldala az egyik leggyakoribb panasz — különösen nyári ruházatban szembetűnő a triceps tónusvesztése.</div>
+    <p class="tile__desc">A felkari bőr vékonyabb és érzékenyebb — ezért az ULTIMA Shape itt finomabban állított intenzitással dolgozik. A triceps célzott aktiválása és a fotobiomodulációs bőrtámogatás együtt eredményez feszesebb, formásabb felkart.</p>
+    <div class="tile__points">
+      <div class="tile__point"><strong>Triceps tónusjavítás</strong> — a felkar belső oldalának célzott erősítése</div>
+      <div class="tile__point"><strong>„Lógó felkar" kezelése</strong> — izom + bőrfeszesség egyidejű javítása</div>
+      <div class="tile__point"><strong>Kontúr formázás</strong> — a felkar vonalának természetes megjelenése</div>
+    </div>
+    <div class="tile__programs">
+      <span class="tile__prog">Power Sculpt 25 · 92 Hz</span>
+      <span class="tile__prog">Firm & Shape 25 · 36 Hz</span>
+    </div>
+    <a href="index.html#home-contact" class="tile__cta">Konzultáció kérése →</a>
+  </div>
+</div>
+
+<!-- ÁR STRIP -->
+<div class="price-strip">
+  <div class="wrap">
+    <div class="price-strip__inner">
+      <div class="price-strip__item"><div class="price-strip__amount">45 000 Ft</div><div class="price-strip__label">alkalom / terület</div></div>
+      <div class="price-strip__sep"></div>
+      <div class="price-strip__item"><div class="price-strip__amount">240 000 Ft</div><div class="price-strip__label">6 alkalmas kúra</div></div>
+      <div class="price-strip__sep"></div>
+      <div class="price-strip__item"><div class="price-strip__note">Több terület → egyéni ajánlat</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="wrap">
+    <h2 class="cta__title">Kérjen személyre szabott <em>konzultációt</em></h2>
+    <p class="cta__sub">Felmérjük a területeket, meghatározzuk az optimális programot.</p>
+    <div class="cta__btns">
+      <a href="index.html#home-contact" class="btn-gold">Időpontfoglalás →</a>
+      <a href="technologia-hileft.html" class="btn-ghost">← ULTIMA HILEFT</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer"><div class="wrap"><div class="footer__inner">
+  <span>&copy; 2026 The Ultimate Beauty</span>
+  <div class="footer__links"><a href="adatvedelem.html">Adatvédelem</a><a href="aszf.html">ÁSZF</a><a href="klinika.html">Klinika</a></div>
+</div></div></footer>
+
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('on',window.scrollY>60));
+</script>
+<link rel="stylesheet" href="css/jotform-lightbox.css"><script src="js/jotform-lightbox.js"></script>
+</body>
+</html>
