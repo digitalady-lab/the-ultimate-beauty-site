@@ -18,7 +18,7 @@
   // ═══════════════════════════════════════════════════════════════
   // FORM 1: SZEMÉLYES KONZULTÁCIÓ
   // ═══════════════════════════════════════════════════════════════
-  window.TUB_FORM_KONZULTACIO = function(source) {
+  window.TUB_FORM_KONZULTACIO = function(source, preSelectInterest) {
     return '<div class="tub-form-wrap">' +
       '<div class="tub-form__header">' +
       '<h3 class="tub-form__title">Személyes konzultáció</h3>' +
@@ -55,11 +55,23 @@
         '<label class="tub-label">Érdeklődési terület <span class="tub-label__required">*</span></label>' +
         '<select name="interest" class="tub-select" required>' +
           '<option value="">Kérjük válasszon...</option>' +
+          '<optgroup label="Arc">' +
           '<option value="Integrált arcfiatalítás">Integrált arcfiatalítás</option>' +
           '<option value="Bőrminőség javítás">Bőrminőség javítás</option>' +
-          '<option value="Testkezelés">Testkezelés (Venus Legacy + HILEFT)</option>' +
+          '<option value="Integrált arcfiatalítás (Ultimate Lift)">Integrált arcfiatalítás (Ultimate Lift)</option>' +
+          '<option value="Kollagén újraépítés (40+)">Kollagén újraépítés (40+)</option>' +
           '<option value="Mini Face Lift">Mini Face Lift konzultáció</option>' +
+          '</optgroup>' +
+          '<optgroup label="Test">' +
+          '<option value="Testkezelés">Testkezelés (Venus Legacy + HILEFT)</option>' +
+          '<option value="Testfeszesítés / hasfali rehabilitáció">Testfeszesítés / hasfali rehabilitáció</option>' +
           '<option value="Szülés utáni regeneráció">Szülés utáni regeneráció</option>' +
+          '</optgroup>' +
+          '<optgroup label="Speciális">' +
+          '<option value="Férfi esztétika (Executive Protocol)">Férfi esztétika (Executive Protocol)</option>' +
+          '<option value="Ingyenes Observ 520x bőrelemzés">Ingyenes Observ 520x bőrelemzés</option>' +
+          '<option value="Klinikai vizsgálat">Klinikai vizsgálat — résztvevő szeretnék lenni</option>' +
+          '</optgroup>' +
           '<option value="Általános konzultáció">Általános konzultáció / Még nem tudom</option>' +
         '</select>' +
         '<span class="tub-error"></span>' +
@@ -548,16 +560,26 @@
       var source = el.dataset.source || '';
       var generators = {
         'konzultacio': TUB_FORM_KONZULTACIO,
-        'observ': TUB_FORM_OBSERV,
+        'observ': TUB_FORM_KONZULTACIO,
         'led-mask': TUB_FORM_LED_MASK,
-        'clinical': TUB_FORM_CLINICAL,
-        'founding': TUB_FORM_FOUNDING,
-        'akademia': TUB_FORM_AKADEMIA,
+        'clinical': TUB_FORM_KONZULTACIO,
+        'founding': TUB_FORM_KONZULTACIO,
+        'akademia': TUB_FORM_KONZULTACIO,
         'newsletter': TUB_FORM_NEWSLETTER
       };
       if (generators[formType]) {
         el.innerHTML = generators[formType](source);
         el.dataset.tubRendered = '1';
+        // Pre-select interest if mapped from another form type
+        var preSelectMap = {
+          'observ': 'Ingyenes Observ 520x bőrelemzés',
+          'clinical': 'Klinikai vizsgálat',
+          'founding': 'Klinikai vizsgálat'
+        };
+        if (preSelectMap[formType]) {
+          var select = el.querySelector('select[name="interest"]');
+          if (select) { select.value = preSelectMap[formType]; }
+        }
       }
     });
   }

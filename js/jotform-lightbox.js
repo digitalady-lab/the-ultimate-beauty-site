@@ -20,9 +20,10 @@
     'observ':       { id: '260812972566061', title: 'Ingyenes Observ 520x Bőrelemzés',
                       prepopulate: { interestType: 'Ingyenes Observ 520x bőrelemzés' } },
     'led-mask':     { id: '260812571961055', title: 'ULTIMA LED Mask Érdeklődés' },
-    'clinical':     { id: '260812813146049', title: 'Clinical Program Jelentkezés' },
-    'founding':     { id: '260812813146049', title: 'Klinikai Vizsgálat Jelentkezés',
-                      prepopulate: { interestType: 'Founding Access' } },
+    'clinical':     { id: '260812972566061', title: 'Clinical Program Jelentkezés',
+                      prepopulate: { interestType: 'Klinikai vizsgálat' } },
+    'founding':     { id: '260812972566061', title: 'Klinikai Vizsgálat Jelentkezés',
+                      prepopulate: { interestType: 'Klinikai vizsgálat' } },
     'akademia':     { id: '260812972566061', title: 'Akadémia Jelentkezés',
                       prepopulate: { interestType: 'Akadémia érdeklődés' } },
     'newsletter':   { id: '260812738145054', title: 'Feliratkozás' }
