@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ULTIMA HI-LIFT™ — Sebészeti Kiegészítő Protokoll | The Ultimate Beauty</title>
+  <meta name="description" content="ULTIMA HI-LIFT™: mini facelift előtti prehabilitáció és utóoperatív regeneráció HILEFT technológiával. Szöveti minőség optimalizálás, fotobiomoduláció, neuromuszkuláris stabilizáció.">
+  <meta property="og:title" content="ULTIMA HI-LIFT™ — The Ultimate Beauty">
+  <meta property="og:description" content="Sebészeti kiegészítő protokoll: mini facelift prehabilitáció és poszt-operatív regeneráció HILEFT technológiával.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://theultimatebeauty.net/kezeles-ultima-hilift.html">
+  <meta property="og:image" content="https://theultimatebeauty.net/assets/images/og-cover.jpg">
+  <link rel="canonical" href="https://theultimatebeauty.net/kezeles-ultima-hilift.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ivory:#FDFAF6;--cream:#F5F0E8;--charcoal:#1A1816;--dark:#12100E;
+      --c60:rgba(26,24,22,.6);--c30:rgba(26,24,22,.3);--c10:rgba(26,24,22,.08);
+      --gold:#B8965A;--gold-l:#D4B077;--gold-p:rgba(184,150,90,.12);
+      --w20:rgba(255,255,255,.2);--w10:rgba(255,255,255,.1);--w45:rgba(255,255,255,.45);--w70:rgba(255,255,255,.7);
+      --font-d:'Cormorant Garamond',serif;--font-s:'Montserrat',sans-serif;
+      --ease:cubic-bezier(.25,.46,.45,.94);--ease-out:cubic-bezier(.16,1,.3,1);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+    body{background:var(--ivory);color:var(--charcoal);font-family:var(--font-s);font-weight:300;font-size:15px;line-height:1.7;overflow-x:hidden}
+    img{display:block;max-width:100%;height:auto}a{text-decoration:none;color:inherit}button{border:none;background:none;cursor:pointer;font-family:inherit}
+    .wrap{max-width:1260px;margin:0 auto;padding:0 2rem}
+    em{font-style:italic;font-family:var(--font-d);font-size:1.06em}
+
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.5rem 2rem;display:flex;align-items:center;justify-content:space-between;transition:all .4s var(--ease)}
+    .nav.on{background:rgba(253,250,246,.95);backdrop-filter:blur(12px);padding:1rem 2rem;box-shadow:0 1px 0 var(--c10)}
+    .nav__logo{font-family:var(--font-d);font-size:1.2rem;font-weight:500;letter-spacing:.04em}
+    .nav__logo span{color:var(--gold)}
+    .nav__links{display:flex;gap:2.5rem;align-items:center}
+    .nav__link{font-size:.68rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--c60);transition:color .2s}
+    .nav__link:hover,.nav__link.active{color:var(--charcoal)}
+    .nav__cta{font-size:.68rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:.7rem 1.6rem;border:1px solid var(--charcoal);transition:all .2s}
+    .nav__cta:hover{background:var(--charcoal);color:var(--ivory)}
+    .bc{padding:6rem 2rem .8rem;font-size:.6rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--c30)}
+    .bc a{color:var(--c60)}.bc a:hover{color:var(--charcoal)}
+
+    /* HERO — prémium sebészeti hangvétel */
+    .hilift-hero{background:var(--dark);color:#fff;padding:3.5rem 0 3rem}
+    .hilift-hero__inner{display:flex;align-items:flex-end;justify-content:space-between;gap:3rem;flex-wrap:wrap}
+    .hilift-hero__text{max-width:620px}
+    .hilift-hero__badge{display:inline-flex;gap:.5rem;padding:.35rem .8rem;border:1px solid rgba(184,150,90,.25);font-size:.55rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-l);margin-bottom:1rem}
+    .hilift-hero__title{font-family:var(--font-d);font-size:clamp(2.4rem,5vw,3.8rem);font-weight:300;line-height:1.05;margin-bottom:.75rem}
+    .hilift-hero__sub{font-size:.82rem;color:var(--w45);line-height:1.75;max-width:50ch}
+    .hilift-hero__stats{display:flex;gap:2.5rem;flex-wrap:wrap}
+    .hilift-hero__stat{text-align:center}
+    .hilift-hero__stat-num{font-family:var(--font-d);font-size:1.6rem;font-weight:300;color:var(--gold-l);line-height:1}
+    .hilift-hero__stat-label{font-size:.55rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--w45);margin-top:.2rem}
+
+    /* TILES */
+    .tile{display:grid;grid-template-columns:1fr 1fr;min-height:520px;position:relative;overflow:hidden}
+    .tile--reverse .tile__image-side{order:2}.tile--reverse .tile__text-side{order:1}
+    .tile__image-side{position:relative;cursor:pointer;overflow:hidden;min-height:420px;background:var(--cream)}
+    .tile__image-side::before{content:'';position:absolute;inset:0;z-index:2;background:linear-gradient(135deg,rgba(184,150,90,0) 0%,rgba(184,150,90,.25) 100%);opacity:0;transition:opacity .5s var(--ease);pointer-events:none}
+    .tile__image-side:hover::before{opacity:1}
+    .tile__image-side::after{content:'\2726 Galéria';position:absolute;bottom:1.5rem;left:50%;z-index:3;transform:translateX(-50%) translateY(8px);font-size:.6rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#fff;background:rgba(0,0,0,.45);backdrop-filter:blur(10px);padding:.55rem 1.4rem;opacity:0;transition:opacity .4s,transform .4s var(--ease);pointer-events:none;border:1px solid rgba(184,150,90,.3)}
+    .tile__image-side:hover::after{opacity:1;transform:translateX(-50%) translateY(0)}
+    .tile__image-side img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;transition:transform .7s var(--ease),filter .7s}
+    .tile__image-side:hover img{transform:scale(1.06);filter:brightness(.92)}
+    .tile__text-side{padding:3.5rem 3rem;display:flex;flex-direction:column;justify-content:center;position:relative;cursor:pointer;transition:background .4s}
+    .tile__text-side::after{content:'\2726 Részletek';position:absolute;bottom:1.5rem;right:2rem;font-size:.6rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);opacity:0;transform:translateY(5px);transition:opacity .4s,transform .4s var(--ease);pointer-events:none}
+    .tile__text-side:hover::after{opacity:1;transform:translateY(0)}
+    .tile--dark .tile__text-side{background:var(--dark);color:#fff}
+    .tile--ivory .tile__text-side{background:var(--ivory)}
+    .tile--charcoal .tile__text-side{background:var(--charcoal);color:#fff}
+    .tile--cream .tile__text-side{background:var(--cream)}
+    .tile__label{font-size:.58rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem}
+    .tile--dark .tile__label,.tile--charcoal .tile__label{color:var(--gold-l)}
+    .tile__title{font-family:var(--font-d);font-size:clamp(1.8rem,3vw,2.6rem);font-weight:300;line-height:1.1;margin-bottom:.5rem}
+    .tile__highlight{font-family:var(--font-d);font-size:1rem;font-style:italic;line-height:1.5;padding:.8rem 1.2rem;margin:.8rem 0 1.2rem;border-left:2px solid var(--gold)}
+    .tile--dark .tile__highlight,.tile--charcoal .tile__highlight{color:var(--w70);border-color:var(--gold-l)}
+    .tile--cream .tile__highlight,.tile--ivory .tile__highlight{color:var(--charcoal);background:var(--gold-p)}
+    .tile__desc{font-size:.82rem;color:var(--c60);line-height:1.75;margin-bottom:1.2rem;max-width:44ch}
+    .tile--dark .tile__desc,.tile--charcoal .tile__desc{color:var(--w45)}
+    .tile__points{display:flex;flex-direction:column;gap:.35rem;margin-bottom:1.2rem}
+    .tile__point{font-size:.76rem;line-height:1.5;padding-left:1rem;position:relative;color:var(--c60)}
+    .tile__point::before{content:'';position:absolute;left:0;top:.5rem;width:4px;height:4px;border-radius:50%;background:var(--gold)}
+    .tile__point strong{font-weight:500;color:var(--charcoal)}
+    .tile--dark .tile__point,.tile--charcoal .tile__point{color:var(--w45)}
+    .tile--dark .tile__point strong,.tile--charcoal .tile__point strong{color:#fff}
+    .tile__programs{display:flex;gap:.4rem;flex-wrap:wrap}
+    .tile__prog{font-size:.55rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:.35rem .7rem;border:1px solid var(--c10);color:var(--c60)}
+    .tile--dark .tile__prog,.tile--charcoal .tile__prog{border-color:var(--w10);color:var(--w45)}
+
+    /* EXPAND */
+    .tile__expand{position:absolute;inset:0;z-index:10;clip-path:circle(0% at var(--cx,50%) var(--cy,50%));transition:clip-path .9s var(--ease-out);display:flex;flex-direction:column;overflow-y:auto}
+    .tile__expand.active{clip-path:circle(150% at var(--cx,50%) var(--cy,50%))}
+    .tile__expand.closing{clip-path:circle(0% at var(--cx,50%) var(--cy,50%));transition:clip-path .5s cubic-bezier(.55,.06,.68,.19)}
+    .tile__gallery{background:var(--dark);color:#fff;padding:3rem;align-items:center;justify-content:center}
+    .tile__gallery-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;width:100%;max-width:800px}
+    .tile__gallery-item{aspect-ratio:4/3;background:var(--charcoal);border:1px solid var(--w10);display:flex;align-items:center;justify-content:center;font-size:.6rem;color:var(--w45);letter-spacing:.12em;text-transform:uppercase;overflow:hidden;position:relative;opacity:0;transform:translateY(30px) scale(.92);transition:opacity .6s var(--ease-out),transform .6s var(--ease-out)}
+    .tile__expand.active .tile__gallery-item{opacity:1;transform:translateY(0) scale(1)}
+    .tile__expand.active .tile__gallery-item:nth-child(1){transition-delay:.15s}
+    .tile__expand.active .tile__gallery-item:nth-child(2){transition-delay:.25s}
+    .tile__expand.active .tile__gallery-item:nth-child(3){transition-delay:.35s}
+    .tile__expand.active .tile__gallery-item:nth-child(4){transition-delay:.45s}
+    .tile__gallery-item:hover{border-color:var(--gold)}
+    .tile__gallery-item img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+    .tile__gallery-title{font-family:var(--font-d);font-size:1.6rem;font-weight:300;margin-bottom:1.5rem;text-align:center;width:100%;opacity:0;transform:translateY(10px);transition:opacity .4s .1s,transform .4s .1s var(--ease-out)}
+    .tile__expand.active .tile__gallery-title{opacity:1;transform:translateY(0)}
+    .tile__details{padding:3rem;overflow-y:auto}
+    .tile--dark .tile__details{background:var(--dark);color:#fff}
+    .tile--charcoal .tile__details{background:var(--charcoal);color:#fff}
+    .tile--cream .tile__details{background:var(--cream)}
+    .tile__details-inner{max-width:800px;margin:0 auto;opacity:0;transform:translateY(15px);transition:opacity .5s .2s,transform .5s .2s var(--ease-out)}
+    .tile__expand.active .tile__details-inner{opacity:1;transform:translateY(0)}
+    .tile__details h3{font-family:var(--font-d);font-size:1.6rem;font-weight:300;margin-bottom:1rem}
+    .tile__details p{font-size:.82rem;line-height:1.8;margin-bottom:1rem;max-width:60ch}
+    .tile--dark .tile__details p,.tile--charcoal .tile__details p{color:var(--w45)}
+    .tile__details-programs{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.5rem}
+    .dp{padding:1.2rem;border-left:2px solid var(--gold)}
+    .tile--dark .dp,.tile--charcoal .dp{background:rgba(255,255,255,.03)}
+    .tile--cream .dp{background:var(--gold-p)}
+    .dp__name{font-family:var(--font-d);font-size:1.1rem;font-weight:400}
+    .dp__goal{font-size:.6rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin:.15rem 0 .4rem}
+    .dp__text{font-size:.72rem;color:var(--c60);line-height:1.6}
+    .tile--dark .dp__text,.tile--charcoal .dp__text{color:var(--w45)}
+    .dp__specs{display:flex;gap:.4rem;margin-top:.5rem}
+    .dp__spec{font-size:.52rem;padding:.25rem .5rem;border:1px solid var(--c10);color:var(--c60)}
+    .tile--dark .dp__spec,.tile--charcoal .dp__spec{border-color:var(--w10);color:var(--w45)}
+    @keyframes specFlash{0%{border-color:var(--gold);color:var(--gold);box-shadow:0 0 8px rgba(184,150,90,.3)}100%{border-color:var(--w10);color:var(--w45);box-shadow:none}}
+    .tile__expand.active .dp__spec{animation:specFlash 1.2s .6s var(--ease) forwards}
+    .dp:hover{border-color:var(--gold);background:rgba(184,150,90,.05)!important}
+    .tile__close{position:absolute;top:1.5rem;right:1.5rem;z-index:20;width:40px;height:40px;border-radius:50%;background:rgba(0,0,0,.4);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.1rem;cursor:pointer;opacity:0;transform:scale(.8);transition:opacity .3s .4s,transform .3s .4s var(--ease-out),background .2s}
+    .tile__expand.active .tile__close{opacity:1;transform:scale(1)}
+    .tile__close:hover{background:var(--gold)}
+
+    .price-strip{background:var(--charcoal);color:#fff;padding:2.5rem 0}
+    .price-strip__inner{display:flex;align-items:center;justify-content:center;gap:4rem;flex-wrap:wrap}
+    .price-strip__item{text-align:center}
+    .price-strip__amount{font-family:var(--font-d);font-size:2rem;font-weight:300;color:var(--gold-l)}
+    .price-strip__label{font-size:.6rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--w45);margin-top:.15rem}
+    .price-strip__note{font-size:.65rem;color:var(--w45);font-style:italic;font-family:var(--font-d)}
+    .price-strip__sep{width:1px;height:40px;background:var(--w10)}
+    .cta{background:var(--cream);text-align:center;padding:3.5rem 0}
+    .cta__title{font-family:var(--font-d);font-size:clamp(1.4rem,2.5vw,2rem);font-weight:300;margin-bottom:.5rem}
+    .cta__sub{font-size:.78rem;color:var(--c60);margin-bottom:1.5rem}
+    .cta__btns{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap}
+    .btn-gold{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 2rem;background:var(--gold);color:#fff;font-size:.62rem;font-weight:500;letter-spacing:.17em;text-transform:uppercase;transition:background .3s}
+    .btn-gold:hover{background:#9e7e3d}
+    .btn-ghost{font-size:.62rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--c60);border-bottom:1px solid var(--c30);padding-bottom:2px;transition:color .2s}
+    .btn-ghost:hover{color:var(--charcoal);border-color:var(--charcoal)}
+    .footer{background:var(--ivory);border-top:1px solid var(--c10);padding:3rem 0 1.5rem}
+    .footer__inner{display:flex;justify-content:space-between;align-items:center;font-size:.65rem;color:var(--c30);flex-wrap:wrap;gap:1rem}
+    .footer__links{display:flex;gap:1.5rem}
+    .footer__links a{color:var(--c30);transition:color .2s}
+    .footer__links a:hover{color:var(--charcoal)}
+
+    @media(max-width:768px){
+      .hilift-hero__inner{flex-direction:column;align-items:flex-start}
+      .tile{grid-template-columns:1fr}
+      .tile--reverse .tile__image-side{order:1}.tile--reverse .tile__text-side{order:2}
+      .tile__image-side{min-height:280px}.tile__text-side{padding:2.5rem 2rem}
+      .tile__gallery-grid,.tile__details-programs{grid-template-columns:1fr}
+      .price-strip__inner{gap:2rem}.price-strip__sep{display:none}
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav__logo">The Ultimate <span>Beauty</span></a>
+  <div class="nav__links">
+    <a href="klinika.html" class="nav__link">Klinika</a>
+    <a href="protocol-hub.html" class="nav__link">Protocol</a>
+    <a href="technologia-hileft.html" class="nav__link active">Technol&oacute;gia</a>
+    <a href="clinical-program.html" class="nav__link">Program</a>
+    <a href="akademia.html" class="nav__link">Akad&eacute;mia</a>
+  </div>
+  <button class="nav__cta" data-jf-form="konzultacio" data-jf-source="kezeles-ultima-hilift">Konzult&aacute;ci&oacute; &rarr;</button>
+</nav>
+
+<div class="bc"><div class="wrap"><a href="index.html">Kezd&odblac;lap</a> / <a href="technologia-hileft.html">ULTIMA HILEFT</a> / ULTIMA HI-LIFT</div></div>
+
+<!-- HERO -->
+<section class="hilift-hero">
+  <div class="wrap">
+    <div class="hilift-hero__inner">
+      <div class="hilift-hero__text">
+        <div class="hilift-hero__badge">ULTIMA HILEFT&trade; &middot; Seb&eacute;szeti integr&aacute;ci&oacute;</div>
+        <h1 class="hilift-hero__title">ULTIMA <em>HI-LIFT&trade;</em></h1>
+        <p class="hilift-hero__sub">Sebészeti kiegészítő protokoll — a HILEFT technológia integrálása minimálisan invazív és felületes facelift eljárások mellé. Prehabilitáció, poszt-operatív regeneráció és hosszú távú kontúrstabilitás.</p>
+      </div>
+      <div class="hilift-hero__stats">
+        <div class="hilift-hero__stat"><div class="hilift-hero__stat-num">4</div><div class="hilift-hero__stat-label">fázis</div></div>
+        <div class="hilift-hero__stat"><div class="hilift-hero__stat-num">Pre+Post</div><div class="hilift-hero__stat-label">operatív</div></div>
+        <div class="hilift-hero__stat"><div class="hilift-hero__stat-num">0</div><div class="hilift-hero__stat-label">extra downtime</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- 1. MINI FACELIFT INTEGRÁCIÓ                       -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="tile tile--dark" id="facelift">
+  <div class="tile__image-side">
+    <img src="assets/images/shape/heni-konzultacio.png" alt="Mini Facelift konzultáció — The Ultimate Beauty">
+  </div>
+  <div class="tile__text-side">
+    <div class="tile__label">Sebészeti protokoll</div>
+    <h2 class="tile__title">Mini Facelift <em>integráció</em></h2>
+    <div class="tile__highlight">A HILEFT nem sebészeti alternatíva — a szöveti minőség és a funkcionális stabilitás élettani támogatására irányul a műtét előtt és után.</div>
+    <p class="tile__desc">A lokális érzéstelenítésben végzett mini facelift eljárásoknál a hosszú távú eredmény a dermális kollagén, a mikrokeringés és az arcizom-tónus egyensúlyától függ. A HILEFT ezeket célozza — 4 fázisban, sebészi kontroll mellett.</p>
+    <div class="tile__points">
+      <div class="tile__point"><strong>I. Prehabilitáció</strong> — 3–4 hét pre-op: szöveti minőség, mikrokeringés, izomtónus</div>
+      <div class="tile__point"><strong>II. Sebészeti fázis</strong> — HILEFT szünet, teljes sebészi kontroll</div>
+      <div class="tile__point"><strong>III. Korai poszt-op</strong> — LED 730 nm sebészi engedéllyel: hegérés, mikrokeringés</div>
+      <div class="tile__point"><strong>IV. Késői poszt-op</strong> — ≥3–6 hó: EMS integráció, kontúr fenntartás</div>
+    </div>
+    <div class="tile__programs">
+      <span class="tile__prog">Pre-op: 3–4 hét</span>
+      <span class="tile__prog">Post-op LED: sebészi döntés</span>
+      <span class="tile__prog">EMS: ≥3 hó</span>
+    </div>
+  </div>
+  <div class="tile__expand tile__gallery" id="facelift-gallery">
+    <button class="tile__close" onclick="closeExpand('facelift-gallery')">&#10005;</button>
+    <div class="tile__gallery-title">Mini Facelift integráció — <em>A klinika</em></div>
+    <div class="tile__gallery-grid">
+      <div class="tile__gallery-item"><img src="assets/images/shape/ultima-shape-treatment-4.jpg" alt="HILEFT kezelés"></div>
+      <div class="tile__gallery-item"><img src="assets/images/shape/rendelo-keszulek.png" alt="Kezelőhelyiség"></div>
+      <div class="tile__gallery-item"><img src="assets/images/shape/heni-dolgozik.png" alt="Előkészítés"></div>
+      <div class="tile__gallery-item"><img src="assets/images/shape/varoterm.png" alt="Váróterem"></div>
+    </div>
+  </div>
+  <div class="tile__expand tile__details" id="facelift-details">
+    <button class="tile__close" onclick="closeExpand('facelift-details')">&#10005;</button>
+    <div class="tile__details-inner">
+      <h3>Mini Facelift integráció — <em>4 fázisú protokoll</em></h3>
+      <p>A lokális érzéstelenítésben végzett felületes (mini) facelift eljárásoknál a szöveti minőség relatív jelentősége fokozottabb, mint mély SMAS-eljárásoknál — a bőr rugalmassága és a dermális struktúra közvetlenebb hatással van a végső kontúrra.</p>
+      <p>A HILEFT ebben a kontextusban nem sebészeti alternatíva, hanem kiegészítő modul: a fotobiomoduláció a szöveti vitalitást, az EMS a funkcionális stabilitást támogatja — a sebész által meghatározott időzítéssel.</p>
+      <div class="tile__details-programs">
+        <div class="dp"><div class="dp__name">I. Prehabilitáció</div><div class="dp__goal">Műtét előtt 3–4 héttel</div><div class="dp__text">Szöveti minőség optimalizálása: mikrokeringés, fibroblaszt-aktivitás, izomtónus. A kezeléseket 48–72 órával a műtét előtt be kell fejezni — a lokális hyperémia ne befolyásolja a vérzéskontrollt. Felületes eljárásoknál a dermális minőség különösen releváns.</div><div class="dp__specs"><span class="dp__spec">730+940 nm</span><span class="dp__spec">EMS</span><span class="dp__spec">3–4 hét</span></div></div>
+        <div class="dp"><div class="dp__name">II. Sebészeti fázis</div><div class="dp__goal">Teljes sebészi kontroll</div><div class="dp__text">HILEFT ebben az időszakban nem alkalmazandó. A műtéti szakasz kizárólag a sebész kompetenciája.</div><div class="dp__specs"><span class="dp__spec">HILEFT szünet</span></div></div>
+        <div class="dp"><div class="dp__name">III. Korai poszt-op</div><div class="dp__goal">Sebészi döntés alapján</div><div class="dp__text">LED 730 nm a kisebb szöveti trauma miatt mini facelift esetén korábban integrálható. Mikrokeringés támogatása, hegérés, lokális szöveti adaptáció. EMS NEM javasolt ebben a szakaszban.</div><div class="dp__specs"><span class="dp__spec">730 nm LED</span><span class="dp__spec">Sebészi engedély</span></div></div>
+        <div class="dp"><div class="dp__name">IV. Késői poszt-op</div><div class="dp__goal">≥ 3–6 hónap</div><div class="dp__text">EMS integráció a szöveti stabilizáció függvényében. Izomtónus stabilizálás, dermális minőség fenntartás, kollagén-remodellációs támogatás, kontúrstabilitás. Az EMS a sebészi korrekcióval nem érintett izomcsoportokat harmonizálja.</div><div class="dp__specs"><span class="dp__spec">EMS + LED</span><span class="dp__spec">Fenntartó fázis</span></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ÁR STRIP -->
+<div class="price-strip">
+  <div class="wrap">
+    <div class="price-strip__inner">
+      <div class="price-strip__item"><div class="price-strip__amount">112 000 Ft</div><div class="price-strip__label">alkalom</div></div>
+      <div class="price-strip__sep"></div>
+      <div class="price-strip__item"><div class="price-strip__note">Egyéni terv alapján</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="wrap">
+    <h2 class="cta__title">Kérjen személyre szabott <em>sebészeti konzultációt</em></h2>
+    <p class="cta__sub">A kezelési terv minden esetben egyéni orvosi és sebészi mérlegelés alapján kerül meghatározásra.</p>
+    <div class="cta__btns">
+      <a href="index.html#home-contact" class="btn-gold">Időpontfoglalás →</a>
+      <a href="technologia-hileft.html" class="btn-ghost">← ULTIMA HILEFT</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="wrap"><div class="footer__inner">
+  <span>&copy; 2026 The Ultimate Beauty</span>
+  <div class="footer__links"><a href="adatvedelem.html">Adatvédelem</a><a href="aszf.html">ÁSZF</a><a href="klinika.html">Klinika</a></div>
+</div></div></footer>
+
+<script>
+(function(){
+  const nav=document.getElementById('nav');
+  window.addEventListener('scroll',()=>nav.classList.toggle('on',window.scrollY>60));
+  const images=document.querySelectorAll('.tile__image-side');
+  function updateParallax(){images.forEach(img=>{const rect=img.getBoundingClientRect();const vh=window.innerHeight;if(rect.top<vh&&rect.bottom>0){const p=(vh-rect.top)/(vh+rect.height);const o=(p-.5)*40;const c=img.querySelector('img');if(c)c.style.transform='translateY('+o+'px) scale(1.08)'}});requestAnimationFrame(updateParallax)}
+  updateParallax();
+  function setClipOrigin(el,e){const r=el.closest('.tile').getBoundingClientRect();el.style.setProperty('--cx',((e.clientX-r.left)/r.width*100).toFixed(1)+'%');el.style.setProperty('--cy',((e.clientY-r.top)/r.height*100).toFixed(1)+'%')}
+  window.openGallery=function(a,e){closeAllImmediate();const el=document.getElementById(a+'-gallery');if(e)setClipOrigin(el,e);requestAnimationFrame(()=>{el.classList.remove('closing');el.classList.add('active')})};
+  window.openDetails=function(a,e){closeAllImmediate();const el=document.getElementById(a+'-details');if(e)setClipOrigin(el,e);requestAnimationFrame(()=>{el.classList.remove('closing');el.classList.add('active')})};
+  window.closeExpand=function(id){const el=document.getElementById(id);el.classList.add('closing');el.classList.remove('active');el.addEventListener('transitionend',function h(){el.classList.remove('closing');el.removeEventListener('transitionend',h)})};
+  function closeAllImmediate(){document.querySelectorAll('.tile__expand.active').forEach(e=>{e.classList.remove('active','closing')})}
+  document.querySelectorAll('.tile__image-side').forEach(s=>{s.addEventListener('click',function(e){openGallery(this.closest('.tile').id,e)})});
+  document.querySelectorAll('.tile__text-side').forEach(s=>{s.addEventListener('click',function(e){if(e.target.tagName==='A')return;openDetails(this.closest('.tile').id,e)})});
+  let tx=0,st=null;
+  document.addEventListener('touchstart',function(e){const g=e.target.closest('.tile__expand.active');if(!g)return;tx=e.touches[0].clientX;st=g},{passive:true});
+  document.addEventListener('touchend',function(e){if(!st)return;if(Math.abs(e.changedTouches[0].clientX-tx)>80)closeExpand(st.id);st=null},{passive:true});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')document.querySelectorAll('.tile__expand.active').forEach(el=>{closeExpand(el.id)})});
+})();
+</script>
+<link rel="stylesheet" href="css/jotform-lightbox.css"><script src="js/jotform-lightbox.js"></script>
+</body>
+</html>
