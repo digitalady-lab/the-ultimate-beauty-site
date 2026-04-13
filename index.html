@@ -426,7 +426,7 @@
                             <a class="protocol-card-link" href="#" onclick="switchTab('hileft'); return false;">A tudomány háttere →</a>
                             <div class="protocol-card-treatments">
                                 <span class="protocol-card-treatments-label">Elérhető kezelések:</span>
-                                <button class="treatment-chip" onclick="openUltimaModal('face'); event.stopPropagation();">Arc revitalizáció</button>
+                                <button class="treatment-chip" onclick="window.location.href='kezeles-ultima-face.html'; event.stopPropagation();">Arc revitalizáció</button>
                                 <button class="treatment-chip" onclick="window.location.href='kezeles-ultima-shape.html'; event.stopPropagation();">Kontúrharmonizálás</button>
                                 <button class="treatment-chip" onclick="openUltimaModal('hilift'); event.stopPropagation();">Mély lifting</button>
                                 <button class="treatment-chip" onclick="openUltimaModal('mama'); event.stopPropagation();">Szülés utáni megújulás</button>
@@ -1919,7 +1919,7 @@
 
                         <div class="ultima-treatments-grid">
                             <!-- ULTIMA Face -->
-                            <div class="ultima-treatment-card" onclick="openUltimaModal('face')">
+                            <div class="ultima-treatment-card" onclick="window.location.href='kezeles-ultima-face.html'">
                                 <div class="ultima-treatment-card__header">
                                     <span class="ultima-treatment-card__phase">I. Prepare</span>
                                     <h3 class="ultima-treatment-card__name">ULTIMA Face</h3>
@@ -4040,6 +4040,7 @@
 
             function openUltimaModal(key) {
                 if (key === 'shape') { window.location.href = 'kezeles-ultima-shape.html'; return; }
+                if (key === 'face') { window.location.href = 'kezeles-ultima-face.html'; return; }
                 var t = ultimaTreatments[key];
                 if (!t) return;
                 window._currentUltimaKey = key;
