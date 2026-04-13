@@ -7,8 +7,8 @@
   'use strict';
 
   // ─── CONFIG ─────────────────────────────────────────────────
-  var GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbysKQJvhXEgxJZin-Z-7v1qP4rGdS_M6WlP1ygu2LfHZzb12JMnKXjMtvypiIiuCirvkQ/exec';
-  // ✅ Deployed v6 — 2026-04-13 (re-deployed, v5 was archived/broken)
+  var GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxz3yxK-opDoqCejyzsX-6mic5Hl1RaqtAy69bj8-Vn3NKvudur_scn2IDlL3x5EihFmQ/exec';
+  // ✅ Deployed v7 — 2026-04-13 17:00 (Mask-Rendeles, syncMasterPatients, CORS)
 
   // ─── FORM REGISTRY ──────────────────────────────────────────
   // Each form type has its own config for success messages
@@ -399,16 +399,23 @@
     // Method 2: form POST fallback (works on file:// too)
     var payload = JSON.stringify(data);
 
-    // Try fetch first
+    // Try fetch first (mode: cors — so we can detect errors)
     if (window.location.protocol !== 'file:') {
       fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
-        mode: 'no-cors',
+        redirect: 'follow',
         headers: { 'Content-Type': 'text/plain' },
         body: payload
-      }).then(function() {
-        console.log('[TUB Forms] Mentve (fetch):', data.formType, data.email || '');
-        callback(true);
+      }).then(function(response) {
+        if (response.ok || response.type === 'opaque') {
+          console.log('[TUB Forms] Mentve (fetch):', data.formType, data.email || '');
+          // Remove from localStorage on success
+          removeFromLocalStorage(data.formType, data.email);
+          callback(true);
+        } else {
+          console.warn('[TUB Forms] Server hiba:', response.status);
+          callback(false);
+        }
       }).catch(function(err) {
         console.warn('[TUB Forms] Fetch hiba, form fallback:', err);
         sendViaFormPost(payload, callback, data);
@@ -528,6 +535,95 @@
     document.body.style.overflow = '';
   }
 
+  // ─── REMOVE SYNCED ENTRY FROM LOCALSTORAGE ──────────────────
+  function removeFromLocalStorage(formType, email) {
+    var key = 'tub_form_' + formType;
+    var list = JSON.parse(localStorage.getItem(key) || '[]');
+    if (list.length === 0) return;
+
+    // Remove entries with matching email (or all if no email)
+    var filtered = list.filter(function(item) {
+      if (!email) return false;
+      return item.email !== email;
+    });
+
+    if (filtered.length === 0) {
+      localStorage.removeItem(key);
+    } else {
+      localStorage.setItem(key, JSON.stringify(filtered));
+    }
+
+    updatePendingBanner();
+  }
+
+  // ─── PENDING SUBMISSIONS BANNER ────────────────────────────
+  function countPendingSubmissions() {
+    var count = 0;
+    Object.keys(localStorage).forEach(function(key) {
+      if (key.indexOf('tub_form_') !== 0) return;
+      if (key === 'tub_newsletter') return; // email list, not submissions
+      var list = JSON.parse(localStorage.getItem(key) || '[]');
+      count += list.length;
+    });
+    return count;
+  }
+
+  function updatePendingBanner() {
+    var existing = document.getElementById('tub-pending-banner');
+    var count = countPendingSubmissions();
+
+    if (count === 0) {
+      if (existing) existing.remove();
+      return;
+    }
+
+    if (!existing) {
+      existing = document.createElement('div');
+      existing.id = 'tub-pending-banner';
+      existing.style.cssText = 'position:fixed;bottom:16px;right:16px;background:#1A1816;color:#D4B077;padding:10px 16px;border-radius:8px;font-size:12px;z-index:9999;box-shadow:0 4px 12px rgba(0,0,0,0.3);cursor:pointer;font-family:sans-serif;';
+      existing.addEventListener('click', function() { retryPending(); });
+      document.body.appendChild(existing);
+    }
+
+    existing.textContent = '⏳ ' + count + ' függőben lévő beküldés — kattints az újrapróbálkozáshoz';
+  }
+
+  // ─── AUTO RETRY PENDING SUBMISSIONS ────────────────────────
+  function retryPending() {
+    var retried = 0;
+    Object.keys(localStorage).forEach(function(key) {
+      if (key.indexOf('tub_form_') !== 0) return;
+      if (key === 'tub_newsletter') return;
+      var list = JSON.parse(localStorage.getItem(key) || '[]');
+      list.forEach(function(data) {
+        retried++;
+        sendToGoogleSheets(data, function(success) {
+          if (success) {
+            console.log('[TUB] Retry sikeres:', key, data.email || '');
+          }
+          updatePendingBanner();
+        });
+      });
+    });
+    if (retried > 0) {
+      console.log('[TUB Forms] Retry indítva: ' + retried + ' bejegyzés');
+    }
+  }
+
+  // Auto-retry on page load (5s delay) and every 30 min
+  setTimeout(function() {
+    updatePendingBanner();
+    if (countPendingSubmissions() > 0) {
+      retryPending();
+    }
+  }, 5000);
+
+  setInterval(function() {
+    if (countPendingSubmissions() > 0) {
+      retryPending();
+    }
+  }, 30 * 60 * 1000);
+
   // ─── PUBLIC API ─────────────────────────────────────────────
   window.TUBForms = {
     init: tubFormsInit, // Re-run init (e.g., after modals are added)
@@ -539,18 +635,8 @@
       }
     },
     closeModal: closeModal,
-    // Retry sending localStorage data
-    retryLocalStorage: function() {
-      Object.keys(localStorage).forEach(function(key) {
-        if (key.indexOf('tub_form_') !== 0) return;
-        var list = JSON.parse(localStorage.getItem(key) || '[]');
-        list.forEach(function(data) {
-          sendToGoogleSheets(data, function(success) {
-            if (success) console.log('[TUB] Retry sikeres:', key);
-          });
-        });
-      });
-    }
+    retryLocalStorage: retryPending,
+    countPending: countPendingSubmissions
   };
 
 })();
