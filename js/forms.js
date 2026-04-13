@@ -7,8 +7,8 @@
   'use strict';
 
   // ─── CONFIG ─────────────────────────────────────────────────
-  var GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyPkz4jNjYHbRheU24YT9zV5BIqNw6B1jQ2PuQBaZ1kYYrkXBe6eNJht20e3GVRIC97xA/exec';
-  // ✅ Deployed v2 — 2026-03-23
+  var GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbysKQJvhXEgxJZin-Z-7v1qP4rGdS_M6WlP1ygu2LfHZzb12JMnKXjMtvypiIiuCirvkQ/exec';
+  // ✅ Deployed v6 — 2026-04-13 (re-deployed, v5 was archived/broken)
 
   // ─── FORM REGISTRY ──────────────────────────────────────────
   // Each form type has its own config for success messages
