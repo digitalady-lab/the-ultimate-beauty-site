@@ -4,8 +4,8 @@
     {
       "name": "tub-main",
       "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "8766", "--directory", "/Users/theultimatebeautykrisztian/Documents/TUB/TUB-website-export"],
-      "port": 8766
+      "runtimeArgs": ["-m", "http.server", "8767", "--directory", "/Users/theultimatebeautykrisztian/Documents/TUB/TUB-website-export"],
+      "port": 8767
     }
   ]
 }
