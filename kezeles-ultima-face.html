@@ -10,11 +10,13 @@
   gtag('js', new Date());
   gtag('config', 'AW-18069239911');
 </script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-WHG9BVT');</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ULTIMA Face Arckezelés — Lifting, Botox Szinergia, Ozempic-arc | The Ultimate Beauty</title>
+  <title>ULTIMA Face Arckezelés — Non-invazív Lifting | TUB Clinic</title>
   <meta name="description" content="ULTIMA Face HILEFT arckezelés: non-invazív lifting, Botox szinergia, Ozempic-arc helyreállítás, iontoforézis. Neuromuszkuláris stimuláció és fotobiomoduláció.">
-  <meta property="og:title" content="ULTIMA Face Arckezelés — The Ultimate Beauty">
+  <meta property="og:title" content="ULTIMA Face Arckezelés — Non-invazív Lifting | TUB Clinic">
   <meta property="og:description" content="Non-invazív arcfiatalítás HILEFT technológiával. Lifting, Botox szinergia, Ozempic-arc kezelés, iontoforézis.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://theultimatebeauty.net/kezeles-ultima-face.html">
@@ -23,7 +25,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="kezeles-ultima-shape.html" type="text/css">
   <style>
     :root{
       --ivory:#FDFAF6;--cream:#F5F0E8;--charcoal:#1A1816;--dark:#12100E;
@@ -193,6 +194,35 @@
     .footer__links a:hover{color:var(--charcoal)}
     .tile__image-side[data-parallax]{will-change:transform}
 
+    /* ═══ LUXURY ENHANCEMENTS ═══ */
+    body{animation:pageReveal 1s cubic-bezier(.25,.46,.45,.94) forwards;opacity:0}
+    @keyframes pageReveal{to{opacity:1}}
+    .tile{opacity:0;transform:translateY(60px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+    .tile.in-view{opacity:1;transform:translateY(0)}
+    @keyframes kenBurns{0%{transform:scale(1.08) translate(0,0)}50%{transform:scale(1.12) translate(-1%,-1%)}100%{transform:scale(1.08) translate(0,0)}}
+    .tile.in-view .tile__image-side img{animation:kenBurns 20s ease-in-out infinite}
+    .tile__image-side:hover img{animation:none;transform:scale(1.06);filter:brightness(.92)}
+    .tile__highlight{opacity:0;transform:translateX(-20px);transition:opacity .7s .3s cubic-bezier(.16,1,.3,1),transform .7s .3s cubic-bezier(.16,1,.3,1)}
+    .tile.in-view .tile__highlight{opacity:1;transform:translateX(0)}
+    .tile__point{opacity:0;transform:translateX(-12px);transition:opacity .5s cubic-bezier(.16,1,.3,1),transform .5s cubic-bezier(.16,1,.3,1)}
+    .tile.in-view .tile__point{opacity:1;transform:translateX(0)}
+    .tile.in-view .tile__point:nth-child(1){transition-delay:.4s}
+    .tile.in-view .tile__point:nth-child(2){transition-delay:.5s}
+    .tile.in-view .tile__point:nth-child(3){transition-delay:.55s}
+    .tile.in-view .tile__point:nth-child(4){transition-delay:.6s}
+    .tile__prog{transition:all .3s cubic-bezier(.25,.46,.45,.94)}
+    .tile__prog:hover{border-color:var(--gold);color:var(--gold);box-shadow:0 0 12px rgba(184,150,90,.25)}
+    .btn-gold{transition:all .3s cubic-bezier(.25,.46,.45,.94);position:relative}
+    .btn-gold:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(184,150,90,.3)}
+    .face-hero__badge{opacity:0;animation:heroIn .8s .2s cubic-bezier(.16,1,.3,1) forwards}
+    .face-hero__title{opacity:0;animation:heroIn .8s .35s cubic-bezier(.16,1,.3,1) forwards}
+    .face-hero__sub{opacity:0;animation:heroIn .8s .5s cubic-bezier(.16,1,.3,1) forwards}
+    .face-hero__stats{opacity:0;animation:heroIn .8s .65s cubic-bezier(.16,1,.3,1) forwards}
+    @keyframes heroIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+    .cta{opacity:0;transform:translateY(40px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+    .cta.in-view{opacity:1;transform:translateY(0)}
+    .tile+.tile{border-top:1px solid rgba(184,150,90,.12)}
+
     @media(max-width:768px){
       .face-hero__inner{flex-direction:column;align-items:flex-start}
       .tile{grid-template-columns:1fr}
@@ -205,8 +235,28 @@
       .price-strip__sep{display:none}
     }
   </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Arckezelés",
+  "name": "ULTIMA Face — Non-invazív arcfiatalítás",
+  "description": "HILEFT neuromuszkuláris stimuláció és fotobiomoduláció — arcfiatalítás, lifting, kontúrformálás.",
+  "provider": {
+    "@type": "MedicalBusiness",
+    "name": "The Ultimate Beauty Boutique Clinic",
+    "url": "https://theultimatebeauty.net",
+    "address": {"@type": "PostalAddress", "streetAddress": "Németvölgyi út 68.", "addressLocality": "Budapest", "postalCode": "1124", "addressCountry": "HU"},
+    "telephone": "+3617903017"
+  },
+  "areaServed": {"@type": "City", "name": "Budapest"},
+  "url": "https://theultimatebeauty.net/kezeles-ultima-face.html"
+}
+</script>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WHG9BVT" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <nav class="nav" id="nav">
   <a href="index.html" class="nav__logo">The Ultimate <span>Beauty</span></a>
@@ -318,50 +368,14 @@
 </div>
 
 <!-- ═══════════════════════════════════════════════════ -->
-<!-- 2. BOTOX SZINERGIA                                -->
+<!-- ORVOSESZTÉTIKAI INTEGRÁCIÓ — ÁTVEZETŐ             -->
 <!-- ═══════════════════════════════════════════════════ -->
-<div class="tile tile--reverse tile--ivory" id="botox">
-  <div class="tile__image-side">
-    <img src="assets/images/shape/ultima-shape-treatment-3.jpg" alt="HILEFT kezelés — Botox szinergia">
-  </div>
-  <div class="tile__text-side">
-    <div class="tile__label">Arckezelés</div>
-    <h2 class="tile__title">Botox <em>szinergia</em></h2>
-    <div class="tile__highlight">A Botox a mimikai ráncokat simítja — a HILEFT az izomtónust és a bőrstruktúrát építi. Együtt a teljes arc fiatalodik.</div>
-    <p class="tile__desc">A Botox a dinamikus ráncokat kezeli, de nem hat az izomtónusra és a bőr feszességére. A HILEFT EMS + fotobiomoduláció pontosan ezt a hiányzó részt pótolja — és a rendszeres alkalmazás a Botox hatástartamát is meghosszabbíthatja.</p>
-    <div class="tile__points">
-      <div class="tile__point"><strong>Bőrfeszesítés</strong> — ahol a Botox nem ér el: tónus, textúra, elaszticitás</div>
-      <div class="tile__point"><strong>Kollagén stimuláció</strong> — a vörös fény a bőr belső struktúráját építi</div>
-      <div class="tile__point"><strong>Meghosszabbított hatás</strong> — a HILEFT fenntartja a tónust a Botox-kezelések között</div>
-      <div class="tile__point"><strong>Izomatrófia megelőzés</strong> — a hosszú távú Botox-használat izomvesztését kompenzálja</div>
-    </div>
-    <div class="tile__programs">
-      <span class="tile__prog">Tone & Flow · 35 Hz</span>
-      <span class="tile__prog">Rebuild Tone · 76 Hz</span>
-      <span class="tile__prog">Contour Lift · 112 Hz</span>
-    </div>
-  </div>
-  <div class="tile__expand tile__gallery" id="botox-gallery">
-    <button class="tile__close" onclick="closeExpand('botox-gallery')">✕</button>
-    <div class="tile__gallery-title">Botox szinergia — <em>A kezelés</em></div>
-    <div class="tile__gallery-grid">
-      <div class="tile__gallery-item"><img src="assets/images/shape/ultima-shape-session.jpg" alt="Kezelés közben"></div>
-      <div class="tile__gallery-item"><img src="assets/images/shape/ultima-shape-device.jpg" alt="ULTIMA készülék"></div>
-      <div class="tile__gallery-item"><img src="assets/images/shape/heni-dolgozik.png" alt="Kezelés előkészítés"></div>
-      <div class="tile__gallery-item"><img src="assets/images/shape/rendelo-keszulek.png" alt="Kezelőhelyiség"></div>
-    </div>
-  </div>
-  <div class="tile__expand tile__details" id="botox-details">
-    <button class="tile__close" onclick="closeExpand('botox-details')">✕</button>
-    <div class="tile__details-inner">
-      <h3>Botox szinergia — <em>Miért ajánljuk együtt?</em></h3>
-      <p>A Botox a mimikai izmok ideiglenes bénításával csökkenti a dinamikus ráncokat. A HILEFT egy teljesen más mechanizmuson dolgozik: az EMS az izomtónust javítja, a fotobiomoduláció pedig a kollagén- és elasztinszintézist stimulálja. A kettő nem mond ellent egymásnak — kiegészítik egymást.</p>
-      <p>A rendszeres HILEFT kezelés fenntartja az arcizmok tónusát a Botox-kezelések között, megelőzi a hosszú távú Botox-használat okozta izomatrófiát, és a bőr textúráját, feszességét javítja — amire a Botox önmagában nem hat.</p>
-      <div class="tile__details-programs">
-        <div class="dp"><div class="dp__name">Tone & Flow 25</div><div class="dp__goal">Keringés + enyhe tónus</div><div class="dp__text">35 Hz-es program a keringésfokozásra és enyhe izomaktivációra — ideális a Botox-kezelések közötti fenntartásra.</div><div class="dp__specs"><span class="dp__spec">35 Hz</span><span class="dp__spec">200 µs</span><span class="dp__spec">25 perc</span></div></div>
-        <div class="dp"><div class="dp__name">Rebuild Tone 25</div><div class="dp__goal">Izom-újraépítés</div><div class="dp__text">76 Hz a mélyebb izomépítésre — kompenzálja a Botox okozta izomtónus-csökkenést a nem kezelt területeken.</div><div class="dp__specs"><span class="dp__spec">76 Hz</span><span class="dp__spec">360 µs</span><span class="dp__spec">25 perc</span></div></div>
-      </div>
-    </div>
+<div style="background:var(--ivory);padding:3rem 0;text-align:center;">
+  <div class="wrap">
+    <div style="font-size:.58rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;">Készülj & Regenerálódj</div>
+    <h2 style="font-family:var(--font-d);font-size:clamp(1.6rem,3vw,2.2rem);font-weight:300;line-height:1.15;margin-bottom:.75rem;">Orvosesztétikai <em>Integráció</em></h2>
+    <p style="font-size:.82rem;color:var(--c60);line-height:1.75;max-width:48ch;margin:0 auto 1.5rem;">Botox szinergia, hialuronsav integráció, skinbooster kombináció — az orvosi beavatkozások előtti előkészítés és utáni regeneráció külön oldalra költözött.</p>
+    <a href="kezeles-orvosesztetikai-integracio.html" style="display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 2rem;background:var(--gold);color:#fff;font-size:.62rem;font-weight:500;letter-spacing:.17em;text-transform:uppercase;transition:background .3s;">Részletek →</a>
   </div>
 </div>
 
@@ -580,6 +594,14 @@
 (function(){
   const nav=document.getElementById('nav');
   window.addEventListener('scroll',()=>nav.classList.toggle('on',window.scrollY>60));
+
+  /* ── Scroll-reveal observer ── */
+  const revealObserver=new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){entry.target.classList.add('in-view');revealObserver.unobserve(entry.target);}
+    });
+  },{threshold:0.15,rootMargin:'0px 0px -60px 0px'});
+  document.querySelectorAll('.tile, .cta').forEach(el=>revealObserver.observe(el));
 
   const images=document.querySelectorAll('.tile__image-side');
   function updateParallax(){

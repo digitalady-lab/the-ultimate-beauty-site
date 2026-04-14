@@ -10,11 +10,13 @@
   gtag('js', new Date());
   gtag('config', 'AW-18069239911');
 </script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-WHG9BVT');</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ULTIMA Shape Testkezelés — Fenék, Comb, Hasfal, Felkar | The Ultimate Beauty</title>
+  <title>ULTIMA Shape Testkezelés — Testformázás | TUB Clinic</title>
   <meta name="description" content="ULTIMA Shape testkezelés: neuromuszkuláris stimuláció és fotobiomoduláció a fenék, comb, hasfal és felkar célzott formázására. Non-invazív, 0 downtime.">
-  <meta property="og:title" content="ULTIMA Shape Testkezelés — The Ultimate Beauty">
+  <meta property="og:title" content="ULTIMA Shape Testkezelés — Testformázás | TUB Clinic">
   <meta property="og:description" content="Célzott testformázás ULTIMA HILEFT technológiával. Fenék emelés, combfeszesítés, hasfal erősítés, felkar tónusjavítás.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://theultimatebeauty.net/kezeles-ultima-shape.html">
@@ -263,6 +265,35 @@
     .footer__links a{color:var(--c30);transition:color .2s}
     .footer__links a:hover{color:var(--charcoal)}
 
+    /* ═══ LUXURY ENHANCEMENTS ═══ */
+    body{animation:pageReveal 1s var(--ease) forwards;opacity:0}
+    @keyframes pageReveal{to{opacity:1}}
+    .tile{opacity:0;transform:translateY(60px);transition:opacity .9s var(--ease-out),transform .9s var(--ease-out)}
+    .tile.in-view{opacity:1;transform:translateY(0)}
+    @keyframes kenBurns{0%{transform:scale(1.08) translate(0,0)}50%{transform:scale(1.12) translate(-1%,-1%)}100%{transform:scale(1.08) translate(0,0)}}
+    .tile.in-view .tile__image-side img{animation:kenBurns 20s ease-in-out infinite}
+    .tile__image-side:hover img{animation:none;transform:scale(1.06);filter:brightness(.92)}
+    .tile__highlight{opacity:0;transform:translateX(-20px);transition:opacity .7s .3s var(--ease-out),transform .7s .3s var(--ease-out)}
+    .tile.in-view .tile__highlight{opacity:1;transform:translateX(0)}
+    .tile__point{opacity:0;transform:translateX(-12px);transition:opacity .5s var(--ease-out),transform .5s var(--ease-out)}
+    .tile.in-view .tile__point{opacity:1;transform:translateX(0)}
+    .tile.in-view .tile__point:nth-child(1){transition-delay:.4s}
+    .tile.in-view .tile__point:nth-child(2){transition-delay:.5s}
+    .tile.in-view .tile__point:nth-child(3){transition-delay:.55s}
+    .tile.in-view .tile__point:nth-child(4){transition-delay:.6s}
+    .tile__prog{transition:all .3s var(--ease)}
+    .tile__prog:hover{border-color:var(--gold);color:var(--gold);box-shadow:0 0 12px rgba(184,150,90,.25)}
+    .btn-gold{transition:all .3s var(--ease);position:relative}
+    .btn-gold:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(184,150,90,.3)}
+    .shape-hero__badge{opacity:0;animation:heroIn .8s .2s var(--ease-out) forwards}
+    .shape-hero__title{opacity:0;animation:heroIn .8s .35s var(--ease-out) forwards}
+    .shape-hero__sub{opacity:0;animation:heroIn .8s .5s var(--ease-out) forwards}
+    .shape-hero__stats{opacity:0;animation:heroIn .8s .65s var(--ease-out) forwards}
+    @keyframes heroIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+    .cta{opacity:0;transform:translateY(40px);transition:opacity .8s var(--ease-out),transform .8s var(--ease-out)}
+    .cta.in-view{opacity:1;transform:translateY(0)}
+    .tile+.tile{border-top:1px solid rgba(184,150,90,.12)}
+
     @media(max-width:768px){
       .shape-hero__inner{flex-direction:column;align-items:flex-start}
       .tile{grid-template-columns:1fr}
@@ -276,8 +307,28 @@
       .price-strip__sep{display:none}
     }
   </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Testkezelés",
+  "name": "ULTIMA Shape — Testformázás és izomerősítés",
+  "description": "Neuromuszkuláris stimuláció és fotobiomoduláció a fenék, comb, hasfal és felkar célzott formázására.",
+  "provider": {
+    "@type": "MedicalBusiness",
+    "name": "The Ultimate Beauty Boutique Clinic",
+    "url": "https://theultimatebeauty.net",
+    "address": {"@type": "PostalAddress", "streetAddress": "Németvölgyi út 68.", "addressLocality": "Budapest", "postalCode": "1124", "addressCountry": "HU"},
+    "telephone": "+3617903017"
+  },
+  "areaServed": {"@type": "City", "name": "Budapest"},
+  "url": "https://theultimatebeauty.net/kezeles-ultima-shape.html"
+}
+</script>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WHG9BVT" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <nav class="nav" id="nav">
   <a href="index.html" class="nav__logo">The Ultimate <span>Beauty</span></a>
@@ -567,6 +618,14 @@
 (function(){
   const nav=document.getElementById('nav');
   window.addEventListener('scroll',()=>nav.classList.toggle('on',window.scrollY>60));
+
+  /* ── Scroll-reveal observer ── */
+  const revealObserver=new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){entry.target.classList.add('in-view');revealObserver.unobserve(entry.target);}
+    });
+  },{threshold:0.15,rootMargin:'0px 0px -60px 0px'});
+  document.querySelectorAll('.tile, .cta').forEach(el=>revealObserver.observe(el));
 
   /* ── PARALLAX ──────────────────────────────────── */
   const images=document.querySelectorAll('.tile__image-side');

@@ -120,6 +120,15 @@
     overlay.classList.add('active');
     document.body.style.overflow = 'hidden';
 
+    // Conversion tracking
+    if(typeof gtag === 'function') {
+      gtag('event', 'conversion', {
+        'send_to': 'AW-18069239911/consultation_lead',
+        'event_category': 'form',
+        'event_label': source || 'unknown'
+      });
+    }
+
     // Track opening
     console.log('[TUB Lightbox] Megnyitva:', formKey, source || '');
   }
