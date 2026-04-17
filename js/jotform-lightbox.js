@@ -19,21 +19,25 @@
   // source: a GHL kontaktus tag-elésére ('source:observ', stb.) fűzött
   //   URL-paraméter. A GHL widget mögötti workflow tudja olvasni.
 
-  var GHL_CONSULT_WIDGET = 'OEo4yWoP1ABdeuNprCYw'; // Személyes Konzultáció, 45 perc
+  // A Vibe Builder-ben készült foglalás-oldal URL-je (szép, brand-konzisztens,
+  // ULTIMA logo + ivory/gold design, a nyers GHL widget helyett).
+  // Jelenleg a Shape funnel alatti generikus /foglalas (nincs Shape-specifikus
+  // szöveg rajta). TODO: saját dedikált TUB-konzultáció Vibe-funnel készítése.
+  var GHL_BOOKING_PAGE = 'https://shape-booty.vibepreview.com/foglalas';
 
   var FORMS = {
-    'konzultacio':  { type: 'ghl-widget', widgetId: GHL_CONSULT_WIDGET, title: 'Személyes Konzultáció Foglalás' },
-    'observ':       { type: 'ghl-widget', widgetId: GHL_CONSULT_WIDGET, title: 'Ingyenes Observ 520x Bőrelemzés',
+    'konzultacio':  { type: 'ghl-page', url: GHL_BOOKING_PAGE, title: 'Személyes Konzultáció Foglalás' },
+    'observ':       { type: 'ghl-page', url: GHL_BOOKING_PAGE, title: 'Ingyenes Observ 520x Bőrelemzés',
                       source: 'observ' },
-    'clinical':     { type: 'ghl-widget', widgetId: GHL_CONSULT_WIDGET, title: 'Clinical Program Jelentkezés',
+    'clinical':     { type: 'ghl-page', url: GHL_BOOKING_PAGE, title: 'Clinical Program Jelentkezés',
                       source: 'clinical' },
-    'founding':     { type: 'ghl-widget', widgetId: GHL_CONSULT_WIDGET, title: 'Klinikai Vizsgálat Jelentkezés',
+    'founding':     { type: 'ghl-page', url: GHL_BOOKING_PAGE, title: 'Klinikai Vizsgálat Jelentkezés',
                       source: 'founding' },
-    'akademia':     { type: 'ghl-widget', widgetId: GHL_CONSULT_WIDGET, title: 'Akadémia Jelentkezés',
+    'akademia':     { type: 'ghl-page', url: GHL_BOOKING_PAGE, title: 'Akadémia Jelentkezés',
                       source: 'akademia' },
-    'led-mask':     { type: 'jotform',    id: '260812571961055', title: 'ULTIMA LED Mask Érdeklődés' },
+    'led-mask':     { type: 'jotform',  id: '260812571961055', title: 'ULTIMA LED Mask Érdeklődés' },
     // TODO: GHL newsletter-form-ra migrálni, amint létrejön
-    'newsletter':   { type: 'jotform',    id: '260812738145054', title: 'Feliratkozás' }
+    'newsletter':   { type: 'jotform',  id: '260812738145054', title: 'Feliratkozás' }
   };
 
   // ─── URL BUILDER ─────────────────────────────────────────────
@@ -41,8 +45,8 @@
     var effectiveSource = source || config.source || '';
     var params = [];
 
-    if (config.type === 'ghl-widget') {
-      var base = 'https://api.leadconnectorhq.com/widget/booking/' + config.widgetId;
+    if (config.type === 'ghl-page') {
+      var base = config.url;
       if (effectiveSource) params.push('source=' + encodeURIComponent(effectiveSource));
       return params.length ? base + '?' + params.join('&') : base;
     }
