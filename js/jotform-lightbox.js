@@ -7,27 +7,56 @@
   'use strict';
 
   // ─── FORM REGISTRY ───────────────────────────────────────────
-  // 2026.04.12: Form összevonás — observ/founding/akademia beolvadt
-  // A gombok data-jf-form attribútumai NEM változnak (marketing hook megmarad),
-  // de a háttérben ugyanazt a Jotform-ot nyitják, prepopulate paraméterrel.
+  // 2026.04.17: Jotform → GHL migráció. A gombok data-jf-form attribútumai
+  // változatlanok (marketing hook megmarad), a háttérben viszont GHL widget
+  // nyílik. Kivétel: LED Mask (sajátépítésű Jotform, marad) + Newsletter
+  // (későbbi GHL form-ra migrálandó).
   //
-  // prepopulate: Jotform URL-be fűzött paraméter, ami előre kitölti
-  //   az "Érdeklődés típusa" mezőt a form-ban.
-  //   Jotform mező neve: interestType (a Jotform felületen beállítandó)
+  // type:
+  //   'ghl-widget' → GHL booking widget (personal consultation, observ stb.)
+  //   'jotform'    → a régi form.jotform.com iframe (led-mask, newsletter)
+  //
+  // source: a GHL kontaktus tag-elésére ('source:observ', stb.) fűzött
+  //   URL-paraméter. A GHL widget mögötti workflow tudja olvasni.
+
+  var GHL_CONSULT_WIDGET = 'OEo4yWoP1ABdeuNprCYw'; // Személyes Konzultáció, 45 perc
 
   var FORMS = {
-    'konzultacio':  { id: '260812972566061', title: 'Személyes Konzultáció Foglalás' },
-    'observ':       { id: '260812972566061', title: 'Ingyenes Observ 520x Bőrelemzés',
-                      prepopulate: { interestType: 'Ingyenes Observ 520x bőrelemzés' } },
-    'led-mask':     { id: '260812571961055', title: 'ULTIMA LED Mask Érdeklődés' },
-    'clinical':     { id: '260812972566061', title: 'Clinical Program Jelentkezés',
-                      prepopulate: { interestType: 'Klinikai vizsgálat' } },
-    'founding':     { id: '260812972566061', title: 'Klinikai Vizsgálat Jelentkezés',
-                      prepopulate: { interestType: 'Klinikai vizsgálat' } },
-    'akademia':     { id: '260812972566061', title: 'Akadémia Jelentkezés',
-                      prepopulate: { interestType: 'Akadémia érdeklődés' } },
-    'newsletter':   { id: '260812738145054', title: 'Feliratkozás' }
+    'konzultacio':  { type: 'ghl-widget', widgetId: GHL_CONSULT_WIDGET, title: 'Személyes Konzultáció Foglalás' },
+    'observ':       { type: 'ghl-widget', widgetId: GHL_CONSULT_WIDGET, title: 'Ingyenes Observ 520x Bőrelemzés',
+                      source: 'observ' },
+    'clinical':     { type: 'ghl-widget', widgetId: GHL_CONSULT_WIDGET, title: 'Clinical Program Jelentkezés',
+                      source: 'clinical' },
+    'founding':     { type: 'ghl-widget', widgetId: GHL_CONSULT_WIDGET, title: 'Klinikai Vizsgálat Jelentkezés',
+                      source: 'founding' },
+    'akademia':     { type: 'ghl-widget', widgetId: GHL_CONSULT_WIDGET, title: 'Akadémia Jelentkezés',
+                      source: 'akademia' },
+    'led-mask':     { type: 'jotform',    id: '260812571961055', title: 'ULTIMA LED Mask Érdeklődés' },
+    // TODO: GHL newsletter-form-ra migrálni, amint létrejön
+    'newsletter':   { type: 'jotform',    id: '260812738145054', title: 'Feliratkozás' }
   };
+
+  // ─── URL BUILDER ─────────────────────────────────────────────
+  function buildFormUrl(config, source) {
+    var effectiveSource = source || config.source || '';
+    var params = [];
+
+    if (config.type === 'ghl-widget') {
+      var base = 'https://api.leadconnectorhq.com/widget/booking/' + config.widgetId;
+      if (effectiveSource) params.push('source=' + encodeURIComponent(effectiveSource));
+      return params.length ? base + '?' + params.join('&') : base;
+    }
+
+    // Jotform (alapértelmezett)
+    var base2 = 'https://form.jotform.com/' + config.id;
+    if (effectiveSource) params.push('source=' + encodeURIComponent(effectiveSource));
+    if (config.prepopulate) {
+      Object.keys(config.prepopulate).forEach(function(key) {
+        params.push(encodeURIComponent(key) + '=' + encodeURIComponent(config.prepopulate[key]));
+      });
+    }
+    return params.length ? base2 + '?' + params.join('&') : base2;
+  }
 
   // ─── CREATE MODAL HTML ───────────────────────────────────────
   var overlay = document.createElement('div');
@@ -72,16 +101,8 @@
     // Set title
     titleEl.textContent = config.title;
 
-    // Build iframe URL with source tracking + prepopulate
-    var url = 'https://form.jotform.com/' + config.id;
-    var params = [];
-    if (source) params.push('source=' + encodeURIComponent(source));
-    if (config.prepopulate) {
-      Object.keys(config.prepopulate).forEach(function(key) {
-        params.push(encodeURIComponent(key) + '=' + encodeURIComponent(config.prepopulate[key]));
-      });
-    }
-    if (params.length) url += '?' + params.join('&');
+    // Build iframe URL (GHL widget vagy Jotform, formType alapján)
+    var url = buildFormUrl(config, source);
 
     // Check if we have a preloaded iframe for this form
     if (preloadedForm === formKey && preloadIframe) {
@@ -202,14 +223,7 @@
 
     // Create hidden iframe to preload
     preloadIframe = document.createElement('iframe');
-    var preloadParams = [];
-    if (source) preloadParams.push('source=' + encodeURIComponent(source));
-    if (config.prepopulate) {
-      Object.keys(config.prepopulate).forEach(function(key) {
-        preloadParams.push(encodeURIComponent(key) + '=' + encodeURIComponent(config.prepopulate[key]));
-      });
-    }
-    preloadIframe.src = 'https://form.jotform.com/' + config.id + (preloadParams.length ? '?' + preloadParams.join('&') : '');
+    preloadIframe.src = buildFormUrl(config, source);
     preloadIframe.style.cssText = 'position:absolute; width:1px; height:1px; opacity:0; pointer-events:none; top:-9999px;';
     preloadIframe.tabIndex = -1;
     preloadIframe.setAttribute('aria-hidden', 'true');
