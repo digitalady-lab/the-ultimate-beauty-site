@@ -22,8 +22,10 @@
   // A Vibe Builder-ben készült foglalás-oldal URL-je (szép, brand-konzisztens,
   // ULTIMA logo + ivory/gold design, a nyers GHL widget helyett).
   // Jelenleg a Shape funnel alatti generikus /foglalas (nincs Shape-specifikus
-  // szöveg rajta). TODO: saját dedikált TUB-konzultáció Vibe-funnel készítése.
-  var GHL_BOOKING_PAGE = 'https://shape-booty.vibepreview.com/foglalas';
+  // szöveg rajta). 2026-04-23: preview URL-ről átírva custom domain-re
+  // (konzisztencia + nem preview-függés). TODO: saját dedikált TUB-konzultáció
+  // Vibe-funnel készítése.
+  var GHL_BOOKING_PAGE = 'https://shape.theultimatebeauty.net/foglalas';
 
   var FORMS = {
     'konzultacio':  { type: 'ghl-page', url: GHL_BOOKING_PAGE, title: 'Személyes Konzultáció Foglalás' },
