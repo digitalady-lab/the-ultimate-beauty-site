@@ -219,6 +219,14 @@
       .ba-card__divider{width:100%;height:28px;transform:rotate(90deg)}
     }
     .tile[id]{scroll-margin-top:6rem}
+    .price-strip{background:var(--charcoal);color:#fff;padding:2.5rem 0}
+    .price-strip__inner{display:flex;align-items:center;justify-content:center;gap:4rem;flex-wrap:wrap}
+    .price-strip__item{text-align:center}
+    .price-strip__amount{font-family:var(--font-d);font-size:2rem;font-weight:300;color:var(--gold-l)}
+    .price-strip__label{font-size:.6rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--w45);margin-top:.15rem}
+    .price-strip__note{font-size:.65rem;color:var(--w45);font-style:italic;font-family:var(--font-d)}
+    .price-strip__sep{width:1px;height:40px;background:var(--w10)}
+    @media(max-width:768px){.price-strip__inner{gap:2rem}.price-strip__sep{display:none}}
   </style>
 <script type="application/ld+json">
 {
@@ -443,6 +451,19 @@ src="https://www.facebook.com/tr?id=802840969212461&ev=PageView&noscript=1"
         <div class="dp"><div class="dp__name">Power Contour 25</div><div class="dp__goal">Nyak kontúrozás</div><div class="dp__text">220 Hz — maximális platysma aktiváció a submentális zóna feszesítéséhez. A mechanotranszdukció a nyakbőr kollagén-remodellingjét is elindítja.</div><div class="dp__specs"><span class="dp__spec">220 Hz</span><span class="dp__spec">300 µs</span><span class="dp__spec">25 perc</span></div></div>
         <div class="dp"><div class="dp__name">Contour Lift 25</div><div class="dp__goal">Fenntartás + emelés</div><div class="dp__text">112 Hz — a nyak-arc átmenet feszesítésére, a platysma és az alsó arc együttes stimulálásával. Fenntartó kezelésekre is ideális.</div><div class="dp__specs"><span class="dp__spec">112 Hz</span><span class="dp__spec">300 µs</span><span class="dp__spec">25 perc</span></div></div>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- KEZELÉSI DÍJ -->
+<div class="price-strip">
+  <div class="wrap">
+    <div class="price-strip__inner">
+      <div class="price-strip__item"><div class="price-strip__amount">112 000 Ft</div><div class="price-strip__label">alkalom</div></div>
+      <div class="price-strip__sep"></div>
+      <div class="price-strip__item"><div class="price-strip__amount">480 000 Ft</div><div class="price-strip__label">6 alkalmas kúra</div></div>
+      <div class="price-strip__sep"></div>
+      <div class="price-strip__item"><div class="price-strip__note">Az első konzultáció ingyenes</div></div>
     </div>
   </div>
 </div>
