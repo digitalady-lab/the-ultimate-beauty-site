@@ -6,6 +6,11 @@
       "source": "/shape",
       "destination": "https://shape.theultimatebeauty.net",
       "permanent": true
+    },
+    {
+      "source": "/invitation",
+      "destination": "https://invitation.theultimatebeauty.net",
+      "permanent": true
     }
   ]
 }
