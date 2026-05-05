@@ -209,6 +209,7 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=802840969212461&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
+  <script src="js/tracking.js" defer></script>
 </head>
 
 <body>
@@ -2320,6 +2321,17 @@ src="https://www.facebook.com/tr?id=802840969212461&ev=PageView&noscript=1"
              * @param {object} extra - Egyéb adatok (quiz válaszok, pdf url, stb.)
              */
             function tubSendEmail(email, source, extra) {
+                // [TRACKING] GA4 + Meta Pixel — 2026-05-05 bekötés
+                var TRACK_MAP = {
+                    'quiz':       'form_submit_observ',
+                    'exit':       'close_convert_lead',
+                    'pdf':        'qualify_lead',
+                    'newsletter': 'send_form'
+                };
+                if (window.tubTrack) {
+                    window.tubTrack(TRACK_MAP[source] || 'send_form', { source: source });
+                }
+
                 // 1. localStorage mentés (fallback + offline támogatás)
                 var nlKey = 'tub_newsletter';
                 var nl = JSON.parse(localStorage.getItem(nlKey) || '[]');

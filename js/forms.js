@@ -285,6 +285,24 @@
     var config = FORM_CONFIG[formType] || FORM_CONFIG['newsletter'];
     var submitBtn = form.querySelector('.tub-submit');
 
+    // [TRACKING] párhuzamosan a backend-küldéssel — NEM a sikerre várva
+    // Ha a Google Sheets fetch elhal/timeout, az event ettől függetlenül lefutott
+    var TRACK_MAP = {
+      'konzultacio':   'send_form',
+      'observ':        'form_submit_observ',
+      'led-mask':      'form_submit_mask',
+      'clinical':      'qualify_lead',
+      'founding':      'send_form',
+      'akademia':      'send_form',
+      'mask-rendeles': 'mask_rendeles_lead'
+    };
+    if (window.tubTrack) {
+      window.tubTrack(TRACK_MAP[formType] || 'send_form', {
+        source: 'tub-form-engine',
+        form_type: formType
+      });
+    }
+
     // Loading state
     submitBtn.classList.add('tub-submit--loading');
     submitBtn.disabled = true;
