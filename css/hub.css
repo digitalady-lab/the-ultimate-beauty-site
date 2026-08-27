@@ -759,6 +759,12 @@
       pointer-events: auto;
     }
 
+    /* ═══ HERO PROMO KÁRTYÁK (LED Mask / ULTIMA Pro) ═══ */
+    .hero-promo-card {
+      aspect-ratio: 16 / 10;
+      min-height: 180px;
+    }
+
     .mask-placeholder {
       width: 100%;
       max-width: 480px;
@@ -1206,9 +1212,47 @@
       border: 1px solid var(--border);
       backdrop-filter: blur(12px);
       gap: 10px;
+      align-items: stretch;
     }
 
-    .sticky-cta .btn { flex: 1; }
+    .sticky-cta .btn,
+    .sticky-cta .btn:not(.btn-s):not(.btn-m):not(.btn-l):not(.btn-frame):not(.btn-soft):not(.btn-premium) {
+      flex: 1 1 auto;
+      padding: 13px 10px;
+      font-size: 0.64rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      border-radius: 2px;
+      gap: 7px;
+      white-space: nowrap;
+      min-width: 0;
+    }
+
+    /* Hívás — közvetlen telefonhívás */
+    .sticky-cta .btn.sticky-cta__call { flex: 0 0 auto; }
+    .sticky-cta .sticky-cta__call svg { flex-shrink: 0; }
+
+    /* Konzultáció — domináns, sötét CTA (megkülönböztetve az arany Hívástól) */
+    .sticky-cta .sticky-cta__consult {
+      flex: 1 1 auto;
+      background: #14120F;
+      color: var(--gold-light);
+      border: 1px solid rgba(184, 150, 90, 0.35);
+    }
+    .sticky-cta .sticky-cta__consult:hover,
+    .sticky-cta .sticky-cta__consult:active {
+      background: #232019;
+      color: var(--gold-light);
+    }
+
+    .sticky-cta .btn.sticky-cta__menu { flex: 0 0 auto; padding-left: 13px; padding-right: 13px; }
+
+    @media (max-width: 360px) {
+      .sticky-cta { gap: 7px; padding: 8px; }
+      .sticky-cta .btn,
+      .sticky-cta .btn:not(.btn-s):not(.btn-m):not(.btn-l):not(.btn-frame):not(.btn-soft):not(.btn-premium) { font-size: 0.6rem; letter-spacing: 0.05em; padding: 12px 8px; }
+      .sticky-cta .btn.sticky-cta__menu { padding-left: 10px; padding-right: 10px; }
+    }
 
     /* ═══ FOOTER ═══ */
     footer {
@@ -1730,6 +1774,13 @@
     }
 
     @media (max-width: 900px) {
+      /* A 16:10 arány mobilon túl alacsony volt: a kártya alsó szövegblokkja
+         a kép tetejét levágta (a "Kizárólagos forgalmazó" felirat kicsúszott).
+         Álló arány → a kép is látszik, a szöveg is elfér. */
+      .hero-promo-card {
+        aspect-ratio: 4 / 5;
+        min-height: 320px;
+      }
       .nav-links { display: none; }
       .menu-btn { display: inline-flex; align-items: center; justify-content: center; }
       .container, .nav-container { padding: 0 20px; }
@@ -1826,8 +1877,8 @@
         width: 100% !important;
       }
       /* iPhone mask video fallback — ha a video nem tölt be */
-      .hero-visual-inner > a[style*="aspect-ratio"] {
-        min-height: 160px;
+      .hero-visual-inner > .hero-promo-card {
+        min-height: 300px;
       }
       .hero-title { word-break: break-word; }
       .hero-cta-row { flex-direction: column; }
