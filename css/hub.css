@@ -2691,12 +2691,24 @@
     /* ═══════════════════════════════════════ */
 
     /* ═══ LUXURY FLOATING MASK ICON ═══ */
+
+    /* A derengés színe — a JS ezt úsztatja át a négy hullámhosszon,
+       ha a kurzor a maszk közelébe ér. @property nélkül is működik,
+       csak ugrik a szín az átúszás helyett. */
+    @property --fm-led {
+      syntax: '<color>';
+      inherits: true;
+      initial-value: rgba(184, 150, 90, 0.22);
+    }
+
     .float-mask {
       position: fixed;
       bottom: 24px;
       right: 24px;
       z-index: 1350;
       perspective: 600px;
+      --fm-led: rgba(184, 150, 90, 0.22);
+      transition: --fm-led 1.4s ease;
     }
 
     /* ── Gomb — keret nélkül lebegő 3D maszk-objektum ── */
@@ -2711,9 +2723,21 @@
       align-items: center;
       justify-content: center;
       position: relative;
-      transform-style: preserve-3d;
+      /* transform-style itt szándékosan lapos: preserve-3d mellett a 3D-be forgatott
+         maszk mögé sorolódnának a derengés-rétegek, és rátakarnának. */
+      perspective: 420px;
       transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
       animation: fmFloat 5s ease-in-out infinite;
+    }
+
+    /* Kurzorkövetéskor a forgatás a maszkra kerül, a gomb csak emel és lebeg —
+       így nem ütközik az inline transform a fmFloat animációval. */
+    .float-mask-btn.fm-tilt:hover {
+      transform: translateY(-5px) scale(1.07);
+    }
+    .float-mask-btn.fm-tilt .float-mask-img {
+      transition: transform 0.5s cubic-bezier(0.22, 0.9, 0.3, 1), filter 0.4s ease;
+      will-change: transform;
     }
 
     @keyframes fmFloat {
@@ -2816,14 +2840,21 @@
       z-index: 0;
     }
 
-    /* Halvány arany derengés a maszk mögött — a LED-fény utalása */
+    /* Derengés a maszk mögött — a LED-fény utalása.
+       Nyugalomban arany; ha a kurzor közel ér, a négy hullámhossz úszik át rajta. */
     .fm-aura {
       position: absolute;
       inset: 4px;
       border-radius: 50%;
       pointer-events: none;
+      /* állandó derengés — a pulzálás e fölött fut a pszeudo-elemeken */
+      background: radial-gradient(circle, var(--fm-led) 0%, transparent 64%);
+      opacity: 0.75;
+      transition: opacity 0.5s ease, inset 0.5s ease;
       z-index: 0;
     }
+    /* Közeledéskor kiterjed, hogy a hullámhossz színe a maszk körül is látsszon */
+    .float-mask.fm-near .fm-aura { opacity: 1; inset: -12px; }
     .fm-aura::before,
     .fm-aura::after {
       content: '';
@@ -2833,7 +2864,7 @@
       animation: fmAuraPulse 4s ease-in-out infinite;
     }
     .fm-aura::before {
-      background: radial-gradient(circle, rgba(184,150,90,0.20) 0%, transparent 68%);
+      background: radial-gradient(circle, var(--fm-led) 0%, transparent 68%);
     }
     .fm-aura::after {
       background: radial-gradient(circle, rgba(212,176,119,0.12) 0%, transparent 68%);

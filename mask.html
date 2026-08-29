@@ -209,6 +209,7 @@ src="https://www.facebook.com/tr?id=802840969212461&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
   <script src="js/tracking.js" defer></script>
+  <script src="js/float-mask-tilt.js" defer></script>
 </head>
 
 <body>
@@ -2656,7 +2657,7 @@ src="https://www.facebook.com/tr?id=802840969212461&ev=PageView&noscript=1"
   var fill = document.getElementById('maskSpinFill');
   if (!wrap || !vid) return;
 
-  var SPAN = 2.9;      /* eddig tart a tiszta termékforgás; utána a felvételen megdől a maszk */
+  var SPAN = 5.85;     /* a felvétel teljes tiszta szakasza; 6,0 mp-nél átúszik egy másik beállításba */
   var STEP = 0.12;     /* billentyűs lépés másodpercben */
   var engaged = false, dragging = false, startX = 0, startT = 0, ready = false;
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
