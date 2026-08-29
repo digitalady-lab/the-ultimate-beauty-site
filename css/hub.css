@@ -2658,6 +2658,7 @@
         0 0 0 1.5px rgba(184,150,90,0.4),
         0 0 30px rgba(184,150,90,0.08),
         inset 0 1px 0 rgba(255,255,255,0.8);
+      animation: fmFloat 4s ease-in-out infinite;
     }
 
     @keyframes fmFloat {
@@ -6562,4 +6563,15 @@
   }
   .bottom-bar .tagline { font-size: 0.85rem; text-align: center; }
   .brand-mono { margin-left: 12px; margin-right: 12px; font-size: 0.75rem; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   LEBEGŐ KAPCSOLAT-GOMB — FIX KATTINTÁSI PONT
+   A gomb korábban folyamatosan, végtelenítve lebegett (fmFloat).
+   Egy sosem álló gombra nehéz ráérni: mozog a felhasználó ujja alól,
+   ezért a koppintás mellémegy. A látvány-animációt itt kapcsoljuk ki,
+   a .float-mask-btn szabályblokk érintetlenül hagyása mellett.
+   ═══════════════════════════════════════════════════════════════ */
+.float-mask-btn {
+  animation: none;
 }
