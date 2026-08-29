@@ -547,7 +547,6 @@
       background: rgba(253, 250, 246, 0.92);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      padding: 12px 0;
       border-bottom: 1px solid var(--border);
     }
 
@@ -1741,24 +1740,24 @@
       .nav {
         transition: transform 0.3s ease, background 0.35s, padding 0.35s;
       }
+      /* A nav gorgeteskor sem csuszik el: a fulek fix kattintasi ponton maradnak. */
       .nav.nav--hidden {
-        transform: translateY(-100%);
-        pointer-events: none;
+        transform: none;
+        pointer-events: auto;
       }
-      .sticky-cta {
-        transition: transform 0.3s ease;
-      }
+      /* A foglalasi sav es a lebego gomb NEM mozdul el gorgeteskor.
+         Korabban gorgetes kozben ki-be csusztak, igy a felhasznalo ujja ala
+         mas elem kerult, es rossz linkre / mas oldalra kattintott. */
+      .sticky-cta,
       .sticky-cta.sticky--hidden {
-        transform: translateY(calc(100% + 20px));
-        pointer-events: none;
+        transform: none;
+        pointer-events: auto;
+        transition: none;
       }
-      /* Floating mask follows sticky CTA */
-      .float-mask {
-        bottom: 90px;
-        transition: bottom 0.3s ease;
-      }
+      .float-mask,
       .float-mask.float--lowered {
-        bottom: 24px;
+        bottom: 90px;
+        transition: none;
       }
     }
 
@@ -1779,7 +1778,6 @@
       .product-switcher { height: 42px; }
       .tab-btn { height: 42px; }
       .nav { top: 42px; padding: 10px 0; }
-      .nav.scrolled { padding: 8px 0; }
       .nav-logo { font-size: 1rem; letter-spacing: 2px; }
       .nav-cta { display: none !important; }
       .page-content { margin-top: 42px; }
@@ -2660,7 +2658,6 @@
         0 0 0 1.5px rgba(184,150,90,0.4),
         0 0 30px rgba(184,150,90,0.08),
         inset 0 1px 0 rgba(255,255,255,0.8);
-      animation: fmFloat 4s ease-in-out infinite;
     }
 
     @keyframes fmFloat {
