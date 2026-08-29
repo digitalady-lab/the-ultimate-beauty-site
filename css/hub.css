@@ -6567,10 +6567,21 @@
 
 /* ═══════════════════════════════════════════════════════════════
    LEBEGŐ KAPCSOLAT-GOMB — FIX KATTINTÁSI PONT
+
    A gomb korábban folyamatosan, végtelenítve lebegett (fmFloat).
-   Egy sosem álló gombra nehéz ráérni: mozog a felhasználó ujja alól,
-   ezért a koppintás mellémegy. A látvány-animációt itt kapcsoljuk ki,
-   a .float-mask-btn szabályblokk érintetlenül hagyása mellett.
+   Egy sosem álló gombra nehéz ráérni: elmozdul a felhasználó ujja alól,
+   ezért a koppintás mellémegy. Ezért a gomb maga nem animálódik.
+
+   FIGYELEM új maszk-design esetén: ez a szabály a fájl legvégén áll,
+   tehát felülír minden korábbi `animation` értéket a .float-mask-btn-en.
+   Ha az új ikonnak kell mozgás, azt NE a gombra tedd, hanem a gombon
+   belüli látványelemre (pl. .float-mask-img / .float-mask-svg) — akkor
+   a grafika mozoghat, de a kattintási felület fixen marad:
+
+     .float-mask-btn > img { animation: fmFloat 4s ease-in-out infinite; }
+
+   Ezt a blokkot szándékosan a .float-mask-btn szabályblokkján KÍVÜL
+   tartjuk, hogy ne ütközzön a maszk-designt átíró ágakkal.
    ═══════════════════════════════════════════════════════════════ */
 .float-mask-btn {
   animation: none;
