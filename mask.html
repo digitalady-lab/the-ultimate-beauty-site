@@ -301,12 +301,16 @@ src="https://www.facebook.com/tr?id=802840969212461&ev=PageView&noscript=1"
                         </div>
                     </div>
 
-                    <div class="hero-visual" aria-hidden="true">
-                        <div class="mask-video-wrap">
-                            <video class="mask-hero-video" autoplay muted loop playsinline poster="assets/images/mask-real/mask-red-light.webp">
+                    <div class="hero-visual">
+                        <div class="mask-video-wrap" id="maskSpin" role="slider" tabindex="0"
+                             aria-label="ULTIMA LED Beauty Mask — húzással forgatható"
+                             aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-valuetext="Elfordítva 0%">
+                            <video class="mask-hero-video" id="maskSpinVideo" autoplay muted loop playsinline preload="auto" poster="assets/images/mask-real/mask-red-light.webp">
               <source src="mask-hero.mp4" type="video/mp4">
             </video>
                             <div class="mask-video-overlay" aria-hidden="true"></div>
+                            <div class="mask-spin-rail" aria-hidden="true"><span class="mask-spin-rail__fill" id="maskSpinFill"></span></div>
+                            <span class="mask-spin-hint" id="maskSpinHint" aria-hidden="true">Húzza a forgatáshoz</span>
                         </div>
                     </div>
                 </section>
@@ -2642,6 +2646,103 @@ src="https://www.facebook.com/tr?id=802840969212461&ev=PageView&noscript=1"
 (function(){function i(){var b=document.getElementById('cookie-banner');if(!b)return;if(!localStorage.getItem('cookie_consent'))b.classList.add('show');b.addEventListener('click',function(e){var x=e.target.closest('[data-cookie]');if(!x)return;localStorage.setItem('cookie_consent',x.getAttribute('data-cookie'));b.classList.remove('show')})}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',i);else i()})();
 </script>
 <!-- /Cookie Consent Banner -->
+
+
+<!-- Hero: húzásra forgatható ULTIMA maszk -->
+<script>
+(function () {
+  var wrap = document.getElementById('maskSpin');
+  var vid = document.getElementById('maskSpinVideo');
+  var fill = document.getElementById('maskSpinFill');
+  if (!wrap || !vid) return;
+
+  var SPAN = 2.9;      /* eddig tart a tiszta termékforgás; utána a felvételen megdől a maszk */
+  var STEP = 0.12;     /* billentyűs lépés másodpercben */
+  var engaged = false, dragging = false, startX = 0, startT = 0, ready = false;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function paint(t) {
+    var pct = Math.round(t / SPAN * 100);
+    if (fill) fill.style.width = pct + '%';
+    wrap.setAttribute('aria-valuenow', String(pct));
+    wrap.setAttribute('aria-valuetext', 'Elfordítva ' + pct + '%');
+  }
+
+  function seek(t) {
+    if (!ready) return;
+    t = Math.max(0, Math.min(SPAN - 0.04, t));
+    try { vid.currentTime = t; } catch (e) { return; }
+    paint(t);
+  }
+
+  /* Az alapjárati hurok a teljes felvételt játssza; a forgatható sáv ennél rövidebb.
+     Első megfogáskor nem ugrunk, hanem visszaúsztatjuk a képet a sáv végére. */
+  function glideTo(target, done) {
+    var from = vid.currentTime, delta = target - from, t0 = null;
+    if (Math.abs(delta) < 0.05) { seek(target); if (done) done(); return; }
+    function step(now) {
+      if (t0 === null) t0 = now;
+      var k = Math.min(1, (now - t0) / 280);
+      seek(from + delta * (1 - Math.pow(1 - k, 3)));
+      if (k < 1) requestAnimationFrame(step); else if (done) done();
+    }
+    requestAnimationFrame(step);
+  }
+
+  function engage() {
+    if (engaged) return;
+    engaged = true;
+    vid.loop = false;
+    vid.pause();
+    wrap.classList.add('spin-engaged');
+    if (vid.currentTime > SPAN - 0.04) glideTo(SPAN - 0.04);
+    else seek(vid.currentTime);
+  }
+
+  vid.addEventListener('loadeddata', function () {
+    ready = true;
+    wrap.classList.add('spin-ready');
+    if (reduce) { vid.pause(); seek(SPAN * 0.3); }
+  });
+
+  /* Húzás */
+  wrap.addEventListener('pointerdown', function (e) {
+    if (!ready) return;
+    var wasEngaged = engaged;
+    engage();
+    dragging = true;
+    startX = e.clientX;
+    startT = wasEngaged ? vid.currentTime : Math.min(vid.currentTime, SPAN - 0.04);
+    wrap.classList.add('is-spinning');
+    try { wrap.setPointerCapture(e.pointerId); } catch (err) {}
+  });
+  wrap.addEventListener('pointermove', function (e) {
+    if (!dragging) return;
+    e.preventDefault();
+    seek(startT + (e.clientX - startX) / wrap.offsetWidth * SPAN * 1.15);
+  });
+  ['pointerup', 'pointercancel', 'lostpointercapture'].forEach(function (ev) {
+    wrap.addEventListener(ev, function () {
+      dragging = false;
+      wrap.classList.remove('is-spinning');
+    });
+  });
+
+  /* Billentyűzet */
+  wrap.addEventListener('keydown', function (e) {
+    if (!ready) return;
+    var k = e.key, t = null;
+    if (k === 'ArrowRight' || k === 'ArrowUp') t = vid.currentTime + STEP;
+    else if (k === 'ArrowLeft' || k === 'ArrowDown') t = vid.currentTime - STEP;
+    else if (k === 'Home') t = 0;
+    else if (k === 'End') t = SPAN;
+    if (t === null) return;
+    e.preventDefault();
+    engage();
+    seek(t);
+  });
+})();
+</script>
 
 </body>
 

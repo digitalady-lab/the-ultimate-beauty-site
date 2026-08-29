@@ -786,6 +786,62 @@
       object-fit: cover;
       border-radius: 20px;
     }
+    /* Húzásra forgatható termék — a hero-felvétel körbefordulása */
+    .mask-video-wrap[role="slider"] {
+      cursor: grab;
+      touch-action: pan-y;          /* függőleges görgetés marad az oldalé */
+      outline: none;
+    }
+    .mask-video-wrap.is-spinning {
+      cursor: grabbing;
+      animation: none;              /* a lebegés megállítva, hogy pontos legyen a húzás */
+    }
+    .mask-video-wrap.spin-engaged { animation: none; }
+    .mask-video-wrap[role="slider"]:focus-visible {
+      box-shadow:
+        0 0 0 2px var(--gold),
+        0 0 60px rgba(184, 150, 90, 0.15);
+    }
+    .mask-spin-rail {
+      position: absolute;
+      left: 22px; right: 22px; bottom: 18px;
+      height: 2px;
+      background: rgba(253, 250, 246, 0.22);
+      border-radius: 2px;
+      overflow: hidden;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+      z-index: 3;
+    }
+    .mask-video-wrap.spin-engaged .mask-spin-rail { opacity: 1; }
+    .mask-spin-rail__fill {
+      display: block;
+      height: 100%;
+      width: 0;
+      background: var(--gold-light);
+    }
+    .mask-spin-hint {
+      position: absolute;
+      left: 50%; bottom: 30px;
+      transform: translateX(-50%);
+      font-size: 0.56rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: rgba(253, 250, 246, 0.72);
+      text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+      pointer-events: none;
+      opacity: 0;                   /* csak akkor hívogat, ha a felvétel tényleg betöltött */
+      transition: opacity 0.5s ease;
+      z-index: 3;
+    }
+    .mask-video-wrap.spin-ready .mask-spin-hint { opacity: 1; }
+    .mask-video-wrap.spin-engaged .mask-spin-hint { opacity: 0; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .mask-video-wrap { animation: none; }
+    }
+
     .mask-video-overlay {
       position: absolute;
       inset: 0;
