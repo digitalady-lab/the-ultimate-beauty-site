@@ -759,6 +759,12 @@
       pointer-events: auto;
     }
 
+    /* ═══ HERO PROMO KÁRTYÁK (LED Mask / ULTIMA Pro) ═══ */
+    .hero-promo-card {
+      aspect-ratio: 16 / 10;
+      min-height: 180px;
+    }
+
     .mask-placeholder {
       width: 100%;
       max-width: 480px;
@@ -1262,9 +1268,51 @@
       border: 1px solid var(--border);
       backdrop-filter: blur(12px);
       gap: 10px;
+      align-items: stretch;
     }
 
-    .sticky-cta .btn { flex: 1; }
+    .sticky-cta .btn,
+    .sticky-cta .btn:not(.btn-s):not(.btn-m):not(.btn-l):not(.btn-frame):not(.btn-soft):not(.btn-premium) {
+      flex: 1 1 auto;
+      padding: 13px 10px;
+      font-size: 0.64rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      border-radius: 2px;
+      gap: 7px;
+      white-space: nowrap;
+      min-width: 0;
+    }
+
+    /* Hívás — közvetlen telefonhívás */
+    .sticky-cta .btn.sticky-cta__call { flex: 0 0 auto; }
+    .sticky-cta .sticky-cta__call svg { flex-shrink: 0; }
+
+    /* Konzultáció — domináns, sötét CTA (megkülönböztetve az arany Hívástól).
+       A korábbi világos/áttetsző változat beleolvadt az ivory sávba, ezért
+       tömör fekete alap + jól látható arany keret és felirat. */
+    .sticky-cta .sticky-cta__consult {
+      flex: 1 1 auto;
+      background: #14120F;
+      color: var(--gold-light);
+      border: 1.5px solid rgba(184, 150, 90, 0.7);
+      box-shadow: 0 4px 14px rgba(20, 18, 15, 0.28);
+    }
+    .sticky-cta .sticky-cta__consult:hover,
+    .sticky-cta .sticky-cta__consult:active {
+      background: #232019;
+      color: var(--gold-light);
+      border-color: var(--gold);
+    }
+
+    .sticky-cta .btn.sticky-cta__menu { flex: 0 0 auto; padding-left: 13px; padding-right: 13px; }
+
+    @media (max-width: 360px) {
+      .sticky-cta { gap: 7px; padding: 8px; }
+      .sticky-cta .btn,
+      .sticky-cta .btn:not(.btn-s):not(.btn-m):not(.btn-l):not(.btn-frame):not(.btn-soft):not(.btn-premium) { font-size: 0.6rem; letter-spacing: 0.05em; padding: 12px 8px; }
+      .sticky-cta .btn.sticky-cta__menu { padding-left: 10px; padding-right: 10px; }
+    }
 
     /* ═══ FOOTER ═══ */
     footer {
@@ -1786,6 +1834,13 @@
     }
 
     @media (max-width: 900px) {
+      /* A 16:10 arány mobilon túl alacsony volt: a kártya alsó szövegblokkja
+         a kép tetejét levágta (a "Kizárólagos forgalmazó" felirat kicsúszott).
+         Álló arány → a kép is látszik, a szöveg is elfér. */
+      .hero-promo-card {
+        aspect-ratio: 4 / 5;
+        min-height: 320px;
+      }
       .nav-links { display: none; }
       .menu-btn { display: inline-flex; align-items: center; justify-content: center; }
       .container, .nav-container { padding: 0 20px; }
@@ -1882,8 +1937,8 @@
         width: 100% !important;
       }
       /* iPhone mask video fallback — ha a video nem tölt be */
-      .hero-visual-inner > a[style*="aspect-ratio"] {
-        min-height: 160px;
+      .hero-visual-inner > .hero-promo-card {
+        min-height: 300px;
       }
       .hero-title { word-break: break-word; }
       .hero-cta-row { flex-direction: column; }
@@ -2660,6 +2715,63 @@
       transition: var(--transition);
     }
     .home-contact-item a:hover { color: var(--gold); }
+
+    /* ═══ KEZDJÜK EL EGYÜTT — záró CTA panel ═══ */
+    .home-cta-panel {
+      background: linear-gradient(135deg, rgba(184, 150, 90, 0.09), rgba(212, 176, 119, 0.05));
+      border: 1px solid rgba(184, 150, 90, 0.22);
+      border-radius: 16px;
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .home-cta-panel__title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 400;
+      color: var(--charcoal);
+      line-height: 1.2;
+      margin: 0;
+    }
+    .home-cta-panel__text {
+      font-size: 0.95rem;
+      line-height: 1.65;
+      color: var(--text-muted);
+      margin: 0;
+    }
+    .home-cta-panel__btn { align-self: stretch; justify-content: center; }
+    .home-cta-panel__call {
+      align-self: stretch;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 15px 24px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-decoration: none;
+      color: var(--charcoal);
+      background: transparent;
+      border: 1.5px solid rgba(184, 150, 90, 0.55);
+      border-radius: 6px;
+      transition: var(--transition);
+    }
+    .home-cta-panel__call:hover {
+      background: rgba(184, 150, 90, 0.1);
+      border-color: var(--gold);
+      color: var(--gold-deep, var(--gold));
+    }
+    .home-cta-panel__reassure {
+      font-size: 0.8rem;
+      font-style: italic;
+      color: var(--text-light, var(--text-muted));
+      line-height: 1.6;
+      margin: 0;
+    }
 
     /* ═══ HOME RESPONSIVE ═══ */
     @media (max-width: 1100px) {
