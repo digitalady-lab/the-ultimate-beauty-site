@@ -547,7 +547,6 @@
       background: rgba(253, 250, 246, 0.92);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      padding: 12px 0;
       border-bottom: 1px solid var(--border);
     }
 
@@ -1852,24 +1851,24 @@
       .nav {
         transition: transform 0.3s ease, background 0.35s, padding 0.35s;
       }
+      /* A nav gorgeteskor sem csuszik el: a fulek fix kattintasi ponton maradnak. */
       .nav.nav--hidden {
-        transform: translateY(-100%);
-        pointer-events: none;
+        transform: none;
+        pointer-events: auto;
       }
-      .sticky-cta {
-        transition: transform 0.3s ease;
-      }
+      /* A foglalasi sav es a lebego gomb NEM mozdul el gorgeteskor.
+         Korabban gorgetes kozben ki-be csusztak, igy a felhasznalo ujja ala
+         mas elem kerult, es rossz linkre / mas oldalra kattintott. */
+      .sticky-cta,
       .sticky-cta.sticky--hidden {
-        transform: translateY(calc(100% + 20px));
-        pointer-events: none;
+        transform: none;
+        pointer-events: auto;
+        transition: none;
       }
-      /* Floating mask follows sticky CTA */
-      .float-mask {
-        bottom: 90px;
-        transition: bottom 0.3s ease;
-      }
+      .float-mask,
       .float-mask.float--lowered {
-        bottom: 24px;
+        bottom: 90px;
+        transition: none;
       }
     }
 
@@ -1890,7 +1889,6 @@
       .product-switcher { height: 42px; }
       .tab-btn { height: 42px; }
       .nav { top: 42px; padding: 10px 0; }
-      .nav.scrolled { padding: 8px 0; }
       .nav-logo { font-size: 1rem; letter-spacing: 2px; }
       .nav-cta { display: none !important; }
       .page-content { margin-top: 42px; }
@@ -6790,4 +6788,26 @@
   }
   .bottom-bar .tagline { font-size: 0.85rem; text-align: center; }
   .brand-mono { margin-left: 12px; margin-right: 12px; font-size: 0.75rem; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   LEBEGŐ KAPCSOLAT-GOMB — FIX KATTINTÁSI PONT
+
+   A gomb korábban folyamatosan, végtelenítve lebegett (fmFloat).
+   Egy sosem álló gombra nehéz ráérni: elmozdul a felhasználó ujja alól,
+   ezért a koppintás mellémegy. Ezért a gomb maga nem animálódik.
+
+   FIGYELEM új maszk-design esetén: ez a szabály a fájl legvégén áll,
+   tehát felülír minden korábbi `animation` értéket a .float-mask-btn-en.
+   Ha az új ikonnak kell mozgás, azt NE a gombra tedd, hanem a gombon
+   belüli látványelemre (pl. .float-mask-img / .float-mask-svg) — akkor
+   a grafika mozoghat, de a kattintási felület fixen marad:
+
+     .float-mask-btn > img { animation: fmFloat 4s ease-in-out infinite; }
+
+   Ezt a blokkot szándékosan a .float-mask-btn szabályblokkján KÍVÜL
+   tartjuk, hogy ne ütközzön a maszk-designt átíró ágakkal.
+   ═══════════════════════════════════════════════════════════════ */
+.float-mask-btn {
+  animation: none;
 }

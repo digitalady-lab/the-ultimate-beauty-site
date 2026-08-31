@@ -224,8 +224,8 @@ src="https://www.facebook.com/tr?id=802840969212461&ev=PageView&noscript=1"
         }
         window.scrollTo(0, 0);
         // iOS Safari: pageshow fires after BFCache restore — scroll can be restored AFTER load
-        window.addEventListener('pageshow', function() {
-            window.scrollTo(0, 0);
+        window.addEventListener('pageshow', function(e) {
+            if (e.persisted) window.scrollTo(0, 0);
         });
     </script>
     <div class="site-wrap">
@@ -929,7 +929,12 @@ src="https://www.facebook.com/tr?id=802840969212461&ev=PageView&noscript=1"
 
             function getActiveTab() {
                 var activeBtn = document.querySelector('.tab-btn.active');
-                return activeBtn ? activeBtn.id.replace('tab-', '') : 'home';
+                if (activeBtn) return activeBtn.id.replace('tab-', '');
+                /* Ha nincs aktiv ful (pl. program oldal), az oldal sajat
+                   page-content id-jabol allapitjuk meg, hol vagyunk. */
+                var page = document.querySelector('.page-content');
+                if (page && page.id) return page.id.replace(/-page$/, '');
+                return 'home';
             }
 
             /* ═══ NAV SCROLL + AUTO-HIDE (MOBILE) ═══ */
@@ -1075,7 +1080,11 @@ src="https://www.facebook.com/tr?id=802840969212461&ev=PageView&noscript=1"
 
             function buildDrawerLinks(tabId) {
                 var list = document.getElementById('drawerLinks');
-                var links = drawerLinksMap[tabId] || drawerLinksMap.mask;
+                /* Csak olyan menupont kerulhet ki, aminek a celpontja
+                   letezik is ezen az oldalon — igy nem visz sehova/rossz helyre. */
+                var links = (drawerLinksMap[tabId] || drawerLinksMap.home).filter(function(l) {
+                    return l.href.charAt(0) !== '#' || !!document.getElementById(l.href.slice(1));
+                });
                 list.innerHTML = links.map(function(l) {
                     return '<li><a href="' + l.href + '" onclick="closeDrawer()">' + l.label + '</a></li>';
                 }).join('');
@@ -1098,7 +1107,7 @@ src="https://www.facebook.com/tr?id=802840969212461&ev=PageView&noscript=1"
             });
 
             // Init
-            buildDrawerLinks('home');
+            buildDrawerLinks(getActiveTab());
 
             /* ═══ REVEAL ANIMATION ═══ */
             if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -1106,11 +1115,11 @@ src="https://www.facebook.com/tr?id=802840969212461&ev=PageView&noscript=1"
                     entries.forEach(function(entry) {
                         if (entry.isIntersecting) {
                             entry.target.style.opacity = '1';
-                            entry.target.style.transform = 'translateY(0)';
+                            observer.unobserve(entry.target);
                         }
                     });
                 }, {
-                    threshold: 0.1
+                    threshold: 0.01
                 });
 
                 // Only animate sections in the ACTIVE tab (not hidden tabs)
@@ -1118,10 +1127,17 @@ src="https://www.facebook.com/tr?id=802840969212461&ev=PageView&noscript=1"
                 var sections = activePage ? activePage.querySelectorAll('section') : document.querySelectorAll('section');
                 sections.forEach(function(s) {
                     s.style.opacity = '0';
-                    s.style.transform = 'translateY(24px)';
-                    s.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+                    s.style.transition = 'opacity 0.5s ease';
                     observer.observe(s);
                 });
+
+                /* Biztonsagi halo: ha az observer barmiert nem sulne el,
+                   1.5 mp mulva minden szekcio lathatova valik. */
+                setTimeout(function() {
+                    sections.forEach(function(s) {
+                        s.style.opacity = '1';
+                    });
+                }, 1500);
 
                 // Don't hide hero
                 document.querySelectorAll('.hero').forEach(function(h) {
@@ -1129,35 +1145,6 @@ src="https://www.facebook.com/tr?id=802840969212461&ev=PageView&noscript=1"
                     h.style.transform = 'none';
                 });
 
-                // Force scroll to top on page load (multiple attempts to beat browser restore)
-                window.scrollTo(0, 0);
-                setTimeout(function() {
-                    window.scrollTo(0, 0);
-                }, 0);
-                setTimeout(function() {
-                    window.scrollTo(0, 0);
-                }, 50);
-                setTimeout(function() {
-                    window.scrollTo(0, 0);
-                }, 150);
-                setTimeout(function() {
-                    window.scrollTo(0, 0);
-                }, 300);
-                setTimeout(function() {
-                    window.scrollTo(0, 0);
-                }, 600);
-                setTimeout(function() {
-                    window.scrollTo(0, 0);
-                }, 1000);
-                window.addEventListener('load', function() {
-                    window.scrollTo(0, 0);
-                    setTimeout(function() {
-                        window.scrollTo(0, 0);
-                    }, 100);
-                    setTimeout(function() {
-                        window.scrollTo(0, 0);
-                    }, 300);
-                });
             }
         </script>
 
@@ -1189,7 +1176,7 @@ src="https://www.facebook.com/tr?id=802840969212461&ev=PageView&noscript=1"
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>                        Email küldése
                     </a>
                     <a class="btn btn-ghost fm-cta" href="tel:+3617903017">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>                        <a href="tel:+3617903017" style="color:inherit;text-decoration:underline">+36 1 790 3017</a>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>                        +36 1 790 3017
                     </a>
                     <a class="btn btn-ghost fm-cta" href="https://wa.me/3617903017" target="_blank" rel="noopener">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>                        WhatsApp
@@ -2080,10 +2067,22 @@ src="https://www.facebook.com/tr?id=802840969212461&ev=PageView&noscript=1"
                     goTo(current + 1);
                 };
 
-                // Auto-advance every 6 seconds
-                setInterval(function() {
+                /* Auto-leptetes 7 mp-enkent — de azonnal leall, amint a
+                   felhasznalo hozzaer (kattintas / erintes / eger), hogy a
+                   kattintasi cel ne mozduljon el a keze alol. */
+                var autoTimer = setInterval(function() {
                     goTo((current + 1) % total);
-                }, 6000);
+                }, 7000);
+
+                function stopAuto() {
+                    if (autoTimer) {
+                        clearInterval(autoTimer);
+                        autoTimer = null;
+                    }
+                }
+                ['pointerdown', 'touchstart', 'mouseenter', 'focusin', 'keydown'].forEach(function(ev) {
+                    carousel.addEventListener(ev, stopAuto, { passive: true });
+                });
             });
 
             /* ── Skin Diagnostic Quiz ── */
@@ -2308,29 +2307,85 @@ src="https://www.facebook.com/tr?id=802840969212461&ev=PageView&noscript=1"
                 /* Mindig iframe — működik file:// és http:// protokollal is */
                 var contentEl = document.getElementById('plbContent');
                 var iframe = document.createElement('iframe');
-                iframe.src = cfg.url;
-                iframe.style.cssText = 'width:100%;height:100%;border:none;background:#FDFAF6;display:block;';
+                /* Az iframe rejtve indul: korabban a betoltott aloldal a sajat
+                   navjaval, lablecevel egyutt felvillant, es csak utana tuntek
+                   el az elemek. Most eloszor megtisztitjuk, aztan mutatjuk meg. */
+                iframe.style.cssText = 'width:100%;height:100%;border:none;background:#FDFAF6;display:block;opacity:0;transition:opacity 0.25s ease;';
                 iframe.setAttribute('title', cfg.name);
                 contentEl.innerHTML = '';
                 contentEl.appendChild(iframe);
+                iframe.src = cfg.url;
+
+                var plbShown = false;
+
+                function plbShow() {
+                    if (plbShown) return;
+                    plbShown = true;
+                    iframe.style.opacity = '1';
+                }
+
+                /* A tisztito CSS-t mar a <head> letrejottekor beinjektaljuk,
+                   tehat mielott az aloldal torzse egyaltalan kirajzolodna. */
+                function plbClean() {
+                    try {
+                        var idoc = iframe.contentDocument || iframe.contentWindow.document;
+                        if (!idoc || !idoc.head) return false;
+                        if (!idoc.getElementById('plb-embed-style')) {
+                            var st = idoc.createElement('style');
+                            st.id = 'plb-embed-style';
+                            st.textContent =
+                                '.nav,.breadcrumb,footer,.footer,.cta-sec,.cta-banner,' +
+                                '.product-switcher,.bottom-bar,.sticky-cta,.float-mask,#cookie-banner' +
+                                '{display:none!important}' +
+                                '.reveal{opacity:1!important;transform:none!important}' +
+                                'body{padding-top:0!important;margin-top:0!important}' +
+                                '.page-content{margin-top:0!important}';
+                            idoc.head.appendChild(st);
+                        }
+                        return true;
+                    } catch (e) {
+                        /* cross-origin — nem tudjuk tisztitani, de meg kell mutatni */
+                        return true;
+                    }
+                }
+
+                /* Amint a tisztito CSS a helyen van es a torzs letezik, mar
+                   mutathatjuk — igy nem kell megvarni a kepek betoltodeset,
+                   de a beagyazott oldal sajat navja/lableca sosem villan fel. */
+                var plbPoll = setInterval(function() {
+                    if (!plbClean()) return;
+                    try {
+                        var idoc = iframe.contentDocument || iframe.contentWindow.document;
+                        if (idoc && idoc.body) {
+                            clearInterval(plbPoll);
+                            plbShow();
+                        }
+                    } catch (e) {
+                        clearInterval(plbPoll);
+                        plbShow();
+                    }
+                }, 10);
 
                 iframe.onload = function() {
+                    clearInterval(plbPoll);
+                    plbClean();
                     try {
                         var idoc = iframe.contentDocument || iframe.contentWindow.document;
                         if (idoc) {
-                            /* Nav, footer, CTA elrejtése */
-                            ['.nav', '.breadcrumb', 'footer', '.footer', '.cta-sec', '.cta-banner'].forEach(function(sel) {
-                                idoc.querySelectorAll(sel).forEach(function(el) {
-                                    el.style.display = 'none';
-                                });
-                            });
-                            /* Reveal animációk aktiválása */
                             idoc.querySelectorAll('.reveal').forEach(function(el) {
                                 el.classList.add('visible');
                             });
                         }
-                    } catch (e) { /* cross-origin — az iframe amúgy is megjeleníti */ }
+                    } catch (e) {}
+                    plbShow();
                 };
+
+                /* Ha a betoltes elakadna, 2,5 mp utan akkor is megmutatjuk,
+                   es a pollingot mindenkeppen leallitjuk. */
+                setTimeout(function() {
+                    clearInterval(plbPoll);
+                    plbShow();
+                }, 2500);
             }
 
             function closeProtocolLightbox() {

@@ -635,6 +635,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     reveals.forEach(el => observer.observe(el));
 
+    /* Biztonsagi halo: ha az observer barmiert nem sulne el (pl. ugras
+       kozvetlenul az oldal kozepere), 2 mp mulva minden tartalom lathato. */
+    setTimeout(() => reveals.forEach(el => el.classList.add('visible')), 2000);
+
     // Gallery Lightbox
     (() => {
       const items = document.querySelectorAll('.observ-gallery__item');
