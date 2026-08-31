@@ -786,6 +786,62 @@
       object-fit: cover;
       border-radius: 20px;
     }
+    /* Húzásra forgatható termék — a hero-felvétel körbefordulása */
+    .mask-video-wrap[role="slider"] {
+      cursor: grab;
+      touch-action: pan-y;          /* függőleges görgetés marad az oldalé */
+      outline: none;
+    }
+    .mask-video-wrap.is-spinning {
+      cursor: grabbing;
+      animation: none;              /* a lebegés megállítva, hogy pontos legyen a húzás */
+    }
+    .mask-video-wrap.spin-engaged { animation: none; }
+    .mask-video-wrap[role="slider"]:focus-visible {
+      box-shadow:
+        0 0 0 2px var(--gold),
+        0 0 60px rgba(184, 150, 90, 0.15);
+    }
+    .mask-spin-rail {
+      position: absolute;
+      left: 22px; right: 22px; bottom: 18px;
+      height: 2px;
+      background: rgba(253, 250, 246, 0.22);
+      border-radius: 2px;
+      overflow: hidden;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+      z-index: 3;
+    }
+    .mask-video-wrap.spin-engaged .mask-spin-rail { opacity: 1; }
+    .mask-spin-rail__fill {
+      display: block;
+      height: 100%;
+      width: 0;
+      background: var(--gold-light);
+    }
+    .mask-spin-hint {
+      position: absolute;
+      left: 50%; bottom: 30px;
+      transform: translateX(-50%);
+      font-size: 0.56rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: rgba(253, 250, 246, 0.72);
+      text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+      pointer-events: none;
+      opacity: 0;                   /* csak akkor hívogat, ha a felvétel tényleg betöltött */
+      transition: opacity 0.5s ease;
+      z-index: 3;
+    }
+    .mask-video-wrap.spin-ready .mask-spin-hint { opacity: 1; }
+    .mask-video-wrap.spin-engaged .mask-spin-hint { opacity: 0; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .mask-video-wrap { animation: none; }
+    }
+
     .mask-video-overlay {
       position: absolute;
       inset: 0;
@@ -2635,136 +2691,197 @@
     /* ═══════════════════════════════════════ */
 
     /* ═══ LUXURY FLOATING MASK ICON ═══ */
+
+    /* A derengés színe — a JS ezt úsztatja át a négy hullámhosszon,
+       ha a kurzor a maszk közelébe ér. @property nélkül is működik,
+       csak ugrik a szín az átúszás helyett. */
+    @property --fm-led {
+      syntax: '<color>';
+      inherits: true;
+      initial-value: rgba(184, 150, 90, 0.22);
+    }
+
     .float-mask {
       position: fixed;
       bottom: 24px;
       right: 24px;
       z-index: 1350;
       perspective: 600px;
+      --fm-led: rgba(184, 150, 90, 0.22);
+      transition: --fm-led 1.4s ease;
     }
 
+    /* ── Gomb — keret nélkül lebegő 3D maszk-objektum ── */
     .float-mask-btn {
-      width: 68px;
-      height: 68px;
-      border-radius: 50%;
-      background: radial-gradient(ellipse at 30% 20%, rgba(253,250,246,0.95) 0%, rgba(245,240,232,0.9) 100%);
+      width: 78px;
+      height: 78px;
+      padding: 0;
       border: none;
+      background: none;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       position: relative;
-      transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
-      box-shadow:
-        0 4px 20px rgba(0,0,0,0.12),
-        0 0 0 1.5px rgba(184,150,90,0.4),
-        0 0 30px rgba(184,150,90,0.08),
-        inset 0 1px 0 rgba(255,255,255,0.8);
-      animation: fmFloat 4s ease-in-out infinite;
+      /* transform-style itt szándékosan lapos: preserve-3d mellett a 3D-be forgatott
+         maszk mögé sorolódnának a derengés-rétegek, és rátakarnának. */
+      perspective: 420px;
+      transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+      animation: fmFloat 5s ease-in-out infinite;
+    }
+
+    /* Kurzorkövetéskor a forgatás a maszkra kerül, a gomb csak emel és lebeg —
+       így nem ütközik az inline transform a fmFloat animációval. */
+    .float-mask-btn.fm-tilt:hover {
+      transform: translateY(-5px) scale(1.07);
+    }
+    .float-mask-btn.fm-tilt .float-mask-img {
+      transition: transform 0.5s cubic-bezier(0.22, 0.9, 0.3, 1), filter 0.4s ease;
+      will-change: transform;
     }
 
     @keyframes fmFloat {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
+      0%, 100% { transform: translateY(0) rotateZ(0deg); }
+      50%      { transform: translateY(-7px) rotateZ(-1.5deg); }
     }
 
     .float-mask-btn:hover {
-      transform: translateY(-4px) scale(1.1) rotateY(-8deg);
-      box-shadow:
-        0 12px 40px rgba(0,0,0,0.15),
-        0 0 0 2px var(--gold),
-        0 0 40px rgba(184,150,90,0.15),
-        0 0 20px rgba(255,68,68,0.1),
-        inset 0 1px 0 rgba(255,255,255,0.9);
+      transform: translateY(-5px) scale(1.07) rotateY(-14deg);
       animation: none;
     }
 
     .float-mask-btn.fm-active {
       animation: none;
-      transform: translateY(-2px) scale(1.05);
-      box-shadow:
-        0 8px 32px rgba(0,0,0,0.15),
-        0 0 0 2px var(--gold),
-        0 0 24px rgba(184,150,90,0.2);
+      transform: translateY(-3px) scale(1.04);
     }
 
-    /* Arany gyűrűk */
+    /* A 3D render — a saját árnyéka adja a testet, nincs körlap mögötte */
+    .float-mask-svg,
+    .float-mask-logo,
+    .float-mask-img {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      z-index: 2;
+      object-fit: contain;
+      border-radius: 0;
+      transition: filter 0.4s ease;
+      filter:
+        drop-shadow(0 0 1px rgba(253, 250, 246, 0.75))
+        drop-shadow(0 10px 14px rgba(42, 32, 18, 0.30))
+        drop-shadow(0 2px 4px rgba(42, 32, 18, 0.20));
+    }
+    .float-mask-btn:hover .float-mask-img,
+    .float-mask-btn.fm-active .float-mask-img {
+      filter:
+        drop-shadow(0 0 1px rgba(253, 250, 246, 0.75))
+        drop-shadow(0 16px 22px rgba(42, 32, 18, 0.34))
+        drop-shadow(0 3px 6px rgba(42, 32, 18, 0.22))
+        drop-shadow(0 0 14px rgba(184, 150, 90, 0.45));
+    }
+
+    /* Kontakt-árnyék a "talajon" — ettől ül a térben */
     .fm-ring {
       position: absolute;
-      border-radius: 50%;
       pointer-events: none;
     }
+    .fm-ring--inner {
+      left: 16%;
+      right: 16%;
+      bottom: 2px;
+      height: 10px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse at center, rgba(58, 44, 24, 0.26) 0%, rgba(58, 44, 24, 0.10) 45%, transparent 72%);
+      transition: transform 0.5s ease, opacity 0.5s ease;
+      z-index: 1;
+    }
+    .float-mask-btn:hover .fm-ring--inner {
+      transform: scale(0.88);
+      opacity: 0.7;
+    }
+
+    /* Arany halo — csak hoverre / nyitott panelnél jelenik meg */
     .fm-ring--outer {
-      inset: -3px;
-      border: 1px solid rgba(184,150,90,0.25);
-      animation: fmRingSpin 12s linear infinite;
-      background: conic-gradient(from 0deg, transparent 0%, rgba(184,150,90,0.3) 25%, transparent 50%, rgba(184,150,90,0.15) 75%, transparent 100%);
+      inset: -6px;
+      border-radius: 50%;
+      border: 1px solid rgba(184, 150, 90, 0.4);
+      background: conic-gradient(from 0deg, transparent 0%, rgba(184,150,90,0.28) 25%, transparent 50%, rgba(184,150,90,0.14) 75%, transparent 100%);
       -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 1.5px), #000 calc(100% - 1.5px));
       mask: radial-gradient(farthest-side, transparent calc(100% - 1.5px), #000 calc(100% - 1.5px));
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      z-index: 0;
     }
-    .fm-ring--inner {
-      inset: 2px;
-      border: 0.5px solid rgba(212,176,119,0.15);
+    .float-mask-btn:hover .fm-ring--outer,
+    .float-mask-btn.fm-active .fm-ring--outer {
+      opacity: 1;
+      transform: scale(1);
+      animation: fmRingSpin 12s linear infinite;
     }
 
     @keyframes fmRingSpin {
-      to { transform: rotate(360deg); }
+      to { transform: rotate(360deg) scale(1); }
     }
 
-    /* Üveg réteg */
+    /* Lágy elefántcsont hátfény — világos háttéren láthatatlan,
+       sötét szekció fölött viszont kiemeli a fekete maszkot */
     .fm-glass {
       position: absolute;
-      inset: 0;
+      inset: -10px;
       border-radius: 50%;
-      background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, transparent 50%, rgba(255,255,255,0.02) 100%);
-      pointer-events: none;
-      z-index: 3;
-    }
-
-    .float-mask-svg,
-    .float-mask-logo {
-      width: 44px;
-      height: 44px;
-      position: relative;
-      z-index: 2;
-      filter: drop-shadow(0 1px 2px rgba(0,0,0,0.1));
-      transition: transform 0.4s ease;
-      object-fit: contain;
-      border-radius: 0;
-    }
-    .float-mask-btn:hover .float-mask-svg,
-    .float-mask-btn:hover .float-mask-logo {
-      transform: scale(1.08);
-    }
-
-    /* Pulzáló aura — arany */
-    .fm-aura {
-      position: absolute;
-      inset: -8px;
-      border-radius: 50%;
+      background: radial-gradient(circle at 50% 48%,
+        rgba(253,250,246,0.78) 0%,
+        rgba(253,250,246,0.42) 40%,
+        rgba(253,250,246,0.12) 60%,
+        transparent 76%);
+      filter: blur(7px);
       pointer-events: none;
       z-index: 0;
     }
+
+    /* Derengés a maszk mögött — a LED-fény utalása.
+       Nyugalomban arany; ha a kurzor közel ér, a négy hullámhossz úszik át rajta. */
+    .fm-aura {
+      position: absolute;
+      inset: 4px;
+      border-radius: 50%;
+      pointer-events: none;
+      /* állandó derengés — a pulzálás e fölött fut a pszeudo-elemeken */
+      background: radial-gradient(circle, var(--fm-led) 0%, transparent 64%);
+      opacity: 0.75;
+      transition: opacity 0.5s ease, inset 0.5s ease;
+      z-index: 0;
+    }
+    /* Közeledéskor kiterjed, hogy a hullámhossz színe a maszk körül is látsszon */
+    .float-mask.fm-near .fm-aura { opacity: 1; inset: -12px; }
     .fm-aura::before,
     .fm-aura::after {
       content: '';
       position: absolute;
       inset: 0;
       border-radius: 50%;
-      animation: fmAuraPulse 3s ease-in-out infinite;
+      animation: fmAuraPulse 4s ease-in-out infinite;
     }
     .fm-aura::before {
-      background: radial-gradient(circle, rgba(184,150,90,0.25) 0%, transparent 70%);
+      background: radial-gradient(circle, var(--fm-led) 0%, transparent 68%);
     }
     .fm-aura::after {
-      background: radial-gradient(circle, rgba(184,150,90,0.12) 0%, transparent 70%);
-      background: radial-gradient(circle, rgba(212,176,119,0.15) 0%, transparent 70%);
-      animation-delay: 1.5s;
+      background: radial-gradient(circle, rgba(212,176,119,0.12) 0%, transparent 68%);
+      animation-delay: 2s;
     }
 
     @keyframes fmAuraPulse {
-      0%, 100% { transform: scale(1); opacity: 0.6; }
-      50% { transform: scale(1.35); opacity: 0; }
+      0%, 100% { transform: scale(0.9); opacity: 0.55; }
+      50%      { transform: scale(1.3); opacity: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .float-mask-btn,
+      .fm-aura::before,
+      .fm-aura::after,
+      .float-mask-btn:hover .fm-ring--outer,
+      .float-mask-btn.fm-active .fm-ring--outer { animation: none; }
     }
 
     /* ── Panel — prémium glassmorphism ── */
@@ -2871,12 +2988,8 @@
         right: 14px;
       }
       .float-mask-btn {
-        width: 60px;
-        height: 60px;
-      }
-      .float-mask-svg {
-        width: 38px;
-        height: 38px;
+        width: 64px;
+        height: 64px;
       }
       .float-mask-panel {
         width: calc(100vw - 28px);
