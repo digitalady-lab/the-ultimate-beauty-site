@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A keresett oldal nem található — The Ultimate Beauty</title>
+<meta name="description" content="A keresett oldal nem található. Segítünk továbbjutni a The Ultimate Beauty Boutique Clinic honlapján.">
+<meta name="robots" content="noindex, follow">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32x32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ivory: #FDFAF6; --cream: #F8F4EE; --charcoal: #1A1816;
+    --charcoal-60: rgba(26,24,22,0.6); --charcoal-10: rgba(26,24,22,0.08);
+    --gold: #B8965A; --gold-pale: rgba(184,150,90,0.12);
+    --font-display: 'Cormorant Garamond', serif; --font-sans: 'Montserrat', sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--ivory); color: var(--charcoal);
+    font-family: var(--font-sans); font-weight: 300; font-size: 15px; line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    display: flex; flex-direction: column; min-height: 100vh;
+  }
+  a { color: inherit; text-decoration: none; }
+  ul { list-style: none; }
+
+  .wrap { flex: 1; width: 100%; max-width: 760px; margin: 0 auto; padding: 5rem 1.5rem 4rem; }
+
+  .brand {
+    font-family: var(--font-display); font-size: 1.1rem; letter-spacing: .18em;
+    text-transform: uppercase; color: var(--gold); text-align: center; margin-bottom: 3.5rem;
+  }
+  .code {
+    font-family: var(--font-display); font-size: clamp(3.5rem, 12vw, 5.5rem);
+    font-weight: 400; line-height: 1; color: var(--gold); text-align: center;
+  }
+  h1 {
+    font-family: var(--font-display); font-weight: 400;
+    font-size: clamp(1.6rem, 5vw, 2.3rem); text-align: center;
+    margin: 1rem 0 .75rem;
+  }
+  .lead { text-align: center; color: var(--charcoal-60); max-width: 46ch; margin: 0 auto 2.5rem; }
+
+  .suggest {
+    display: none; text-align: center; background: var(--gold-pale);
+    border: 1px solid rgba(184,150,90,.3); border-radius: 4px;
+    padding: 1.1rem 1.25rem; margin: 0 auto 2.5rem; max-width: 34rem;
+  }
+  .suggest a { color: var(--gold); font-weight: 500; border-bottom: 1px solid currentColor; }
+
+  .cta { text-align: center; margin-bottom: 3.5rem; }
+  .btn {
+    display: inline-block; padding: .9rem 2rem; background: var(--gold); color: #fff;
+    letter-spacing: .08em; font-size: .82rem; text-transform: uppercase; border-radius: 3px;
+    transition: opacity .3s;
+  }
+  .btn:hover { opacity: .85; }
+  .btn--ghost { background: none; color: var(--charcoal); border: 1px solid var(--charcoal-10); margin-left: .5rem; }
+
+  .cols { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.5rem 1.5rem; }
+  .col-title {
+    font-family: var(--font-display); font-size: 1.05rem; color: var(--gold);
+    letter-spacing: .04em; margin-bottom: .85rem;
+  }
+  .cols li { margin-bottom: .5rem; }
+  .cols a { color: var(--charcoal-60); transition: color .25s; }
+  .cols a:hover { color: var(--gold); }
+
+  footer {
+    border-top: 1px solid var(--charcoal-10); background: var(--cream);
+    padding: 1.75rem 1.5rem; text-align: center; color: var(--charcoal-60); font-size: .82rem;
+  }
+  footer a { color: var(--gold); }
+
+  @media (max-width: 680px) { .cols { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 480px) {
+    .wrap { padding-top: 3rem; }
+    .btn--ghost { margin: .75rem 0 0; display: block; }
+  }
+</style>
+</head>
+<body>
+
+<main class="wrap">
+  <div class="brand">The Ultimate Beauty</div>
+
+  <p class="code">404</p>
+  <h1>Ez az oldal elköltözött</h1>
+  <p class="lead">
+    Megújult a honlapunk, és néhány régi cím megváltozott. A keresett tartalom
+    nagy eséllyel megvan — csak új helyen.
+  </p>
+
+  <p class="suggest" id="suggest"></p>
+
+  <div class="cta">
+    <a class="btn" href="/">Vissza a főoldalra</a>
+    <a class="btn btn--ghost" href="/#home-contact">Konzultáció foglalása</a>
+  </div>
+
+  <nav class="cols" aria-label="Oldaltérkép">
+    <div>
+      <p class="col-title">A Protocol</p>
+      <ul>
+        <li><a href="/protocol">A Protocol filozófiája</a></li>
+        <li><a href="/protocol-hub">Signature Protocolok</a></li>
+        <li><a href="/kutatas">Kutatás</a></li>
+        <li><a href="/kviz">60 mp-es bőrkvíz</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="col-title">Technológiák</p>
+      <ul>
+        <li><a href="/hileft">ULTIMA HILEFT</a></li>
+        <li><a href="/observ">Observ 520x</a></li>
+        <li><a href="/mask">LED Beauty Mask</a></li>
+        <li><a href="/technologia-venus-legacy">Venus Legacy</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="col-title">Kezelések</p>
+      <ul>
+        <li><a href="/kezeles-ultima-face">ULTIMA Face</a></li>
+        <li><a href="/kezeles-ultima-shape">ULTIMA Shape</a></li>
+        <li><a href="/kezeles-ultima-men">Férfi kezelések</a></li>
+        <li><a href="/kezeles-szules-utani">Szülés utáni</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="col-title">Klinika</p>
+      <ul>
+        <li><a href="/klinika">A klinika</a></li>
+        <li><a href="/akademia">Akadémia</a></li>
+        <li><a href="/program">Founding Member</a></li>
+        <li><a href="/#home-contact">Kapcsolat</a></li>
+      </ul>
+    </div>
+  </nav>
+</main>
+
+<footer>
+  1124 Budapest, Németvölgyi út 68. ·
+  <a href="tel:+3617903017">+36 1 790 3017</a> ·
+  <a href="mailto:info@theultimatebeauty.net">info@theultimatebeauty.net</a>
+</footer>
+
+<script>
+/* Ha a kért útvonal hasonlít egy létező oldalra, felajánljuk.
+   Szándékosan csak javaslat, nem automatikus ugrás: a 404-ről indított
+   kényszerátirányítást a Google „soft 404"-ként értékeli. A valódi régi
+   URL-eket a _redirects fájlban kell 301-gyel lekezelni. */
+(function () {
+  var pages = [
+    'protocol','protocol-hub','observ','hileft','mask','program','kviz','klinika',
+    'akademia','kutatas','clinical-program','adatvedelem','aszf','utogondozas',
+    'kezeles-ultima-face','kezeles-ultima-shape','kezeles-ultima-men',
+    'kezeles-ultima-hilift','kezeles-szules-utani','kezeles-orvosesztetikai-integracio',
+    'technologia-hileft','technologia-observ','technologia-led-mask','technologia-venus-legacy',
+    'protocol-anti-aging-komplex','protocol-borminoseg-javitas','protocol-hialuronsav-szinergia',
+    'protocol-mini-facelift-integracio','protocol-szules-utani-regeneracio'
+  ];
+
+  var asked = decodeURIComponent(location.pathname)
+    .replace(/^\/+|\/+$/g, '')
+    .replace(/\.(html?|php|asp|aspx)$/i, '')
+    .toLowerCase();
+  if (!asked) return;
+
+  function distance(a, b) {
+    var prev = [], i, j, cur, tmp;
+    for (j = 0; j <= b.length; j++) prev[j] = j;
+    for (i = 1; i <= a.length; i++) {
+      cur = [i];
+      for (j = 1; j <= b.length; j++) {
+        tmp = a.charAt(i - 1) === b.charAt(j - 1) ? prev[j - 1] : prev[j - 1] + 1;
+        cur[j] = Math.min(cur[j - 1] + 1, prev[j] + 1, tmp);
+      }
+      prev = cur;
+    }
+    return prev[b.length];
+  }
+
+  var best = null, bestScore = Infinity;
+  pages.forEach(function (p) {
+    var d = distance(asked, p);
+    if (p.indexOf(asked) !== -1 || asked.indexOf(p) !== -1) d = Math.min(d, 2);
+    if (d < bestScore) { bestScore = d; best = p; }
+  });
+
+  // Csak akkor ajánlunk, ha tényleg közeli — különben félrevezető.
+  if (!best || bestScore > Math.max(3, Math.floor(asked.length / 3))) return;
+
+  var box = document.getElementById('suggest');
+  box.innerHTML = 'Erre gondoltál? <a href="/' + best + '">/' + best + '</a>';
+  box.style.display = 'block';
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,184 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  The Ultimate Beauty — Netlify redirect-térkép
+#
+#  CÉL: a Wix → Netlify költözés után a régi, Google által indexelt URL-ek
+#  ne 404-et adjanak, hanem 301-gyel vigyék át a linkerőt az új oldalakra.
+#  404 esetén a Google új, előzmény nélküli honlapként kezeli a domaint —
+#  a 301 az, ami a régi rangsor-előzményt átörökíti.
+#
+#  Formátum:  <régi útvonal>   <új útvonal>   <státusz>
+#  A „!” (force) kell oda, ahol létező fájl is lenne az adott úton,
+#  különben a statikus fájl elnyomná a szabályt.
+#  Sorrend számít: az első illeszkedő szabály nyer.
+#
+#  A maradék régi Wix URL-ek kigyűjtéséhez lásd: SEO-MIGRACIO.md
+# ─────────────────────────────────────────────────────────────────────────────
+
+
+# ═══ 1. DOMAIN-KANONIZÁLÁS ═══════════════════════════════════════════════════
+# A Google jelenleg www-s és www nélküli alakban is indexel — ez kettéosztja
+# a linkerőt. Minden a csupasz (apex) domainre megy.
+
+http://www.theultimatebeauty.net/*    https://theultimatebeauty.net/:splat    301!
+https://www.theultimatebeauty.net/*   https://theultimatebeauty.net/:splat    301!
+
+
+# ═══ 2. RÉGI WIX URL-EK → ÚJ OLDALAK ═════════════════════════════════════════
+# A Wix automatikusan generált, sorszámozott slugokat használ (contact-4,
+# about-1, blank-2 …). Ezek közül a /contact-4 megerősítetten élt a régi
+# oldalon; a többi a Wix sablonok szokásos slug-készlete — ha egy URL soha
+# nem létezett, a szabály egyszerűen sosem aktiválódik, kárt nem okoz.
+
+# — Kapcsolat / elérhetőség —
+/contact-4            /#home-contact        301
+/contact-3            /#home-contact        301
+/contact-2            /#home-contact        301
+/contact-1            /#home-contact        301
+/contact              /#home-contact        301
+/contact-us           /#home-contact        301
+/kapcsolat            /#home-contact        301
+/elerhetoseg          /#home-contact        301
+
+# — Időpontfoglalás / konzultáció —
+/konzultacio          /#home-contact        301
+/idopontfoglalas      /#home-contact        301
+/book-online          /#home-contact        301
+/booking-calendar     /#home-contact        301
+/bookings-checkout    /#home-contact        301
+/service-page/*       /#home-contact        301
+
+# — Rólunk / klinika —
+/about                /klinika              301
+/about-1              /klinika              301
+/about-2              /klinika              301
+/about-3              /klinika              301
+/about-us             /klinika              301
+/rolunk               /klinika              301
+/our-story            /klinika              301
+/team                 /klinika              301
+/team-1               /klinika              301
+/our-team             /klinika              301
+/orvosaink            /klinika              301
+/gallery              /klinika              301
+/gallery-1            /klinika              301
+/galeria              /klinika              301
+/photo-gallery        /klinika              301
+
+# — Szolgáltatások / kezelések —
+/services             /protocol             301
+/services-1           /protocol             301
+/services-2           /protocol             301
+/services-3           /protocol             301
+/szolgaltatasok       /protocol             301
+/treatments           /protocol             301
+
+# — Árak —
+/arak                 /#home-contact        301
+/pricing              /#home-contact        301
+/plans-pricing        /#home-contact        301
+/price-list           /#home-contact        301
+
+# — GYIK —
+/faq                  /#home-faq            301
+/faq-1                /#home-faq            301
+/gyik                 /#home-faq            301
+
+# — Blog / cikkek (Wix blog URL-sémák) —
+/blog                 /kutatas              301
+/blog-1               /kutatas              301
+/blog/*               /kutatas              301
+/post/*               /kutatas              301
+/single-post/*        /kutatas              301
+
+# — Webshop (a maszk saját aldomainre költözött) —
+/shop                 https://mask.theultimatebeauty.net/rendeles.html   301
+/product-page/*       https://mask.theultimatebeauty.net/rendeles.html   301
+/termekek             https://mask.theultimatebeauty.net/rendeles.html   301
+
+# — Jogi oldalak —
+/privacy-policy               /adatvedelem  301
+/adatvedelmi-tajekoztato      /adatvedelem  301
+/terms-of-use                 /aszf         301
+/terms-and-conditions         /aszf         301
+/impresszum                   /aszf         301
+
+# — Kezdőlap-variánsok —
+/home                 /                     301
+/home-1               /                     301
+/kezdolap             /                     301
+/fooldal              /                     301
+
+# — Wix „blank” sablonoldalak —
+# FIGYELEM: ezek tartalmi oldalak is lehettek. Ha a Search Console szerint
+# valamelyik élt és forgalmat kapott, írd át a valódi megfelelőjére.
+/blank                /                     301
+/blank-1              /                     301
+/blank-2              /                     301
+/blank-3              /                     301
+/blank-4              /                     301
+/blank-5              /                     301
+/blank-page           /                     301
+
+
+# ═══ 3. BELSŐ HIVATKOZÁSOK, AMIKHEZ MÉG NINCS OLDAL ══════════════════════════
+# A /kviz navigációja a tervezett (még el nem készült) oldalstruktúrára mutat.
+# Amíg az oldalak nincsenek kész, ezek 302-vel mennek a legközelebbi létező
+# tartalomra — 302, mert ez ideiglenes: ha megépül az oldal, a szabály törlendő.
+
+/kezelesek                        /protocol                              302
+/kezeles-botulinumtoxin           /kezeles-orvosesztetikai-integracio    302
+/kezeles-hialuronsav              /protocol-hialuronsav-szinergia        302
+/kezeles-kollagenstimulacio       /kezeles-ultima-face                   302
+/kezeles-skinbooster              /protocol-borminoseg-javitas           302
+/kezeles-orvosesztetika           /kezeles-orvosesztetikai-integracio    302
+/kezeles-intim                    /protocol                              302
+/megoldas                         /protocol                              302
+/megoldas-mutet-nelkuli-lifting   /kezeles-ultima-face                   302
+/megoldas-szules-utan             /kezeles-szules-utani                  302
+/megoldas-volumenvesztett-arc     /kezeles-ultima-face                   302
+/protocol-treatments              /protocol-hub                          302
+/technologia                      /#home-tech                            302
+
+
+# ═══ 4. ALDOMAINRE KÖLTÖZÖTT TARTALOM ════════════════════════════════════════
+
+/shape          https://shape.theultimatebeauty.net         301
+/invitation     https://invitation.theultimatebeauty.net    301
+
+
+# ═══ 5. .html → KITERJESZTÉS NÉLKÜLI URL ═════════════════════════════════════
+# Mindkét alak kiszolgálható, ezért ugyanaz a tartalom két URL-en él →
+# duplikált tartalom, megosztott linkerő. A kiterjesztés nélküli a kanonikus.
+
+/index.html                                   /                                             301!
+/adatvedelem.html                             /adatvedelem                                  301!
+/akademia.html                                /akademia                                     301!
+/aszf.html                                    /aszf                                         301!
+/clinical-program.html                        /clinical-program                             301!
+/hileft.html                                  /hileft                                       301!
+/kezeles-orvosesztetikai-integracio.html      /kezeles-orvosesztetikai-integracio           301!
+/kezeles-szules-utani.html                    /kezeles-szules-utani                         301!
+/kezeles-ultima-face.html                     /kezeles-ultima-face                          301!
+/kezeles-ultima-hilift.html                   /kezeles-ultima-hilift                        301!
+/kezeles-ultima-men.html                      /kezeles-ultima-men                           301!
+/kezeles-ultima-shape.html                    /kezeles-ultima-shape                         301!
+/klinika.html                                 /klinika                                      301!
+/kutatas.html                                 /kutatas                                      301!
+/kviz.html                                    /kviz                                         301!
+/mask.html                                    /mask                                         301!
+/meghivas.html                                /meghivas                                     301!
+/observ.html                                  /observ                                       301!
+/program.html                                 /program                                      301!
+/protocol.html                                /protocol                                     301!
+/protocol-anti-aging-komplex.html             /protocol-anti-aging-komplex                  301!
+/protocol-borminoseg-javitas.html             /protocol-borminoseg-javitas                  301!
+/protocol-hialuronsav-szinergia.html          /protocol-hialuronsav-szinergia               301!
+/protocol-hub.html                            /protocol-hub                                 301!
+/protocol-mini-facelift-integracio.html       /protocol-mini-facelift-integracio            301!
+/protocol-szules-utani-regeneracio.html       /protocol-szules-utani-regeneracio            301!
+/technologia-hileft.html                      /technologia-hileft                           301!
+/technologia-led-mask.html                    /technologia-led-mask                         301!
+/technologia-observ.html                      /technologia-observ                           301!
+/technologia-venus-legacy.html                /technologia-venus-legacy                     301!
+/ultima-concept.html                          /ultima-concept                               301!
+/utogondozas.html                             /utogondozas                                  301!

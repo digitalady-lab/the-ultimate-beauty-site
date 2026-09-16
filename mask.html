@@ -53,7 +53,7 @@
     <meta property="og:title" content="The Ultimate Beauty Clinic | Prémium Esztétika, Budán" />
     <meta property="og:description" content="Tudományos arcfiatalítás: ULTIMA LED Mask, Observ 520x és HILEFT technológia. Egy rendszer, ami láthatóan hat." />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://theultimatebeauty.net/" />
+    <meta property="og:url" content="https://theultimatebeauty.net/mask" />
     <meta property="og:image" content="https://theultimatebeauty.net/assets/images/og-cover.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -258,7 +258,7 @@ src="https://www.facebook.com/tr?id=802840969212461&ev=PageView&noscript=1"
 
         <!-- ALSÓ INFORMÁCIÓS SÁV — brand-mark · tagline · CTA -->
         <div class="bottom-bar">
-            <a href="klinika.html" class="switcher-brand">
+            <a href="/klinika" class="switcher-brand">
                 <span class="switcher-brand__name">The Ultimate Beauty</span>
                 <span class="switcher-brand__sub">Boutique Clinic</span>
             </a>
@@ -816,8 +816,8 @@ src="https://www.facebook.com/tr?id=802840969212461&ev=PageView&noscript=1"
                         <h4>Protocol & Kezelések</h4>
                         <ul>
                             <li><a href="/protocol">Protocol</a></li>
-                            <li><a href="protocol-hub.html">Protocol Hub</a></li>
-                            <li><a href="clinical-program.html">Clinical Programs</a></li>
+                            <li><a href="/protocol-hub">Protocol Hub</a></li>
+                            <li><a href="/clinical-program">Clinical Programs</a></li>
                             <li><a href="/program">Program & Tagság</a></li>
                         </ul>
                     </div>
@@ -832,9 +832,9 @@ src="https://www.facebook.com/tr?id=802840969212461&ev=PageView&noscript=1"
                     <div>
                         <h4>A Klinika</h4>
                         <ul>
-                            <li><a href="klinika.html">Bemutatkozás</a></li>
-                            <li><a href="akademia.html">Akadémia</a></li>
-                            <li><a href="kutatas.html">Kutatás</a></li>
+                            <li><a href="/klinika">Bemutatkozás</a></li>
+                            <li><a href="/akademia">Akadémia</a></li>
+                            <li><a href="/kutatas">Kutatás</a></li>
                             <li><a href="#contact">Kapcsolat</a></li>
                         </ul>
                     </div>
@@ -858,8 +858,8 @@ src="https://www.facebook.com/tr?id=802840969212461&ev=PageView&noscript=1"
                 <div class="footer-bottom">
                     <p>&copy; 2026 The Ultimate Beauty Clinic. Minden jog fenntartva.</p>
                     <div class="footer-legal">
-                        <a href="adatvedelem.html">Adatvédelem</a>
-                        <a href="aszf.html">ÁSZF</a>
+                        <a href="/adatvedelem">Adatvédelem</a>
+                        <a href="/aszf">ÁSZF</a>
                     </div>
                 </div>
             </footer>
@@ -1837,9 +1837,9 @@ src="https://www.facebook.com/tr?id=802840969212461&ev=PageView&noscript=1"
             };
 
             function openUltimaModal(key) {
-                if (key === 'shape') { window.location.href = 'kezeles-ultima-shape.html'; return; }
-                if (key === 'face') { window.location.href = 'kezeles-ultima-face.html'; return; }
-                if (key === 'hilift') { window.location.href = 'kezeles-ultima-hilift.html'; return; }
+                if (key === 'shape') { window.location.href = '/kezeles-ultima-shape'; return; }
+                if (key === 'face') { window.location.href = '/kezeles-ultima-face'; return; }
+                if (key === 'hilift') { window.location.href = '/kezeles-ultima-hilift'; return; }
                 var t = ultimaTreatments[key];
                 if (!t) return;
                 window._currentUltimaKey = key;
@@ -2165,7 +2165,7 @@ src="https://www.facebook.com/tr?id=802840969212461&ev=PageView&noscript=1"
                             '<input type="email" placeholder="Email cím" required class="email-gate-input" />' +
                             '<button type="submit" class="email-gate-submit">Kérem</button>' +
                             '</form>' +
-                            '<p style="font-size:0.65rem; color:var(--text-light); margin-top:10px;">Nem küldünk kéretlen levelet. <a href="adatvedelem.html" style="color:var(--gold);">Adatvédelem</a></p>' +
+                            '<p style="font-size:0.65rem; color:var(--text-light); margin-top:10px;">Nem küldünk kéretlen levelet. <a href="/adatvedelem" style="color:var(--gold);">Adatvédelem</a></p>' +
                             '</div>';
                     }
                 }
@@ -2289,17 +2289,17 @@ src="https://www.facebook.com/tr?id=802840969212461&ev=PageView&noscript=1"
                 hilift: {
                     label: 'Clinical Program',
                     name: 'Mini Facelift Integráció',
-                    url: 'protocol-mini-facelift-integracio.html'
+                    url: '/protocol-mini-facelift-integracio'
                 },
                 mama: {
                     label: 'Protocol Treatment',
                     name: 'Szülés Utáni Hasfali Regeneráció',
-                    url: 'protocol-szules-utani-regeneracio.html'
+                    url: '/protocol-szules-utani-regeneracio'
                 },
                 kutatas: {
                     label: 'Tudományos Megközelítés',
                     name: 'Klinikai Kutatás & Pilot Programok',
-                    url: 'kutatas.html'
+                    url: '/kutatas'
                 }
             };
 
@@ -2496,7 +2496,7 @@ src="https://www.facebook.com/tr?id=802840969212461&ev=PageView&noscript=1"
                     <input type="email" placeholder="Email cím" required class="email-gate-input" />
                     <button type="submit" class="email-gate-submit">Ingyenes bőrelemzést kérek</button>
                 </form>
-                <p class="email-gate-privacy">Adatait bizalmasan kezeljük. <a href="adatvedelem.html" style="color:var(--gold);">Adatvédelem</a></p>
+                <p class="email-gate-privacy">Adatait bizalmasan kezeljük. <a href="/adatvedelem" style="color:var(--gold);">Adatvédelem</a></p>
             </div>
         </div>
 
@@ -2511,7 +2511,7 @@ src="https://www.facebook.com/tr?id=802840969212461&ev=PageView&noscript=1"
                     <input type="email" placeholder="Email cím" required class="email-gate-input" />
                     <button type="submit" class="email-gate-submit">Letöltés</button>
                 </form>
-                <p class="email-gate-privacy">Nem küldünk kéretlen levelet. <a href="adatvedelem.html" style="color:var(--gold);">Adatvédelem</a></p>
+                <p class="email-gate-privacy">Nem küldünk kéretlen levelet. <a href="/adatvedelem" style="color:var(--gold);">Adatvédelem</a></p>
             </div>
         </div>
 
@@ -2693,7 +2693,7 @@ src="https://www.facebook.com/tr?id=802840969212461&ev=PageView&noscript=1"
 @keyframes cookieSlide{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
 </style>
 <div id="cookie-banner" role="dialog" aria-label="Cookie értesítés">
-  <p>Ez az oldal cookie-kat használ a jobb felhasználói élmény érdekében. Részletek az <a href="adatvedelem.html" target="_blank" rel="noopener">Adatkezelési tájékoztatóban</a>.</p>
+  <p>Ez az oldal cookie-kat használ a jobb felhasználói élmény érdekében. Részletek az <a href="/adatvedelem" target="_blank" rel="noopener">Adatkezelési tájékoztatóban</a>.</p>
   <div class="cookie-buttons">
     <button type="button" class="cookie-accept" data-cookie="all">Elfogadom</button>
     <button type="button" class="cookie-essential" data-cookie="essential">Csak a szükségesek</button>

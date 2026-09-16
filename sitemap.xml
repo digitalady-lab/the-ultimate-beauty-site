@@ -1,183 +1,203 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  The Ultimate Beauty — sitemap
+
+  Csak kiterjesztés nélküli (kanonikus) URL-ek szerepelnek. A .html-es
+  alakok 301-gyel ide mutatnak (lásd _redirects), ezért a sitemapba nem
+  valók: az átirányított URL-t a Google hibaként jelzi.
+
+  Nem szerepel itt szándékosan: /utogondozas és /meghivas (noindex),
+  az e-mail-aláírás sablonok, valamint az /ultima-concept, amely az
+  ultima.theultimatebeauty.net aldomainre kanonizál.
+-->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- FŐOLDAL -->
   <url>
     <loc>https://theultimatebeauty.net/</loc>
-    <lastmod>2026-05-05</lastmod>
+    <lastmod>2026-09-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
-  <!-- ÚJ — TAB-OLDALAK (SPA-szétszedés 2026-05-05) -->
+  <!-- A PROTOCOL -->
   <url>
     <loc>https://theultimatebeauty.net/protocol</loc>
-    <lastmod>2026-05-05</lastmod>
+    <lastmod>2026-09-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://theultimatebeauty.net/observ</loc>
-    <lastmod>2026-05-05</lastmod>
+    <loc>https://theultimatebeauty.net/protocol-hub</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://theultimatebeauty.net/kutatas</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://theultimatebeauty.net/kviz</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- TECHNOLÓGIÁK -->
+  <url>
+    <loc>https://theultimatebeauty.net/hileft</loc>
+    <lastmod>2026-09-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://theultimatebeauty.net/hileft</loc>
-    <lastmod>2026-05-05</lastmod>
+    <loc>https://theultimatebeauty.net/observ</loc>
+    <lastmod>2026-09-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://theultimatebeauty.net/mask</loc>
-    <lastmod>2026-05-05</lastmod>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://theultimatebeauty.net/technologia-hileft</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://theultimatebeauty.net/technologia-observ</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://theultimatebeauty.net/technologia-led-mask</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://theultimatebeauty.net/technologia-venus-legacy</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- KEZELÉSEK -->
+  <url>
+    <loc>https://theultimatebeauty.net/kezeles-ultima-face</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://theultimatebeauty.net/kezeles-ultima-shape</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://theultimatebeauty.net/kezeles-ultima-hilift</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://theultimatebeauty.net/kezeles-ultima-men</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://theultimatebeauty.net/kezeles-orvosesztetikai-integracio</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://theultimatebeauty.net/kezeles-szules-utani</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- SIGNATURE PROTOCOLOK -->
+  <url>
+    <loc>https://theultimatebeauty.net/protocol-mini-facelift-integracio</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://theultimatebeauty.net/protocol-szules-utani-regeneracio</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://theultimatebeauty.net/protocol-hialuronsav-szinergia</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://theultimatebeauty.net/protocol-anti-aging-komplex</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://theultimatebeauty.net/protocol-borminoseg-javitas</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- KLINIKA -->
+  <url>
+    <loc>https://theultimatebeauty.net/klinika</loc>
+    <lastmod>2026-09-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://theultimatebeauty.net/program</loc>
-    <lastmod>2026-05-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- RÉGI tab-oldalak (külön HTML, megmarad SEO-állapotban) -->
-  <url>
-    <loc>https://theultimatebeauty.net/protocol-hub.html</loc>
-    <lastmod>2026-03-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://theultimatebeauty.net/technologia-hileft.html</loc>
-    <lastmod>2026-04-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://theultimatebeauty.net/technologia-led-mask.html</loc>
-    <lastmod>2026-03-23</lastmod>
+    <lastmod>2026-09-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://theultimatebeauty.net/technologia-observ.html</loc>
-    <lastmod>2026-03-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://theultimatebeauty.net/technologia-venus-legacy.html</loc>
-    <lastmod>2026-03-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- KEZELÉS OLDALAK -->
-  <url>
-    <loc>https://theultimatebeauty.net/kezeles-ultima-face.html</loc>
-    <lastmod>2026-04-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://theultimatebeauty.net/kezeles-ultima-shape.html</loc>
-    <lastmod>2026-04-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://theultimatebeauty.net/kezeles-ultima-hilift.html</loc>
-    <lastmod>2026-04-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://theultimatebeauty.net/kezeles-ultima-men.html</loc>
-    <lastmod>2026-04-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://theultimatebeauty.net/kezeles-orvosesztetikai-integracio.html</loc>
-    <lastmod>2026-04-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://theultimatebeauty.net/kezeles-szules-utani.html</loc>
-    <lastmod>2026-04-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- KLINIKA -->
-  <url>
-    <loc>https://theultimatebeauty.net/klinika.html</loc>
-    <lastmod>2026-03-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://theultimatebeauty.net/akademia.html</loc>
-    <lastmod>2026-03-23</lastmod>
+    <loc>https://theultimatebeauty.net/clinical-program</loc>
+    <lastmod>2026-09-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://theultimatebeauty.net/kutatas.html</loc>
-    <lastmod>2026-03-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://theultimatebeauty.net/clinical-program.html</loc>
-    <lastmod>2026-03-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- PROTOCOL OLDALAK -->
-  <url>
-    <loc>https://theultimatebeauty.net/protocol-mini-facelift-integracio.html</loc>
-    <lastmod>2026-03-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://theultimatebeauty.net/protocol-szules-utani-regeneracio.html</loc>
-    <lastmod>2026-03-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://theultimatebeauty.net/protocol-hialuronsav-szinergia.html</loc>
-    <lastmod>2026-03-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://theultimatebeauty.net/protocol-anti-aging-komplex.html</loc>
-    <lastmod>2026-03-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://theultimatebeauty.net/protocol-borminoseg-javitas.html</loc>
-    <lastmod>2026-03-23</lastmod>
+    <loc>https://theultimatebeauty.net/akademia</loc>
+    <lastmod>2026-09-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <!-- JOGI -->
   <url>
-    <loc>https://theultimatebeauty.net/adatvedelem.html</loc>
-    <lastmod>2026-04-14</lastmod>
+    <loc>https://theultimatebeauty.net/adatvedelem</loc>
+    <lastmod>2026-09-16</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://theultimatebeauty.net/aszf.html</loc>
-    <lastmod>2026-04-13</lastmod>
+    <loc>https://theultimatebeauty.net/aszf</loc>
+    <lastmod>2026-09-16</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
+
 </urlset>

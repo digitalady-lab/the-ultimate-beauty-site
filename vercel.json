@@ -3,6 +3,412 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.theultimatebeauty.net"
+        }
+      ],
+      "destination": "https://theultimatebeauty.net/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/contact-4",
+      "destination": "/#home-contact",
+      "permanent": true
+    },
+    {
+      "source": "/contact-3",
+      "destination": "/#home-contact",
+      "permanent": true
+    },
+    {
+      "source": "/contact-2",
+      "destination": "/#home-contact",
+      "permanent": true
+    },
+    {
+      "source": "/contact-1",
+      "destination": "/#home-contact",
+      "permanent": true
+    },
+    {
+      "source": "/contact",
+      "destination": "/#home-contact",
+      "permanent": true
+    },
+    {
+      "source": "/contact-us",
+      "destination": "/#home-contact",
+      "permanent": true
+    },
+    {
+      "source": "/kapcsolat",
+      "destination": "/#home-contact",
+      "permanent": true
+    },
+    {
+      "source": "/elerhetoseg",
+      "destination": "/#home-contact",
+      "permanent": true
+    },
+    {
+      "source": "/konzultacio",
+      "destination": "/#home-contact",
+      "permanent": true
+    },
+    {
+      "source": "/idopontfoglalas",
+      "destination": "/#home-contact",
+      "permanent": true
+    },
+    {
+      "source": "/book-online",
+      "destination": "/#home-contact",
+      "permanent": true
+    },
+    {
+      "source": "/booking-calendar",
+      "destination": "/#home-contact",
+      "permanent": true
+    },
+    {
+      "source": "/bookings-checkout",
+      "destination": "/#home-contact",
+      "permanent": true
+    },
+    {
+      "source": "/service-page/:path*",
+      "destination": "/#home-contact",
+      "permanent": true
+    },
+    {
+      "source": "/about",
+      "destination": "/klinika",
+      "permanent": true
+    },
+    {
+      "source": "/about-1",
+      "destination": "/klinika",
+      "permanent": true
+    },
+    {
+      "source": "/about-2",
+      "destination": "/klinika",
+      "permanent": true
+    },
+    {
+      "source": "/about-3",
+      "destination": "/klinika",
+      "permanent": true
+    },
+    {
+      "source": "/about-us",
+      "destination": "/klinika",
+      "permanent": true
+    },
+    {
+      "source": "/rolunk",
+      "destination": "/klinika",
+      "permanent": true
+    },
+    {
+      "source": "/our-story",
+      "destination": "/klinika",
+      "permanent": true
+    },
+    {
+      "source": "/team",
+      "destination": "/klinika",
+      "permanent": true
+    },
+    {
+      "source": "/team-1",
+      "destination": "/klinika",
+      "permanent": true
+    },
+    {
+      "source": "/our-team",
+      "destination": "/klinika",
+      "permanent": true
+    },
+    {
+      "source": "/orvosaink",
+      "destination": "/klinika",
+      "permanent": true
+    },
+    {
+      "source": "/gallery",
+      "destination": "/klinika",
+      "permanent": true
+    },
+    {
+      "source": "/gallery-1",
+      "destination": "/klinika",
+      "permanent": true
+    },
+    {
+      "source": "/galeria",
+      "destination": "/klinika",
+      "permanent": true
+    },
+    {
+      "source": "/photo-gallery",
+      "destination": "/klinika",
+      "permanent": true
+    },
+    {
+      "source": "/services",
+      "destination": "/protocol",
+      "permanent": true
+    },
+    {
+      "source": "/services-1",
+      "destination": "/protocol",
+      "permanent": true
+    },
+    {
+      "source": "/services-2",
+      "destination": "/protocol",
+      "permanent": true
+    },
+    {
+      "source": "/services-3",
+      "destination": "/protocol",
+      "permanent": true
+    },
+    {
+      "source": "/szolgaltatasok",
+      "destination": "/protocol",
+      "permanent": true
+    },
+    {
+      "source": "/treatments",
+      "destination": "/protocol",
+      "permanent": true
+    },
+    {
+      "source": "/arak",
+      "destination": "/#home-contact",
+      "permanent": true
+    },
+    {
+      "source": "/pricing",
+      "destination": "/#home-contact",
+      "permanent": true
+    },
+    {
+      "source": "/plans-pricing",
+      "destination": "/#home-contact",
+      "permanent": true
+    },
+    {
+      "source": "/price-list",
+      "destination": "/#home-contact",
+      "permanent": true
+    },
+    {
+      "source": "/faq",
+      "destination": "/#home-faq",
+      "permanent": true
+    },
+    {
+      "source": "/faq-1",
+      "destination": "/#home-faq",
+      "permanent": true
+    },
+    {
+      "source": "/gyik",
+      "destination": "/#home-faq",
+      "permanent": true
+    },
+    {
+      "source": "/blog",
+      "destination": "/kutatas",
+      "permanent": true
+    },
+    {
+      "source": "/blog-1",
+      "destination": "/kutatas",
+      "permanent": true
+    },
+    {
+      "source": "/blog/:path*",
+      "destination": "/kutatas",
+      "permanent": true
+    },
+    {
+      "source": "/post/:path*",
+      "destination": "/kutatas",
+      "permanent": true
+    },
+    {
+      "source": "/single-post/:path*",
+      "destination": "/kutatas",
+      "permanent": true
+    },
+    {
+      "source": "/shop",
+      "destination": "https://mask.theultimatebeauty.net/rendeles.html",
+      "permanent": true
+    },
+    {
+      "source": "/product-page/:path*",
+      "destination": "https://mask.theultimatebeauty.net/rendeles.html",
+      "permanent": true
+    },
+    {
+      "source": "/termekek",
+      "destination": "https://mask.theultimatebeauty.net/rendeles.html",
+      "permanent": true
+    },
+    {
+      "source": "/privacy-policy",
+      "destination": "/adatvedelem",
+      "permanent": true
+    },
+    {
+      "source": "/adatvedelmi-tajekoztato",
+      "destination": "/adatvedelem",
+      "permanent": true
+    },
+    {
+      "source": "/terms-of-use",
+      "destination": "/aszf",
+      "permanent": true
+    },
+    {
+      "source": "/terms-and-conditions",
+      "destination": "/aszf",
+      "permanent": true
+    },
+    {
+      "source": "/impresszum",
+      "destination": "/aszf",
+      "permanent": true
+    },
+    {
+      "source": "/home",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/home-1",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/kezdolap",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/fooldal",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/blank",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/blank-1",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/blank-2",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/blank-3",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/blank-4",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/blank-5",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/blank-page",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/kezelesek",
+      "destination": "/protocol",
+      "permanent": false
+    },
+    {
+      "source": "/kezeles-botulinumtoxin",
+      "destination": "/kezeles-orvosesztetikai-integracio",
+      "permanent": false
+    },
+    {
+      "source": "/kezeles-hialuronsav",
+      "destination": "/protocol-hialuronsav-szinergia",
+      "permanent": false
+    },
+    {
+      "source": "/kezeles-kollagenstimulacio",
+      "destination": "/kezeles-ultima-face",
+      "permanent": false
+    },
+    {
+      "source": "/kezeles-skinbooster",
+      "destination": "/protocol-borminoseg-javitas",
+      "permanent": false
+    },
+    {
+      "source": "/kezeles-orvosesztetika",
+      "destination": "/kezeles-orvosesztetikai-integracio",
+      "permanent": false
+    },
+    {
+      "source": "/kezeles-intim",
+      "destination": "/protocol",
+      "permanent": false
+    },
+    {
+      "source": "/megoldas",
+      "destination": "/protocol",
+      "permanent": false
+    },
+    {
+      "source": "/megoldas-mutet-nelkuli-lifting",
+      "destination": "/kezeles-ultima-face",
+      "permanent": false
+    },
+    {
+      "source": "/megoldas-szules-utan",
+      "destination": "/kezeles-szules-utani",
+      "permanent": false
+    },
+    {
+      "source": "/megoldas-volumenvesztett-arc",
+      "destination": "/kezeles-ultima-face",
+      "permanent": false
+    },
+    {
+      "source": "/protocol-treatments",
+      "destination": "/protocol-hub",
+      "permanent": false
+    },
+    {
+      "source": "/technologia",
+      "destination": "/#home-tech",
+      "permanent": false
+    },
+    {
       "source": "/shape",
       "destination": "https://shape.theultimatebeauty.net",
       "permanent": true
@@ -15,9 +421,43 @@
   ],
   "headers": [
     {
+      "source": "/email-signature-:name*",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
       "source": "/assets/videos/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/assets/images/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
       ]
     }
   ]
