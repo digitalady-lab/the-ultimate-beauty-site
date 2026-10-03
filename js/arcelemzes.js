@@ -2,6 +2,7 @@
 // ADATVÉDELEM: a fotó és az arcpontok KIZÁRÓLAG a böngészőben léteznek — nincs feltöltés, nincs tárolás.
 // A mérésből semmi nem megy analitikába; a dataLayer csak a választott zónák kulcsát és az ajánlott Protocolt kapja.
 import { FaceLandmarker, FilesetResolver } from '/vendor/mediapipe/vision_bundle.mjs';
+import { ZONES, PROTOS, recommend, measure } from '/js/arcelemzes-rules.js';
 
 const root = document.getElementById('arcelemzo');
 if (root) init();
@@ -14,24 +15,6 @@ function init(){
   const map = $('#fa-map'), canvas = $('#fa-canvas'), mapStatus = $('#fa-map-status'), chipsBox = $('#fa-chips'), btnResult = $('#fa-to-result');
 
   let landmarker = null, loading = null, stream = null, selected = new Set();
-
-  // Zónák: arcpont-indexek (MediaPipe 468-pontos háló) → ajánlott Protocol
-  const ZONES = {
-    homlok:      { label:'Homlokráncok',               pts:[108, 337],      proto:'anti' },
-    glabella:    { label:'Szemöldökközi „mérges” ránc', pts:[9],        proto:'anti' },
-    szemkornyek: { label:'Fáradt tekintet, karikák',    pts:[230, 450], proto:'hialuron' },
-    kozeparc:    { label:'Volumenvesztés az arccsontnál', pts:[50, 280], proto:'hialuron' },
-    nasolabialis:{ label:'Orr-száj redő',               pts:[206, 426], proto:'hialuron' },
-    ajkak:       { label:'Ajkak, szájzug',              pts:[0],        proto:'hialuron' },
-    allkapocs:   { label:'Állkapocsvonal, megereszkedés', pts:[172, 397, 152], proto:'lifting' },
-    borminoseg:  { label:'Bőrtextúra, pórusok, tónus',  pts:[],         proto:'borminoseg' }
-  };
-  const PROTOS = {
-    anti:       { title:'Anti-aging Komplex', proto:'Nem egyetlen kezelés, hanem rendszer', sub:'Koordinált öregedésgátló rendszer: Botox, biostimulátorok, ULTIMA HILEFT és LED Mask — egy orvos felügyeletével.', r:['Szöveti előkészítés','Célzott orvosi kezelések','Regeneráció és karbantartás'], href:'/protocol-anti-aging-komplex' },
-    hialuron:   { title:'Hialuronsav Szinergia', proto:'Jobb integrálódás, természetesebb eredmény, hosszabb tartósság', sub:'Hialuronsavas kezelések hatékonyságának fokozása ULTIMA HILEFT szövet-előkészítéssel.', r:['Szöveti előkészítés','Hialuronsavas kezelés','Regeneráció és stabilizáció'], href:'/protocol-hialuronsav-szinergia' },
-    lifting:    { title:'ULTIMA Face Lifting', proto:'Műtét nélküli arcfeszesítés — orvosi kontroll mellett', sub:'Az állkapocsvonal és az arckontúr feszesítése ULTIMA technológiával, a természetes arcvonásaid megtartásával.', r:['Diagnózis + Prepare','ULTIMA Face kezeléssorozat','Stabilizáció és karbantartás'], href:'/kezeles-ultima-face' },
-    borminoseg: { title:'Bőrminőség Javítás', proto:'Observ 520x diagnosztikára épülő program', sub:'Textúra, tónus, fényesség javítása HILEFT stimulációval és otthoni LED Mask karbantartással.', r:['Diagnózis + Prepare','Célzott stimulációs kezelések','LED Mask otthoni program + rendszeres kontroll'], href:'/protocol-borminoseg-javitas' }
-  };
 
   const track = (name, data) => {
     if (typeof window.tubEvent === 'function') window.tubEvent(name, data);
@@ -138,27 +121,8 @@ function init(){
     line(FaceLandmarker.FACE_LANDMARKS_FACE_OVAL, 'rgba(212,176,119,.9)', 1.6 * s);
   }
 
-  // Geometriai arányok — tájékoztató jegyzetek, NEM szépségpontszám és nem orvosi diagnózis
-  function measure(lm, W, H){
-    const P = (i) => ({ x: lm[i].x * W, y: lm[i].y * H });
-    const d = (a, b) => Math.hypot(P(a).x - P(b).x, P(a).y - P(b).y);
-    const top = P(168), bot = P(152), len = Math.hypot(bot.x - top.x, bot.y - top.y);
-    const side = (i) => ((bot.x - top.x) * (top.y - P(i).y) - (top.x - P(i).x) * (bot.y - top.y)) / len; // előjeles távolság a középvonaltól
-    const pairs = [[33, 263], [61, 291], [234, 454], [172, 397], [105, 334]];
-    const asym = pairs.reduce((s, [l, r]) => { const a = Math.abs(side(l)), b = Math.abs(side(r)); return s + Math.abs(a - b) / (a + b); }, 0) / pairs.length;
-    const yaw = (P(1).x - P(234).x) / (P(454).x - P(234).x);
-    return {
-      symmetry: Math.max(0, Math.min(100, Math.round(100 - asym * 300))),
-      thirds: d(2, 152) / d(9, 2),
-      lips: d(14, 17) / Math.max(1, d(0, 13)),
-      frontal: yaw > .38 && yaw < .62
-    };
-  }
-
   function renderNotes(m){
-    $('#fa-n-sym').textContent = m.frontal ? m.symmetry + '%' : '–'; // elfordult fejnél a szimmetria félrevezető lenne
-    $('#fa-n-thirds').textContent = '1 : ' + m.thirds.toFixed(2);
-    $('#fa-n-lips').textContent = '1 : ' + m.lips.toFixed(1);
+    $('#fa-n-thirds').textContent = '1 : ' + m.thirds.toFixed(2).replace('.', ',');
   }
 
   function renderHotspots(lm){
@@ -199,10 +163,7 @@ function init(){
 
   // 4 · Ajánlás
   btnResult.addEventListener('click', () => {
-    const votes = {};
-    selected.forEach((k) => { const p = ZONES[k].proto; votes[p] = (votes[p] || 0) + 1; });
-    const order = ['lifting', 'anti', 'hialuron', 'borminoseg']; // döntetlennél ez a sorrend dönt
-    const best = order.reduce((a, b) => ((votes[b] || 0) > (votes[a] || 0) ? b : a), order.find((p) => votes[p]));
+    const best = recommend(selected);
     const r = PROTOS[best];
     $('#fa-r-title').textContent = r.title;
     $('#fa-r-proto').textContent = r.proto;
