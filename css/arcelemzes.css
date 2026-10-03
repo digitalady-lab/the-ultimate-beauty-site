@@ -1,0 +1,50 @@
+/* /arcelemzes — AI arcelemző (eszközön futó MediaPipe arcpont-felismerés; fotó NEM hagyja el a böngészőt) */
+.fa{background:var(--highlight)}
+.fa-box{background:var(--cream);border:1px solid rgba(184,153,104,.4);border-radius:16px;padding:clamp(22px,4vw,46px);margin-top:30px;position:relative}
+.fa-step{display:none;animation:fain .45s ease}
+.fa-step.active{display:block}
+@keyframes fain{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.fa-label{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-deep);font-weight:500;margin:0 0 10px}
+.fa-step h3{font-family:var(--font-display);font-weight:400;font-size:clamp(1.3rem,2.4vw,1.8rem);margin:0 0 14px}
+.fa-step p{color:#4a443b;line-height:1.65}
+.fa-trust{list-style:none;padding:0;margin:18px 0 22px;display:grid;gap:10px}
+.fa-trust li{display:flex;gap:12px;align-items:flex-start;font-size:14.5px;color:#4a443b}
+.fa-trust li:before{content:"";flex:0 0 18px;height:18px;margin-top:2px;border-radius:50%;background:var(--gold-pale);border:1px solid var(--gold)}
+.fa-consent{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#4a443b;margin:0 0 22px;cursor:pointer}
+.fa-consent input{margin-top:3px;accent-color:var(--gold-deep);width:18px;height:18px;flex:0 0 18px}
+.fa-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.fa-btn{font-family:var(--font-sans);font-size:14.5px;font-weight:600;padding:15px 22px;border-radius:999px;border:1px solid var(--gold-deep);background:transparent;color:var(--dark);cursor:pointer;min-height:48px;transition:background .2s,opacity .2s}
+.fa-btn:hover:not(:disabled){background:rgba(184,153,104,.12)}
+.fa-btn--solid{background:var(--gold-deep);color:#fff;border-color:var(--gold-deep)}
+.fa-btn--solid:hover:not(:disabled){background:var(--dark)}
+.fa-btn:disabled{opacity:.45;cursor:not-allowed}
+.fa-link{background:none;border:none;font-size:13px;color:var(--mid-gray);cursor:pointer;padding:8px 0;margin-top:14px}
+.fa-link:hover{color:var(--gold-deep)}
+.fa-stage{position:relative;max-width:520px;margin:0 auto 18px;border-radius:14px;overflow:hidden;background:#1d1a16;aspect-ratio:3/4}
+.fa-stage video,.fa-stage canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.fa-stage video{transform:scaleX(-1)}
+.fa-oval{position:absolute;left:50%;top:47%;width:62%;height:70%;transform:translate(-50%,-50%);border:2px dashed rgba(212,176,119,.85);border-radius:50%;pointer-events:none}
+.fa-hint{position:absolute;left:0;right:0;bottom:14px;text-align:center;font-size:13px;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.6);pointer-events:none}
+.fa-status{text-align:center;font-size:14px;color:#4a443b;min-height:1.4em;margin:6px 0 14px}
+.fa-status.err{color:var(--error)}
+.fa-map{position:relative;max-width:520px;margin:0 auto 18px;border-radius:14px;overflow:hidden;background:#1d1a16}
+.fa-map canvas{display:block;width:100%;height:auto}
+.fa-hot{position:absolute;width:26px;height:26px;margin:-13px 0 0 -13px;border-radius:50%;border:2px solid #fff;background:rgba(184,153,104,.55);cursor:pointer;padding:0;box-shadow:0 0 0 4px rgba(184,153,104,.25);transition:transform .15s,background .2s}
+.fa-hot:hover{transform:scale(1.12)}
+.fa-hot[aria-pressed="true"]{background:var(--gold-deep);box-shadow:0 0 0 6px rgba(212,176,119,.45)}
+.fa-hot:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.fa-chips{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0 22px}
+.fa-chip{font-family:var(--font-sans);font-size:14px;font-weight:500;padding:11px 16px;border-radius:999px;border:1px solid rgba(128,104,68,.45);background:transparent;color:var(--dark);cursor:pointer;min-height:44px}
+.fa-chip[aria-pressed="true"]{background:var(--gold-deep);border-color:var(--gold-deep);color:#fff}
+.fa-notes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:6px 0 24px}
+.fa-note{border-top:1px solid rgba(128,104,68,.3);padding-top:12px}
+.fa-note b{display:block;font-family:var(--font-display);font-weight:400;font-size:1.35rem;color:var(--gold-deep)}
+.fa-note span{font-size:13px;color:#4a443b;line-height:1.5}
+.fa-result .proto{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep);font-weight:500;margin:0 0 16px}
+.fa-zones{margin:0 0 20px;padding-left:18px;color:#4a443b;font-size:14.5px;line-height:1.7}
+.fa-phases{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin:18px 0 24px}
+.fa-phases span{display:block;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:6px}
+.fa-phases p{margin:0;font-size:14.5px}
+.fa-fine{font-size:12.5px;color:#6B6459;margin-top:16px}
+@media(max-width:760px){.fa-notes,.fa-phases{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.fa-step{animation:none}}
