@@ -207,12 +207,18 @@
 
     .tile+.tile{border-top:1px solid rgba(184,150,90,.12)}
 
+    /* Előtte–utána kép: teljes egészében látszódjon (címkék, logó), mozgás nélkül */
+    .tile__image-side--ba{background:var(--dark)}
+    .tile__image-side--ba img,.tile.in-view .tile__image-side--ba img,.tile__image-side--ba:hover img{object-fit:contain;animation:none;transform:none!important;filter:none}
+    .tile__image-note{position:absolute;left:14px;bottom:10px;z-index:3;font-family:var(--font-s);font-size:.62rem;letter-spacing:.08em;color:rgba(255,255,255,.7);pointer-events:none}
+
     @media(max-width:768px){
       .face-hero__inner{flex-direction:column;align-items:flex-start}
       .tile{grid-template-columns:1fr}
       .tile--reverse .tile__image-side{order:1}
       .tile--reverse .tile__text-side{order:2}
       .tile__image-side{min-height:280px}
+      .tile__image-side--ba{min-height:0;aspect-ratio:4/5}
       .tile__text-side{padding:2.5rem 2rem}
       .tile__gallery-grid,.tile__details-programs{grid-template-columns:1fr}
       .ba-card__images{flex-direction:column;gap:.5rem}
@@ -305,7 +311,9 @@ src="https://www.facebook.com/tr?id=802840969212461&ev=PageView&noscript=1"
 <!-- 1. JAWLINE KONTÚR                                 -->
 <!-- ═══════════════════════════════════════════════════ -->
 <div class="tile tile--dark" id="jawline">
-  <div class="tile__image-side">
+  <div class="tile__image-side tile__image-side--ba">
+    <img loading="lazy" decoding="async" src="assets/images/ferfi-jawline-elotte-utana.jpg" width="1080" height="1350" alt="Jawline kontúr előtte–utána, szemléltető kép — The Ultimate Beauty">
+    <span class="tile__image-note">Szemléltető kép</span>
   </div>
   <div class="tile__text-side">
     <div class="tile__label">Kontúr · Mandibula régió</div>
