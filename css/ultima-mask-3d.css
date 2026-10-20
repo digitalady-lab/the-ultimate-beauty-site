@@ -1,0 +1,86 @@
+/* ═══════════════════════════════════════════════════════════════
+   ULTIMA maszk-widget — 3D render a rajzolt ikon helyett
+
+   Ez a blokk a „Egyetlen maszk. Négyféle bőrprobléma." widgethez
+   készült, ami NEM ebben a repóban él, hanem a publikáló repóban.
+   Ide azért került, hogy a kép és a hozzá tartozó értékek egy
+   helyen, verziózva legyenek, és a szinkronnal átmenjenek.
+
+   Használat: a widget rajzolt maszk-grafikáját cseréld le erre:
+
+     <div class="ultima-mask-3d">
+       <img src="assets/images/mask-front-3d.png"
+            srcset="assets/images/mask-front-3d.png 1x,
+                    assets/images/mask-front-3d@2x.png 2x"
+            alt="ULTIMA LED Beauty Mask" width="112" height="130">
+       <span class="ultima-wl ultima-wl--415"></span>
+       <span class="ultima-wl ultima-wl--590"></span>
+       <span class="ultima-wl ultima-wl--630"></span>
+       <span class="ultima-wl ultima-wl--850"></span>
+     </div>
+
+   A méretek 112 px-es maszkra és 18 px-es pöttyökre vannak
+   hangolva. Más méretnél minden értéket ugyanazzal az aránnyal
+   kell szorozni.
+   ═══════════════════════════════════════════════════════════════ */
+
+.ultima-mask-3d {
+  position: relative;
+  width: 112px;
+  /* A kép 275x320, vagyis álló. Ha a konténer négyzet lenne, az
+     object-fit: contain oldalt üres sávot hagyna, és a pöttyök
+     elszakadnának a maszktól. Ezért a doboz a kép arányát követi. */
+  height: 130px;
+}
+
+/* Lágy elefántcsont derengés a maszk mögött.
+   Világos szekción gyakorlatilag láthatatlan; sötét kártya fölött
+   elválasztja a fekete maszkot a háttértől. A gradiens középpontja
+   szándékosan 56%-nál van, nem 50%-nál: így az áll is fedve marad. */
+.ultima-mask-3d::before {
+  content: '';
+  position: absolute;
+  inset: -22px;
+  border-radius: 50%;
+  filter: blur(11px);
+  background: radial-gradient(ellipse 58% 62% at 50% 56%,
+    rgba(253, 250, 246, 0.92)  0%,
+    rgba(253, 250, 246, 0.70) 34%,
+    rgba(253, 250, 246, 0.34) 56%,
+    rgba(253, 250, 246, 0.10) 72%,
+    transparent               86%);
+}
+
+.ultima-mask-3d img {
+  position: relative;          /* a derengés fölé kerüljön */
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  /* Az első drop-shadow a peremfény: hajszálvékony világos kontúr a
+     rácsok körül. Ez tartja olvashatóan a maszkot akkor is, ha a
+     derengés alá mégis sötét kerül. */
+  filter:
+    drop-shadow(0 0 1.3px rgba(253, 250, 246, 0.90))
+    drop-shadow(0 7px 11px rgba(40, 30, 18, 0.34));
+}
+
+/* ── A négy validált hullámhossz, ívben a bal oldalon ───────────── */
+.ultima-wl {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.32);
+  cursor: pointer;
+}
+
+.ultima-wl--415 { top: -16px; left:   5px; background: #3B5BF5; }  /* kék */
+.ultima-wl--590 { top:  21px; left: -13px; background: #F0A61E; }  /* sárga */
+.ultima-wl--630 { top:  66px; left: -20px; background: #E8402C; }  /* vörös */
+.ultima-wl--850 { top: 104px; left: -11px; background: #8E1620; }  /* közeli infravörös */
+
+@media (prefers-reduced-motion: reduce) {
+  .ultima-mask-3d,
+  .ultima-mask-3d img { animation: none; transition: none; }
+}
