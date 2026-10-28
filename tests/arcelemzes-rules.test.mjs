@@ -63,3 +63,18 @@ test('measure — archarmad-arány és szemből / oldalról felismerés', () => 
   set(152, .5, .96); assert.ok(Math.abs(measure(lm, 600, 800).thirds - 1.2) < 1e-9);
   set(1, .3, .55); assert.equal(measure(lm, 600, 800).frontal, false);
 });
+
+// Heni videói: minden hivatkozott fájl létezik, a zónák csak létező videóra mutatnak, a választás korlátos és determinisztikus
+import { VIDEOS, ZONE_VIDEOS, videosFor } from '../js/arcelemzes-rules.js';
+test('videók — fájlok léteznek, hozzárendelés érvényes, legfeljebb 2, különben bevezető', async () => {
+  const fs = await import('node:fs');
+  for (const [id, v] of Object.entries(VIDEOS)) for (const f of [v.src, v.poster]) assert.ok(fs.existsSync(new URL('..' + f, import.meta.url)), id + ': ' + f);
+  for (const [z, ids] of Object.entries(ZONE_VIDEOS)) { assert.ok(ZONES[z], z); for (const id of ids) assert.ok(VIDEOS[id], z + '→' + id); }
+  for (const s of subsets()) {
+    const r = videosFor(s);
+    assert.ok(r.length >= 1 && r.length <= 2 && new Set(r).size === r.length, s.join('+'));
+    if (!s.some((z) => ZONE_VIDEOS[z])) assert.deepEqual(r, ['intro']);
+  }
+  assert.deepEqual(videosFor(['szemkornyek']), ['szembor', 'vitaran']);
+  assert.deepEqual(videosFor(['allkapocs']), ['intro']);
+});

@@ -48,3 +48,14 @@
 .fa-fine{font-size:12.5px;color:#6B6459;margin-top:16px}
 @media(max-width:760px){.fa-notes,.fa-phases{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.fa-step{animation:none}}
+/* Heni videói: bevezető (1. lépés) + zónához illő szakmai videók (eredmény) */
+.fa-intro{display:flex;gap:16px;align-items:center;margin:0 0 22px;padding:12px;border:1px solid rgba(184,153,104,.35);border-radius:14px;background:var(--ivory)}
+.fa-intro video{width:112px;aspect-ratio:9/16;border-radius:10px;background:#1d1a16;object-fit:cover;flex:0 0 auto}
+.fa-intro figcaption{display:grid;gap:4px;font-size:14px;color:#4a443b;min-width:0}
+.fa-intro figcaption b{font-family:var(--font-display);font-weight:400;font-size:1.05rem;color:var(--gold-deep)}
+.fa-videos{margin:6px 0 26px}
+.fa-vgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,260px));gap:18px}
+.fa-vgrid figure{margin:0;display:grid;gap:8px}
+.fa-vgrid video{width:100%;aspect-ratio:9/16;border-radius:14px;border:1px solid rgba(184,153,104,.5);background:#1d1a16;object-fit:cover}
+.fa-vgrid figcaption{font-size:14px;color:#4a443b;line-height:1.45}
+@media(max-width:520px){.fa-vgrid{grid-template-columns:1fr 1fr;gap:12px}.fa-vgrid figcaption{font-size:13px}}

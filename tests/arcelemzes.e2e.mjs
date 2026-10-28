@@ -10,7 +10,7 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const { chromium } = await import('playwright').catch(() => import('/opt/node-tools/node_modules/playwright/index.mjs'));
 
 // ── mini statikus szerver (a cleanUrls-t is utánozza: /arcelemzes → arcelemzes.html)
-const TYPES = { '.html':'text/html; charset=utf-8', '.js':'text/javascript', '.mjs':'text/javascript', '.css':'text/css', '.wasm':'application/wasm', '.jpg':'image/jpeg', '.png':'image/png', '.webp':'image/webp', '.svg':'image/svg+xml' };
+const TYPES = { '.html':'text/html; charset=utf-8', '.js':'text/javascript', '.mjs':'text/javascript', '.css':'text/css', '.wasm':'application/wasm', '.jpg':'image/jpeg', '.png':'image/png', '.webp':'image/webp', '.svg':'image/svg+xml', '.mp4':'video/mp4' };
 const server = http.createServer((req, res) => {
   let p = decodeURIComponent(new URL(req.url, 'http://x').pathname);
   let f = path.join(ROOT, p);
@@ -99,6 +99,13 @@ try {
   }
   check('a felületen nincs szimmetria-% és ajakarány (instabil mérés, kivezetve)', !fs.readFileSync(path.join(ROOT, 'arcelemzes.html'), 'utf8').match(/fa-n-sym|fa-n-lips/));
 
+  { const p = await freshPage(); await consent(p); await upload(p, FACES[0]);
+    await p.click('.fa-chip[data-zone="szemkornyek"]'); await p.click('#fa-to-result');
+    const ids = await p.evaluate(() => [...document.querySelectorAll('#fa-r-vgrid video')].map((v) => v.dataset.clip));
+    const pre = await p.evaluate(() => [...document.querySelectorAll('video[data-clip]')].every((v) => v.preload === 'none'));
+    check('szemkörnyék → 2 szemkörnyéki videó, egyik sem töltődik előre', ids.join() === 'szembor,vitaran' && pre, ids.join());
+    await p.close(); }
+
   console.log('\n4 · Rossz bemenetek');
   { const p = await freshPage(); await consent(p); const r = await upload(p, '/assets/images/clinic/waiting-room-1.jpg'); await p.close();
     check('arc nélküli kép (váróterem) → „nem találtunk arcot”, nincs ajánlás', r.error && r.hot.length === 0 && /Nem találtunk arcot/.test(r.status)); }
@@ -128,6 +135,9 @@ try {
     const ev = await p.evaluate(() => dataLayer.filter((e) => /^arcelemzes/.test(e.event)));
     const keys = new Set(ev.flatMap((e) => Object.keys(e)));
     check('mérési események: start + complete, csak zóna-kulcs és Protocol (nincs mért arány)', ev.map((e) => e.event).join() === 'arcelemzes_start,arcelemzes_complete' && ![...keys].some((k) => /sym|third|lip|landmark|image/i.test(k)), [...keys].join(','));
+    const vids = await p.evaluate(() => [...document.querySelectorAll('#fa-r-vgrid video')].map((v) => v.getAttribute('src')));
+    const okV = await Promise.all(vids.map((u) => fetch(BASE + u).then((r) => r.ok && r.headers.get('content-type') === 'video/mp4')));
+    check('eredménynél megjelenik a zónához illő Heni-videó (ajkak/homlok → bevezető), a fájl elérhető', vids.length >= 1 && okV.every(Boolean), vids.join(', '));
     await p.click('[data-fa-restart] >> nth=1');
     check('„Fotó törlése” után a vászon üres, és vissza az elejére', await p.evaluate(() => document.getElementById('fa-canvas').width === 0 && document.querySelector('.fa-step.active').dataset.step === '1'));
     const ext = [...p.external].filter((h) => !/fonts\.(googleapis|gstatic)\.com/.test(h));

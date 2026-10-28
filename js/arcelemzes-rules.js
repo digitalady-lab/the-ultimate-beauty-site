@@ -44,3 +44,26 @@ export function measure(lm, W, H){
     frontal: yaw > .38 && yaw < .62
   };
 }
+
+// Heni szakmai videói (assets/videos/heni) — NEM orvosi szabály, csak tartalom-hozzárendelés: melyik zónához melyik magyarázó videó illik.
+// A 4. (férfiak) és 6. (homlokránc) rész még hiányzik (a forrás privát) — ha megjön, ide kell felvenni.
+const V = (id) => ({ src: `/assets/videos/heni/heni-${id}.mp4`, poster: `/assets/videos/heni/heni-${id}.jpg` });
+export const VIDEOS = {
+  intro:    { ...V('1-ami-teged-zavar'),        title: 'Miért azzal kezdjük, ami téged zavar' },
+  szembor:  { ...V('2-szem-koruli-bor'),        title: 'A szem körüli bőr: más probléma, más kezelés' },
+  halantek: { ...V('3-halantek-szemoldok'),     title: 'Halánték és szemöldök: amikor a bőr lejjebb ereszkedik' },
+  vitaran:  { ...V('5-vitaran-szemkornyek'),    title: 'Szemkörnyéki skinboosterek, például a Vitaran' },
+  tekintet: { ...V('7-szomoru-tekintet'),       title: '„Szomorú tekintet”: a szemöldök megtartása' }
+};
+export const ZONE_VIDEOS = {
+  szemkornyek: ['szembor', 'vitaran', 'tekintet', 'halantek'],
+  kozeparc:    ['halantek'],
+  borminoseg:  ['vitaran']
+};
+
+// A megjelölt zónák sorrendjében legfeljebb `max` videó, ismétlés nélkül; ha egyik zónához sincs, Heni bevezetője.
+export function videosFor(zones, max = 2){
+  const out = [];
+  for (const z of zones) for (const id of ZONE_VIDEOS[z] || []) if (!out.includes(id) && out.length < max) out.push(id);
+  return out.length ? out : ['intro'];
+}

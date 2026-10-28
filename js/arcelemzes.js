@@ -2,7 +2,7 @@
 // ADATVÉDELEM: a fotó és az arcpontok KIZÁRÓLAG a böngészőben léteznek — nincs feltöltés, nincs tárolás.
 // A mérésből semmi nem megy analitikába; a dataLayer csak a választott zónák kulcsát és az ajánlott Protocolt kapja.
 import { FaceLandmarker, FilesetResolver } from '/vendor/mediapipe/vision_bundle.mjs';
-import { ZONES, PROTOS, recommend, measure } from '/js/arcelemzes-rules.js';
+import { ZONES, PROTOS, VIDEOS, recommend, measure, videosFor } from '/js/arcelemzes-rules.js';
 
 const root = document.getElementById('arcelemzo');
 if (root) init();
@@ -44,6 +44,7 @@ function init(){
   // 2a · Kamera
   btnCam.addEventListener('click', async () => {
     if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) { fileIn.click(); return; }
+    const iv = $('#fa-intro-video'); if (iv) iv.pause();
     show(2); setStatus(camStatus, 'Kamera indítása…');
     try {
       stream = await navigator.mediaDevices.getUserMedia({ video:{ facingMode:'user', width:{ ideal:1280 }, height:{ ideal:960 } }, audio:false });
@@ -171,6 +172,7 @@ function init(){
     ['#fa-r1', '#fa-r2', '#fa-r3'].forEach((id, i) => { $(id).textContent = r.r[i]; });
     const ul = $('#fa-r-zones'); ul.innerHTML = '';
     selected.forEach((k) => { const li = document.createElement('li'); li.textContent = ZONES[k].label; ul.appendChild(li); });
+    renderVideos(videosFor([...selected]));
     $('#fa-r-more').href = r.href;
     $('#fa-r-cta').href = consultUrl(best);
     show(4);
@@ -178,6 +180,25 @@ function init(){
     root.scrollIntoView({ behavior:'smooth', block:'start' });
   });
   $('#fa-r-cta').addEventListener('click', () => track('arcelemzes_cta', { result: $('#fa-r-cta').dataset.result || '' }));
+
+  // Heni szakmai videói a megjelölt zónákhoz — csak koppintásra töltődnek (preload=none), egyszerre egy szól
+  function renderVideos(ids){
+    const grid = $('#fa-r-vgrid'); grid.innerHTML = '';
+    for (const id of ids) {
+      const v = VIDEOS[id]; if (!v) continue;
+      const fig = document.createElement('figure'), vid = document.createElement('video'), cap = document.createElement('figcaption');
+      vid.controls = true; vid.playsInline = true; vid.preload = 'none'; vid.poster = v.poster; vid.src = v.src; vid.dataset.clip = id;
+      cap.textContent = v.title;
+      fig.append(vid, cap); grid.appendChild(fig);
+    }
+    $('#fa-r-videos').hidden = !grid.children.length;
+  }
+  const played = new Set();
+  root.addEventListener('play', (e) => {
+    const v = e.target; if (!(v instanceof HTMLVideoElement)) return;
+    root.querySelectorAll('video').forEach((o) => { if (o !== v && !o.paused && o.id !== 'fa-video') o.pause(); });
+    if (v.dataset.clip && !played.has(v.dataset.clip)) { played.add(v.dataset.clip); track('arcelemzes_video_play', { clip: v.dataset.clip }); }
+  }, true);
 
   // A hirdetési UTM-paraméterek továbbvitele a konzultáció-foglalásra (kampány-attribúció)
   function consultUrl(result){
