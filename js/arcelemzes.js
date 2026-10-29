@@ -87,7 +87,13 @@ function init(){
     ctx.drawImage(source, 0, 0, canvas.width, canvas.height);
     let res;
     try { await loadModel(); res = landmarker.detect(canvas); }
-    catch (e) { setStatus(mapStatus, 'Az elemző nem tudott elindulni ezen a böngészőn. Frissítsd a böngésződ, vagy foglalj személyes konzultációt.', true); return; }
+    catch (e) {
+      // Tartalék: ha az arcpont-felismerés nem indul el (régi böngésző, tiltott WebAssembly), a fotó és a zónalista akkor is működik
+      renderHotspots(null);
+      setStatus(mapStatus, 'Az automatikus arcpont-felismerés ezen a böngészőn nem indult el, de a zónákat itt is kiválaszthatod.');
+      track('arcelemzes_fallback', { reason: 'model' });
+      return;
+    }
     let lm = res && res.faceLandmarks && res.faceLandmarks[0];
     if (!lm) { clearMap(); setStatus(mapStatus, 'Nem találtunk arcot a képen. Jó fényben, szemből készült, szemüveg nélküli fotóval próbáld újra.', true); return; }
 
@@ -127,7 +133,7 @@ function init(){
   }
 
   function renderHotspots(lm){
-    for (const [key, z] of Object.entries(ZONES)) {
+    if (lm) for (const [key, z] of Object.entries(ZONES)) {
       for (const i of z.pts) {
         const b = document.createElement('button');
         b.type = 'button'; b.className = 'fa-hot'; b.dataset.zone = key;

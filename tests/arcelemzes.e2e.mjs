@@ -106,6 +106,13 @@ try {
     check('szemkörnyék → 2 szemkörnyéki videó, egyik sem töltődik előre', ids.join() === 'szembor,vitaran' && pre, ids.join());
     await p.close(); }
 
+  { const p = await freshPage(); await p.route('**/face_landmarker.task', (r) => r.abort()); await consent(p);
+    const r = await upload(p, FACES[0]);
+    const chips = await p.locator('.fa-chip').count();
+    await p.click('.fa-chip[data-zone="homlok"]'); await p.click('#fa-to-result');
+    const title = await p.textContent('#fa-r-title'); await p.close();
+    check('ha a felismerő modell nem töltődik be: fotó + zónalista, a folyamat végigmegy', !r.error && r.hot.length === 0 && chips === 8 && title === 'Anti-aging Komplex', r.status); }
+
   console.log('\n4 · Rossz bemenetek');
   { const p = await freshPage(); await consent(p); const r = await upload(p, '/assets/images/clinic/waiting-room-1.jpg'); await p.close();
     check('arc nélküli kép (váróterem) → „nem találtunk arcot”, nincs ajánlás', r.error && r.hot.length === 0 && /Nem találtunk arcot/.test(r.status)); }
