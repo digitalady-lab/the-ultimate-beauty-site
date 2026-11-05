@@ -530,14 +530,13 @@ a.sphase:focus-visible{outline:2px solid var(--gold);outline-offset:4px;border-r
           <div class="footer__contact">
             <!-- A.5 ikon-készlet: hajszálvonal-stílus (stroke 1.1), emoji-mentes -->
             <p class="footer__contact-item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21c4-4.5 7-8 7-11.5A7 7 0 0 0 5 9.5C5 13 8 16.5 12 21z"/><circle cx="12" cy="9.5" r="2.4"/></svg><a href="https://www.google.com/maps/place/?q=place_id:ChIJm_NIlWffQUcRRPqw8T-IJxE" target="_blank" rel="noopener">1124 Budapest, Németvölgyi út 68.</a></p>
-            <p class="footer__contact-item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h3l1.6 4-2 1.4a12.5 12.5 0 0 0 5.9 5.9L16 13.4l4 1.6v3a1.8 1.8 0 0 1-2 1.8C10.7 19.2 4.8 13.3 4.2 6A1.8 1.8 0 0 1 6 4z"/></svg><a href="tel:+3617903017">+36 1 790 3017</a> · <a href="tel:+36705549497">+36 70 554 9497</a></p>
+            <p class="footer__contact-item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h3l1.6 4-2 1.4a12.5 12.5 0 0 0 5.9 5.9L16 13.4l4 1.6v3a1.8 1.8 0 0 1-2 1.8C10.7 19.2 4.8 13.3 4.2 6A1.8 1.8 0 0 1 6 4z"/></svg><a href="tel:+36705549497">+36 70 554 9497</a></p>
             <p class="footer__contact-item"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="6" width="16" height="12" rx="1.6"/><path d="M4.5 7.5 12 13l7.5-5.5"/></svg><a href="mailto:info@theultimatebeauty.net">info@theultimatebeauty.net</a></p>
             <p class="footer__contact-item"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 7.5V12l3 2"/></svg>H–P: 09:00–18:00 · Szombat: előzetes egyeztetéssel</p>
           </div>
           <div class="footer__social">
             <a href="https://www.instagram.com/ultimatebeautybudapest/" class="footer__social-link" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
             <a href="https://www.facebook.com/profile.php?id=61574319187284" class="footer__social-link" target="_blank" rel="noopener" aria-label="Facebook">Facebook</a>
-            <a href="https://wa.me/36705549497" class="footer__social-link" target="_blank" rel="noopener" aria-label="WhatsApp">WhatsApp</a>
           </div>
         </div>
         <!-- 6. kör (IA 6–7.): a footer = a 3 réteg térképe kicsiben — Kezelések SAJÁT oszlopban; a régi hub-oldal kivezetve (301 → /protocol) -->
@@ -591,7 +590,7 @@ a.sphase:focus-visible{outline:2px solid var(--gold);outline-offset:4px;border-r
   <!-- V7 sticky: 2 gomb (Konzultáció glow + Hívj) — a FAB kivezetve (terv 3.11); „ingyenes" CTA-n TILOS (A.4) -->
   <div class="sticky-mobile-cta" role="region" aria-label="Gyors foglalás">
     <a href="/konzultacio" class="btn-gold btn-glow">Konzultáció →</a>
-    <a href="tel:+3617903017" class="btn-ghost">Hívj</a>
+    <a href="tel:+36705549497" class="btn-ghost">Hívj</a>
   </div>
 
   <script>
@@ -620,7 +619,6 @@ a.sphase:focus-visible{outline:2px solid var(--gold);outline-offset:4px;border-r
         { event: name, event_id: (window.crypto && crypto.randomUUID ? crypto.randomUUID() : Date.now()+'-'+Math.random().toString(36).slice(2)) }, data || {}));
     }
     document.querySelectorAll('a[href^="tel:"]').forEach(function(a){ a.addEventListener('click', function(){ tubEvent('phone_click', { source: location.pathname }); }); });
-    document.querySelectorAll('a[href^="https://wa.me"]').forEach(function(a){ a.addEventListener('click', function(){ tubEvent('whatsapp_click', { source: location.pathname }); }); });
     (function(){
       var banner = document.getElementById('cookieBanner'); if (!banner) return;
       var has = false; try { has = !!localStorage.getItem('cookie_consent'); } catch(e){}
@@ -767,7 +765,7 @@ a.sphase:focus-visible{outline:2px solid var(--gold);outline-offset:4px;border-r
       "url": "https://theultimatebeauty.net/",
       "logo": "https://theultimatebeauty.net/assets/images/logo.png",
       "image": "https://theultimatebeauty.net/assets/images/og-cover.jpg",
-      "telephone": "+3617903017",
+      "telephone": "+36705549497",
       "email": "info@theultimatebeauty.net",
       "priceRange": "$$$",
       "paymentAccepted": "Készpénz, bankkártya, átutalás",
@@ -819,8 +817,7 @@ a.sphase:focus-visible{outline:2px solid var(--gold);outline-offset:4px;border-r
       ],
       "sameAs": [
         "https://www.instagram.com/ultimatebeautybudapest/",
-        "https://www.facebook.com/profile.php?id=61574319187284",
-        "https://wa.me/36705549497"
+        "https://www.facebook.com/profile.php?id=61574319187284"
       ],
       "founder": {
         "@type": "Person",
