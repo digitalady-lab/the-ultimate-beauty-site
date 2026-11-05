@@ -180,7 +180,13 @@
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
-  <!-- DIGITÁLIS NÉVJEGY -->
+  <!-- DIGITÁLIS NÉVJEGYEK -->
+  <url>
+    <loc>https://theultimatebeauty.net/nevjegy</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
   <url>
     <loc>https://theultimatebeauty.net/krisztian-horvath</loc>
     <lastmod>2026-09-10</lastmod>

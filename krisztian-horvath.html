@@ -208,10 +208,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .btn-save:active { transform: translateY(1px); }
 
   /* ─── Elérhetőség-sorok ─── */
-  .actions { display: grid; gap: 8px; margin: 14px 0 0; }
+  /* minmax(0,1fr) + min-width:0 — e nélkül a grid-elem nem zsugorodik a
+     hosszú, nowrap e-mail-cím alá, és kitolja a kártyát keskeny kijelzőn */
+  .actions {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+    margin: 14px 0 0;
+  }
 
   .action {
     display: flex; align-items: center; gap: 14px;
+    min-width: 0;
     padding: 13px 16px;
     background: rgba(245, 240, 232, 0.035);
     border: 1px solid rgba(245, 240, 232, 0.08);
